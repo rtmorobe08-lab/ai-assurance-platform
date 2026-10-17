@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMME AI Risk Assessor</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #f9fafb; }
+        .card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #111827; font-size: 24px; text-align: center; }
+        p.subtitle { text-align: center; color: #6b7280; margin-bottom: 30px; }
+        .question { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; }
+        select { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 16px; }
+        button { display: block; width: 100%; background-color: #4f46e5; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 20px; }
+        button:hover { background-color: #4338ca; }
+        #result { margin-top: 30px; padding: 20px; border-radius: 4px; display: none; text-align: center; font-weight: bold; font-size: 18px; }
+        .high-risk { background-color: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+        .low-risk { background-color: #d1fae5; color: #065f46; border: 1px solid #34d399; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>AI Risk & Governance Assessor</h1>
+    <p class="subtitle">Evaluate your organization's exposure in 60 seconds.</p>
+
+    <div class="question">
+        <label>1. Do employees use unvetted AI tools (like free ChatGPT) for work tasks?</label>
+        <select id="q1">
+            <option value="10">Yes, frequently without oversight</option>
+            <option value="5">Sometimes, but we try to monitor it</option>
+            <option value="0">No, we only use sanctioned enterprise tools</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>2. Do your third-party SaaS vendors explicitly opt-out of AI model training?</label>
+        <select id="q2">
+            <option value="10">I am not sure / No</option>
+            <option value="0">Yes, we have verified contractual opt-outs</option>
+        </select>
+    </div>
+
+    <div class="question">
+        <label>3. Do you have automated Human-in-the-Loop (HITL) gates for AI API calls?</label>
+        <select id="q3">
+            <option value="10">No, agents can execute actions freely</option>
+            <option value="0">Yes, strict approval thresholds are in place</option>
+        </select>
+    </div>
+
+    <button onclick="calculateRisk()">Calculate My Risk Exposure</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateRisk() {
+        let score = parseInt(document.getElementById('q1').value) + 
+                    parseInt(document.getElementById('q2').value) + 
+                    parseInt(document.getElementById('q3').value);
+        
+        let resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+
+        if(score >= 15) {
+            resultDiv.className = 'high-risk';
+            resultDiv.innerHTML = "Critical Risk Detected. Your business is highly exposed to data leakage or agent liability. Contact us for a full Discovery Audit.";
+        } else {
+            resultDiv.className = 'low-risk';
+            resultDiv.innerHTML = "Low/Moderate Risk. You have strong baseline controls. Let's formalize your Governance Certificate.";
+        }
+    }
+</script>
+
+</body>
+</html>

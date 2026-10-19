@@ -46,6 +46,68 @@
     }
     .assurance a { color: #1d4ed8; }
     .cta a { color: #1d4ed8; }
+    .popia {
+        margin: 1.5em 0 0;
+        padding: 1.2em;
+        background: #fffbeb;
+        border: 1px solid #fcd34d;
+        border-radius: 8px;
+        text-align: left;
+        line-height: 1.5;
+        font-size: 0.95em;
+    }
+    .popia h2 { margin: 0 0 0.5em; font-size: 1.05em; }
+    .popia ul { margin: 0.4em 0 0.6em; padding-left: 1.2em; }
+    .popia li { margin: 0.25em 0; }
+    .flyer {
+        margin: 1.5em 0 0;
+        padding: 1.4em 1.2em;
+        background: #111827;
+        color: #f9fafb;
+        border-radius: 8px;
+        text-align: center;
+    }
+    .flyer-logo { width: 64px; height: auto; margin-bottom: 0.5em; }
+    .flyer-name { font-weight: 700; letter-spacing: 0.12em; font-size: 1.1em; }
+    .flyer-tag { display: block; font-weight: 400; font-style: italic; font-size: 0.85em; color: #9ca3af; margin-top: 0.2em; }
+    .flyer-motto { margin: 0.8em 0 0; font-size: 0.9em; line-height: 1.5; color: #d1d5db; }
+    .lead-form {
+        margin: 1.5em 0 0;
+        padding: 1.2em;
+        background: #ffffff;
+        border: 2px solid #4f46e5;
+        border-radius: 8px;
+        text-align: left;
+        line-height: 1.5;
+    }
+    .lead-form h2 { margin: 0 0 0.4em; font-size: 1.05em; }
+    .form-row { display: flex; gap: 0.6em; margin: 0.5em 0; }
+    .form-row input, .form-row textarea {
+        flex: 1;
+        padding: 0.6em;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 0.95em;
+        font-family: inherit;
+    }
+    .lead-form button {
+        margin-top: 0.5em;
+        width: 100%;
+        padding: 0.7em;
+        background: #4f46e5;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-size: 1em;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .hp-field { position: absolute; left: -9999px; }
+    .lf-status { margin-top: 0.6em; font-size: 0.9em; display: none; }
+    .lf-status.show, .lf-status.success, .lf-status.error { display: block; }
+    .lf-status.success { color: #065f46; }
+    .lf-status.error { color: #991b1b; }
+    .lf-note { margin-top: 0.8em; font-size: 0.75em; color: #6b7280; }
 </style>
 </head>
 <body>
@@ -131,6 +193,7 @@
             advice = `Good baseline controls detected. Maintain governance certificate and schedule regular audits.`;
         }
 
+        window.lastRisk = { score: score, tier: tier };
         // Build breakdown text
         const qTexts = questionIds.map((id, idx) => {
             const el = document.getElementById(id);
@@ -154,7 +217,7 @@
                 Book a full <strong>Discovery &amp; Audit</strong> with our AI Assurance team and get a remediation
                 roadmap tailored to your organisation.<br>
                 <a href="mailto:rtmorobe08@gmail.com?subject=AI%20Risk%20Assessment%20follow-up">rtmorobe08@gmail.com</a>
-                &nbsp;|&nbsp; +27 82 880 0195
+                &nbsp;|&nbsp; +27 82 880 0195 &nbsp;|&nbsp; <a href="#lead-form">Or leave your details below</a>
             </div>
         `;
     }
@@ -174,6 +237,122 @@
         &nbsp;|&nbsp; +27 82 880 0195
     </p>
 </section>
+
+<section class="popia">
+    <h2>POPIA Is Not Optional Anymore</h2>
+    <p>
+        The <strong>Protection of Personal Information Act 4 of 2013 (POPIA)</strong> applies to every
+        enterprise in South Africa that touches personal information — client records, employee files,
+        supplier data, or anything an AI tool is fed. The <strong>Information Regulator</strong> is
+        actively enforcing it, and enterprises are required to:
+    </p>
+    <ul>
+        <li>Process personal information lawfully, for a defined purpose, and keep it minimal</li>
+        <li>Secure it against breaches — and notify the Regulator when one happens</li>
+        <li>Appoint and register an <strong>Information Officer</strong> and maintain a PAIA manual</li>
+        <li>Give people the right to object to decisions made <strong>solely by automated processing</strong> — including AI</li>
+    </ul>
+    <p>
+        Serious offences carry penalties of up to <strong>R10 million in fines and/or imprisonment</strong>.
+        Every unvetted AI tool, unsecured API key and ungoverned agent in your business is a live POPIA exposure.
+        The longer you wait, the more expensive the reckoning.
+    </p>
+</section>
+
+<section class="flyer">
+    <img src="assets/core-node-logo.png" alt="Aurion Enterprises — Core Node logo" class="flyer-logo">
+    <div class="flyer-name">AURION ENTERPRISES <span class="flyer-tag">Smart systems. Strategic execution.</span></div>
+    <p class="flyer-motto">
+        We practice the governance we sell. Every assurance engagement is delivered under the same
+        discipline we apply to our own operations — structured discovery, verifiable controls,
+        and execution that closes the loop. <strong>You are in good hands.</strong>
+    </p>
+</section>
+
+<section class="lead-form" id="lead-form">
+    <h2>Leave Your Details — We'll Call You</h2>
+    <p>
+        The assessment is free; the follow-up is where your risk gets fixed. Drop your details and our
+        AI Assurance team will contact you to schedule your <strong>Discovery &amp; Audit</strong>.
+    </p>
+    <div class="form-row">
+        <input type="text" id="lf-name" placeholder="Full name *" aria-label="Full name">
+    </div>
+    <div class="form-row">
+        <input type="text" id="lf-company" placeholder="Company / organisation" aria-label="Company">
+    </div>
+    <div class="form-row">
+        <input type="email" id="lf-email" placeholder="Email address *" aria-label="Email address">
+        <input type="tel" id="lf-phone" placeholder="Phone number" aria-label="Phone number">
+    </div>
+    <div class="form-row">
+        <textarea id="lf-message" rows="3" placeholder="Anything we should know? (optional)" aria-label="Message"></textarea>
+    </div>
+    <div class="hp-field" aria-hidden="true">
+        <label>Website<input type="text" id="lf-website" tabindex="-1" autocomplete="off"></label>
+    </div>
+    <button type="button" onclick="submitLead()">Request My Discovery &amp; Audit</button>
+    <div id="lf-status" class="lf-status" aria-live="polite"></div>
+    <p class="lf-note">
+        By submitting, you consent to Aurion Enterprises contacting you about this enquiry.
+        Your details are used for this purpose only, in line with POPIA.
+    </p>
+</section>
+
+<script>
+    async function submitLead() {
+        const status = document.getElementById('lf-status');
+        const name = document.getElementById('lf-name').value.trim();
+        const email = document.getElementById('lf-email').value.trim();
+        const phone = document.getElementById('lf-phone').value.trim();
+        const company = document.getElementById('lf-company').value.trim();
+        const message = document.getElementById('lf-message').value.trim();
+        const website = document.getElementById('lf-website').value; // honeypot
+        const risk = window.lastRisk || {};
+
+        if (!name || (!email && !phone)) {
+            status.className = 'lf-status error';
+            status.textContent = 'Please give us your name and at least an email address or phone number.';
+            return;
+        }
+
+        status.className = 'lf-status show';
+        status.textContent = 'Sending...';
+
+        try {
+            const res = await fetch('https://hermes-61af97b3.base44.app/functions/submitAssuranceLead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    full_name: name,
+                    company: company,
+                    email: email,
+                    phone: phone,
+                    message: message,
+                    risk_score: risk.score ? risk.score + '/30' : '',
+                    risk_tier: risk.tier || '',
+                    website: website
+                })
+            });
+            const data = await res.json();
+            if (res.ok && data.ok) {
+                status.className = 'lf-status success';
+                status.textContent = data.message;
+                document.getElementById('lf-name').value = '';
+                document.getElementById('lf-company').value = '';
+                document.getElementById('lf-email').value = '';
+                document.getElementById('lf-phone').value = '';
+                document.getElementById('lf-message').value = '';
+            } else {
+                status.className = 'lf-status error';
+                status.textContent = data.error || 'Something went wrong. Please email us directly.';
+            }
+        } catch (err) {
+            status.className = 'lf-status error';
+            status.textContent = 'Network error. Please try again or email rtmorobe08@gmail.com';
+        }
+    }
+</script>
 
 </body>
 </html>

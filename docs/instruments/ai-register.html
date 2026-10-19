@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Incident &amp; Assurance Register (Live) — Aurion AI Assurance</title>
+<link rel="stylesheet" href="instruments.css">
+</head>
+<body>
+<div class="topbar">
+<img src="../assets/core-node-logo.png" alt="Aurion Core Node">
+<div><span class="bn">AURION ENTERPRISES</span><span class="tg">Smart systems. Strategic execution.</span></div>
+</div>
+<div class="card">
+<h1>10. AI Incident &amp; Assurance Register (Live)</h1>
+<div class="serves">Serves: <b>Continuous Assurance §1 · the retainer's engine</b></div>
+<div class="btns no-print">
+<button id="printBtn">Print / Save as PDF</button>
+<button id="clearBtn" class="ghost">Clear form</button>
+<span class="saved"></span>
+</div>
+<div class="priv">&#128274; This instrument runs entirely in your browser. Nothing is transmitted anywhere unless you choose to send or export it. Entries auto-save to this device only.</div>
+<div class="hint">The AI Incident &amp; Assurance Register, live. Entries stay in this browser; export to CSV for your records, or a JSON backup to move between devices. Print gives a dated register extract for boards and auditors.</div><div class="row2"><label>Register owner / entity</label><input type="text" data-k="owner"><label>Extract date</label><input type="date" data-k="date" data-today="1"></div><div class="fsection">SECTION A — ADD ENTRY</div><div class="row3"><label>Date</label><input type="date" data-k="nd"><label>Type</label><select data-k="nt"><option>Incident</option><option>New tool</option><option>Audit</option><option>Review</option><option>Change</option></select><label>Severity</label><select data-k="ns"><option>Low</option><option>Medium</option><option>High</option><option>Critical</option></select></div><label>Description</label><textarea data-k="ndesc"></textarea><div class="row3"><label>Owner</label><input type="text" data-k="no"><label>Status</label><select data-k="nst"><option>Open</option><option>Monitoring</option><option>Resolved</option></select><label>Resolution / closed date</label><input type="text" data-k="ncl"></div><div class="btns"><button id="addEntry">Add to register</button></div><div class="fsection">SECTION B — REGISTER</div><div class="btns no-print"><button id="csvBtn" class="ghost">Export CSV</button><button id="jsonBtn" class="ghost">JSON backup</button><label style="margin:0" class="check">Import backup <input type="file" id="importFile" accept=".json" style="border:none"></label><button id="clearReg" class="warn">Clear register</button></div><div class="row2 no-print" style="margin-top:10px"><select id="fStatus"><option>All statuses</option><option>Open</option><option>Monitoring</option><option>Resolved</option></select><select id="fSev"><option>All severities</option><option>Critical</option><option>High</option><option>Medium</option><option>Low</option></select></div><table class="tbl" id="regTbl"><thead><tr><th>#</th><th>Date</th><th>Type</th><th>Description</th><th>Severity</th><th>Status</th><th>Owner</th><th>Resolution / closed</th><th class="no-print"></th></tr></thead><tbody></tbody></table><div class="hint" id="regCount"></div>
+<div class="footer">Aurion Enterprises (Pty) Ltd &middot; rtmorobe08@gmail.com &middot; +27 82 880 0195<br><span class="hymn">"Governance that keeps watch when you can't."</span></div>
+</div>
+<script src="instruments.js"></script>
+
+<script>
+(function(){
+  var LSK = 'aurion:register:entries';
+  function entries(){ try { return JSON.parse(localStorage.getItem(LSK)) || []; } catch(e){ return []; } }
+  function persist(a){ localStorage.setItem(LSK, JSON.stringify(a)); }
+  function esc(s){ var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+  var nextId = 1;
+  function render(){
+    var a = entries(); var id = 1;
+    a.forEach(function(e){ e.id = id++; });
+    nextId = id;
+    var fs = document.getElementById('fStatus').value, fv = document.getElementById('fSev').value;
+    var body = document.querySelector('#regTbl tbody'); body.innerHTML = '';
+    var shown = 0;
+    a.forEach(function(e, i){
+      if(fs !== 'All statuses' && e.status !== fs) return;
+      if(fv !== 'All severities' && e.sev !== fv) return;
+      shown++;
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + e.id + '</td><td>' + esc(e.date) + '</td><td>' + esc(e.type) + '</td><td>' + esc(e.desc) + '</td><td>' + esc(e.sev) + '</td><td>' + esc(e.status) + '</td><td>' + esc(e.owner) + '</td><td>' + esc(e.resolution) + '</td><td class="no-print"><button data-del="' + i + '" style="background:#fee2e2;color:#991b1b;border:1px solid #fca5a5;border-radius:5px;padding:3px 8px;cursor:pointer;font-size:12px">Del</button></td>';
+      body.appendChild(tr);
+    });
+    document.getElementById('regCount').textContent = shown + ' of ' + a.length + ' entries shown';
+    Array.prototype.forEach.call(body.querySelectorAll('[data-del]'), function(b){
+      b.addEventListener('click', function(){
+        if(!confirm('Delete this entry?')) return;
+        var arr = entries(); arr.splice(parseInt(b.getAttribute('data-del')), 1); persist(arr); render();
+      });
+    });
+  }
+  function gv(k){ var e = document.querySelector('[data-k=' + k + ']'); return e ? e.value : ''; }
+  document.addEventListener('DOMContentLoaded', function(){
+    render();
+    document.getElementById('fStatus').addEventListener('change', render);
+    document.getElementById('fSev').addEventListener('change', render);
+    document.getElementById('addEntry').addEventListener('click', function(){
+      var d = gv('nd') || new Date().toISOString().slice(0,10);
+      var a = entries();
+      a.push({ date: d, type: gv('nt'), desc: gv('ndesc'), severity: gv('ns'), status: gv('nst'), owner: gv('no'), resolution: gv('ncl') });
+      persist(a); render();
+      ['ndesc','no','ncl'].forEach(function(k){ var e = document.querySelector('[data-k=' + k + ']'); if(e) e.value = ''; });
+      alert('Entry added to the register.');
+    });
+    document.getElementById('csvBtn').addEventListener('click', function(){
+      var a = entries();
+      var rows = [['No','Date','Type','Description','Severity','Status','Owner','Resolution']];
+      a.forEach(function(e, i){ rows.push([i+1, e.date, e.type, '"' + String(e.desc||'').replace(/"/g,'""') + '"', e.severity, e.status, e.owner, '"' + String(e.resolution||'').replace(/"/g,'""') + '"']); });
+      var csv = rows.map(function(r){ return r.join(','); }).join('\n');
+      var blob = new Blob([csv], { type: 'text/csv' });
+      var a2 = document.createElement('a');
+      a2.href = URL.createObjectURL(blob);
+      a2.download = 'ai-assurance-register-' + new Date().toISOString().slice(0,10) + '.csv';
+      a2.click();
+    });
+    document.getElementById('jsonBtn').addEventListener('click', function(){
+      var blob = new Blob([JSON.stringify(entries(), null, 2)], { type: 'application/json' });
+      var a3 = document.createElement('a');
+      a3.href = URL.createObjectURL(blob);
+      a3.download = 'ai-assurance-register-backup-' + new Date().toISOString().slice(0,10) + '.json';
+      a3.click();
+    });
+    document.getElementById('importFile').addEventListener('change', function(ev){
+      var f = ev.target.files[0]; if(!f) return;
+      var r = new FileReader();
+      r.onload = function(){
+        try {
+          var data = JSON.parse(r.result);
+          if(!Array.isArray(data)) throw 0;
+          if(!confirm('Replace the current register with the backup (' + data.length + ' entries)?')) return;
+          localStorage.setItem(LSK, JSON.stringify(data)); render();
+        } catch(e){ alert('That file is not a valid register backup.'); }
+      };
+      r.readAsText(f);
+    });
+    document.getElementById('clearReg').addEventListener('click', function(){
+      if(!confirm('Clear ALL register entries from this browser? Export a backup first if you need it.')) return;
+      localStorage.removeItem(LSK); render();
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

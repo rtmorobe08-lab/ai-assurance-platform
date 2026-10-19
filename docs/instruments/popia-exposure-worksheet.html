@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POPIA Exposure Worksheet — Aurion AI Assurance</title>
+<link rel="stylesheet" href="instruments.css">
+</head>
+<body>
+<div class="topbar">
+<img src="../assets/core-node-logo.png" alt="Aurion Core Node">
+<div><span class="bn">AURION ENTERPRISES</span><span class="tg">Smart systems. Strategic execution.</span></div>
+</div>
+<div class="card">
+<h1>1. POPIA Exposure Worksheet</h1>
+<div class="serves">Serves: <b>Health Check §4 · Discovery &amp; Audit §5</b></div>
+<div class="btns no-print">
+<button id="printBtn">Print / Save as PDF</button>
+<button id="clearBtn" class="ghost">Clear form</button>
+<span class="saved"></span>
+</div>
+<div class="priv">&#128274; This instrument runs entirely in your browser. Nothing is transmitted anywhere unless you choose to send or export it. Entries auto-save to this device only.</div>
+<label>Client / entity name</label><input type="text" data-k="client"><label>Assessment date</label><input type="date" data-k="date" data-today="1"><label>Conducted by</label><input type="text" data-k="conductor" placeholder="Aurion Enterprises"><div class="fsection">SECTION A — PERSONAL INFORMATION INVENTORY</div><div class="hint">Every category of personal information the business holds or processes, and where it lives.</div><table class="tbl" id="piTbl"><thead><tr><th>Data type (e.g. client IDs, payroll)</th><th>Collected from</th><th>Purpose</th><th>Lawful basis</th><th>Where stored / AI tool touching it</th><th>Who can access</th></tr></thead><tbody><tr><td><input type="text" data-k="dt"></td><td><input type="text" data-k="cs"></td><td><input type="text" data-k="pp"></td><td><input type="text" data-k="lb"></td><td><input type="text" data-k="ws"></td><td><input type="text" data-k="wa"></td></tr></tbody></table><button class="addrow" data-add="piTbl">+ Add row</button><div class="fsection">SECTION B — CROSS-BORDER DATA FLOWS</div><div class="hint">List any tools, servers or AI providers that store or process this data outside South Africa.</div><table class="tbl" id="cbTbl"><thead><tr><th>Tool / provider</th><th>Data involved</th><th>Hosted where</th><th>Transfer safeguard</th></tr></thead><tbody><tr><td><input type="text" data-k="tp"></td><td><input type="text" data-k="di"></td><td><input type="text" data-k="hw"></td><td><input type="text" data-k="ts"></td></tr></tbody></table><button class="addrow" data-add="cbTbl">+ Add row</button><div class="fsection">SECTION C — INFORMATION OFFICER STATUS</div><div class="row2"><label>Information Officer appointed and registered?</label><select data-k="io"><option>Unknown</option><option>Yes — registered with Regulator</option><option>Appointed, not yet registered</option><option>No</option></select><label>PAIA Manual current?</label><select data-k="paia"><option>Unknown</option><option>Yes</option><option>No</option><option>N/A</option></select></div><label>Deputy Information Officer(s)</label><input type="text" data-k="dio"><div class="fsection">SECTION D — DATA SUBJECT RIGHTS READINESS</div><table class="tbl" id="dsrTbl"><thead><tr><th>Right</th><th>Process in place?</th><th>Notes</th></tr></thead><tbody><tr><td><input type="text" data-k="Access to information (s23)"></td><td><select data-k="r1"><option>No</option><option>Partly</option><option>Yes</option></select></td><td><input type="text" data-k="n1"></td></tr></tbody></table><button class="addrow" data-add="dsrTbl">+ Add row</button><div class="row2"><label>Right to object to automated decisions (s22)</label><select data-k="r2"><option>No</option><option>Partly</option><option>Yes</option></select><label>Correction / deletion requests handled?</label><select data-k="r3"><option>No</option><option>Partly</option><option>Yes</option></select></div><div class="fsection">SECTION E — BREACH READINESS</div><label>Who detects a breach?</label><input type="text" data-k="bd"><label>Who decides on notification?</label><input type="text" data-k="bn"><label>Tested notification process (steps)</label><textarea data-k="bp"></textarea><div class="fsection">SECTION F — OVERALL EXPOSURE RATING</div><label>Overall POPIA exposure</label><div class="hint">Mirrors the SMME AI Risk Assessor tiers. Justify below.</div><select data-k="overall"><option>Low</option><option>Elevated</option><option>High</option><option>Critical</option></select><label>Rating justification & immediate actions</label><textarea data-k="just"></textarea><div class="sig"><div class="s">Aurion lead — sign &amp; date</div><div class="s">Client representative — sign &amp; date</div></div>
+<div class="footer">Aurion Enterprises (Pty) Ltd &middot; rtmorobe08@gmail.com &middot; +27 82 880 0195<br><span class="hymn">""</span></div>
+</div>
+<script src="instruments.js"></script>
+
+</body>
+</html>

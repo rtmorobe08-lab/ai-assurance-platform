@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Incident Intake &amp; Response SOP — Aurion AI Assurance</title>
+<link rel="stylesheet" href="instruments.css">
+</head>
+<body>
+<div class="topbar">
+<img src="../assets/core-node-logo.png" alt="Aurion Core Node">
+<div><span class="bn">AURION ENTERPRISES</span><span class="tg">Smart systems. Strategic execution.</span></div>
+</div>
+<div class="card">
+<h1>8. AI Incident Intake &amp; Response SOP</h1>
+<div class="serves">Serves: <b>Event Pack · Continuous Assurance §5</b></div>
+<div class="btns no-print">
+<button id="printBtn">Print / Save as PDF</button>
+<button id="clearBtn" class="ghost">Clear form</button>
+<span class="saved"></span>
+</div>
+<div class="priv">&#128274; This instrument runs entirely in your browser. Nothing is transmitted anywhere unless you choose to send or export it. Entries auto-save to this device only.</div>
+<div class="hint">Part 1 is the standing SOP. Part 2 is the intake you fill when an incident is live. Part 3 generates the brief and routes it to Aurion — starting the 24-hour acknowledge clock.</div><div class="fsection">SECTION A — STANDING SOP — THE FIRST 24 HOURS</div><label>1. DETECT &amp; CONTAIN (0–4h)</label><textarea data-k="sop1"></textarea><label>2. ASSESS (4–8h)</label><textarea data-k="sop2"></textarea><label>3. NOTIFIY INTERNALLY (by 24h)</label><textarea data-k="sop3"></textarea><label>4. REGULATOR &amp; DATA SUBJECTS (POPIA s22 — as soon as reasonably possible once there is a reasonable belief of compromise)</label><textarea data-k="sop4"></textarea><label>5. LOG &amp; CLOSE</label><textarea data-k="sop5"></textarea><div class="fsection">SECTION B — INCIDENT INTAKE</div><div class="row2"><label>Reporter</label><input type="text" data-k="rep"><label>Detected date/time</label><input type="text" data-k="dt" placeholder="2026-10-19 14:30"></div><div class="row2"><label>Client / entity</label><input type="text" data-k="client"><label>AI tool / agent involved</label><input type="text" data-k="tool"></div><label>Incident type</label><select data-k="type"><option>Unauthorised AI tool discovered (shadow AI)</option><option>Data exposed to an AI service</option><option>Agent acted outside instructions</option><option>Vendor breach</option><option>Prompt injection / manipulation</option><option>Automated decision dispute (s22)</option><option>Other</option></select><label>Severity</label><select data-k="sev"><option>Low</option><option>Medium</option><option>High</option><option>Critical</option></select><label>What happened (facts only)</label><textarea data-k="what"></textarea><table class="tbl" id="dcTbl"><thead><tr><th>Data category affected</th><th>Approx. data subjects</th><th>Where it went</th></tr></thead><tbody><tr><td><input type="text" data-k="dc"></td><td><input type="text" data-k="ns"></td><td><input type="text" data-k="wg"></td></tr></tbody></table><button class="addrow" data-add="dcTbl">+ Add row</button><label>Containment already taken</label><textarea data-k="cont"></textarea><label>Immediate actions needed</label><textarea data-k="acts"></textarea><div class="fsection">SECTION C — ROUTE THE BRIEF</div><div class="btns"><button id="briefBtn">Generate brief</button><button id="copyBtn" class="ghost">Copy brief</button><a id="mailLink" class="hubcard" style="padding:8px 16px" href="#">Email to Aurion</a><a id="waLink" class="hubcard" style="padding:8px 16px" href="#">WhatsApp Aurion</a></div><textarea id="briefOut" style="min-height:180px" placeholder="The structured incident brief appears here — copy it, or use the buttons above."></textarea><div class="hint">Email routes to rtmorobe08@gmail.com with the subject prefixed AURION INCIDENT. WhatsApp opens a chat with the response line. Both start the 24-hour acknowledge SLA. Events outside a retainer scope are handled under the Event Pack (R1,999/incident).</div>
+<div class="footer">Aurion Enterprises (Pty) Ltd &middot; rtmorobe08@gmail.com &middot; +27 82 880 0195<br><span class="hymn">"When it goes wrong, we move first."</span></div>
+</div>
+<script src="instruments.js"></script>
+
+<script>
+(function(){
+  function gv(sel){ var e = document.querySelector(sel); return e ? e.value.trim() : ''; }
+  function build(){
+    var lines = [
+      'AURION INCIDENT BRIEF',
+      'Client: ' + gv('[data-k=client]') + '  |  Reported by: ' + gv('[data-k=rep]'),
+      'Detected: ' + gv('[data-k=dt]') + '  |  Tool/agent: ' + gv('[data-k=tool]'),
+      'Type: ' + gv('[data-k=type]') + '  |  Severity: ' + gv('[data-k=sev]'),
+      '',
+      'WHAT HAPPENED:',
+      gv('[data-k=what]') || '(not filled in)',
+      '',
+      'CONTAINMENT TAKEN:',
+      gv('[data-k=cont]') || '(none yet)',
+      '',
+      'IMMEDIATE ACTIONS NEEDED:',
+      gv('[data-k=acts]') || '(to be advised)'
+    ];
+    return lines.join('\n');
+  }
+  function refreshLinks(){
+    var m = document.getElementById('mailLink'), w = document.getElementById('waLink');
+    if(m) m.href = 'mailto:rtmorobe08@gmail.com?subject=' + encodeURIComponent('AURION INCIDENT — ' + (gv('[data-k=client]') || '(client)')) + '&body=' + encodeURIComponent(build());
+    if(w) w.href = 'https://wa.me/27828800195?text=' + encodeURIComponent(build().substring(0, 1500));
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var b = document.getElementById('briefBtn'), out = document.getElementById('briefOut');
+    if(b) b.addEventListener('click', function(){ out.value = build(); refreshLinks(); });
+    document.querySelectorAll('[data-k]').forEach(function(el){
+      el.addEventListener('input', refreshLinks);
+    });
+    var c = document.getElementById('copyBtn');
+    if(c) c.addEventListener('click', function(){
+      if(!out.value) out.value = build();
+      out.select();
+      try { document.execCommand('copy'); c.textContent = 'Copied!'; } catch(e){}
+    });
+    var m = document.getElementById('mailLink');
+    if(m) m.href = 'mailto:rtmorobe08@gmail.com?subject=' + encodeURIComponent('AURION INCIDENT — ' + gv('[data-k=client]')) + '&body=' + encodeURIComponent(build());
+    var w = document.getElementById('waLink');
+    if(w) w.href = 'https://wa.me/27828800195?text=' + encodeURIComponent(build().substring(0, 1500));
+  });
+})();
+</script>
+
+</body>
+</html>

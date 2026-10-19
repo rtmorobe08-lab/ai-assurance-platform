@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remediation Roadmap — Aurion AI Assurance</title>
+<link rel="stylesheet" href="instruments.css">
+</head>
+<body>
+<div class="topbar">
+<img src="../assets/core-node-logo.png" alt="Aurion Core Node">
+<div><span class="bn">AURION ENTERPRISES</span><span class="tg">Smart systems. Strategic execution.</span></div>
+</div>
+<div class="card">
+<h1>2. Remediation Roadmap</h1>
+<div class="serves">Serves: <b>AI Health Check §5</b></div>
+<div class="btns no-print">
+<button id="printBtn">Print / Save as PDF</button>
+<button id="clearBtn" class="ghost">Clear form</button>
+<span class="saved"></span>
+</div>
+<div class="priv">&#128274; This instrument runs entirely in your browser. Nothing is transmitted anywhere unless you choose to send or export it. Entries auto-save to this device only.</div>
+<label>Client / entity name</label><input type="text" data-k="client"><label>Date</label><input type="date" data-k="date" data-today="1"><div class="row2"><label>Risk score (0–30, from assessor)</label><input type="number" data-k="score"><label>Tier</label><select data-k="tier"><option>Low</option><option>Elevated</option><option>High</option><option>Critical</option></select></div><div class="fsection">SECTION A — CURRENT STATE SUMMARY</div><div class="hint">Two or three sentences: what the diagnostic found, in plain language.</div><label>Summary</label><textarea data-k="summary"></textarea><div class="fsection">SECTION B — ACTION PLAN</div><div class="hint">Priorities: NOW = 30 days (stop the bleeding), NEXT = 60 days (build the guardrails), LATER = 90 days (run and monitor).</div><table class="tbl" id="planTbl"><thead><tr><th>#</th><th>Action</th><th>Risk addressed</th><th>Priority</th><th>Effort (H/M/L)</th><th>Owner</th><th>Due date</th><th>Status</th></tr></thead><tbody><tr><td><input type="text" data-k="no"></td><td><input type="text" data-k="ac"></td><td><input type="text" data-k="ra"></td><td><select data-k="pr"><option>NOW</option><option>NEXT</option><option>LATER</option></select></td><td><select data-k="ef"><option>H</option><option>M</option><option>L</option></select></td><td><input type="text" data-k="ow"></td><td><input type="text" data-k="du"></td><td><select data-k="st"><option>Not started</option><option>In progress</option><option>Done</option></select></td></tr></tbody></table><button class="addrow" data-add="planTbl">+ Add row</button><div class="fsection">SECTION C — QUICK WINS</div><div class="hint">Low-effort actions with visible impact — build momentum first.</div><label>Quick wins</label><textarea data-k="wins"></textarea><div class="fsection">SECTION D — RECOMMENDED NEXT STEP</div><label>Aurion offer that takes this forward</label><select data-k="next"><option>Guardian subscription (R149/mo)</option><option>Compliance subscription (R399/mo)</option><option>Control Framework engagement</option><option>Continuous Assurance retainer</option><option>Discovery & Audit (full)</option></select><label>Why</label><textarea data-k="why"></textarea><div class="sig"><div class="s">Aurion lead — sign &amp; date</div><div class="s">Client — sign &amp; date</div></div>
+<div class="footer">Aurion Enterprises (Pty) Ltd &middot; rtmorobe08@gmail.com &middot; +27 82 880 0195<br><span class="hymn">"From score to roadmap in a week."</span></div>
+</div>
+<script src="instruments.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Passport — Aurion AI Assurance</title>
+<link rel="stylesheet" href="instruments.css">
+</head>
+<body>
+<div class="topbar">
+<img src="../assets/core-node-logo.png" alt="Aurion Core Node">
+<div><span class="bn">AURION ENTERPRISES</span><span class="tg">Smart systems. Strategic execution.</span></div>
+</div>
+<div class="card">
+<h1>6. Agent Passport</h1>
+<div class="serves">Serves: <b>Control Framework §3 · Guardian tier feature</b></div>
+<div class="btns no-print">
+<button id="printBtn">Print / Save as PDF</button>
+<button id="clearBtn" class="ghost">Clear form</button>
+<span class="saved"></span>
+</div>
+<div class="priv">&#128274; This instrument runs entirely in your browser. Nothing is transmitted anywhere unless you choose to send or export it. Entries auto-save to this device only.</div>
+<div class="hint">One passport per agent. The passport follows the agent for its entire life — creation, changes, incidents, and decommission. Duplicate this page per agent.</div><div class="row2"><label>Agent name</label><input type="text" data-k="an" placeholder="e.g. Invoice Bot"><label>Passport ID</label><input type="text" data-k="pid" placeholder="AP-001"></div><div class="row2"><label>Owner (person)</label><input type="text" data-k="own"><label>Issued / reviewed date</label><input type="date" data-k="date" data-today="1"></div><div class="fsection">SECTION A — IDENTITY &amp; PURPOSE</div><label>What this agent does (one sentence)</label><textarea data-k="purpose"></textarea><label>Platform / model / tool</label><input type="text" data-k="platform"><label>Business process it serves</label><input type="text" data-k="process"><div class="fsection">SECTION B — DATA ACCESS</div><div class="hint">What this agent may read, and what it must never touch.</div><table class="tbl" id="daTbl"><thead><tr><th>Data / system accessed</th><th>Access type (read / write / send)</th><th>Personal information? (Y/N)</th><th>Approved by</th></tr></thead><tbody><tr><td><input type="text" data-k="da"></td><td><select data-k="at"><option>read</option><option>write</option><option>send</option><option>read+write</option></select></td><td><select data-k="pi"><option>N</option><option>Y</option></select></td><td><input type="text" data-k="ap"></td></tr></tbody></table><button class="addrow" data-add="daTbl">+ Add row</button><div class="fsection">SECTION C — PERMITTED ACTIONS</div><label>Actions permitted</label><textarea data-k="acts" placeholder="e.g. draft invoices, send to queue for approval"></textarea><label>Actions explicitly prohibited</label><textarea data-k="proh"></textarea><div class="fsection">SECTION D — HUMAN-IN-THE-LOOP CONTROLS</div><label>Approval threshold</label><select data-k="thr"><option>No approval needed (low risk)</option><option>Human review before each action</option><option>Human review before external sends</option><option>Batch approval (daily)</option><option>Two-person approval (high risk)</option></select><label>Approver(s)</label><input type="text" data-k="appr"><label>Escalation on anomaly</label><input type="text" data-k="esc"><div class="fsection">SECTION E — RISK CLASSIFICATION</div><label>Risk class</label><select data-k="cls"><option>Low — internal drafts only</option><option>Medium — internal data, no external sends</option><option>High — external communication</option><option>Critical — handles personal information at scale or moves money</option></select><div class="fsection">SECTION F — OPERATIONS</div><table class="tbl" id="opTbl"><thead><tr><th>Integration / credential</th><th>Scope (least privilege)</th><th>Stored where</th><th>Rotate by</th></tr></thead><tbody><tr><td><input type="text" data-k="ic"></td><td><input type="text" data-k="sc"></td><td><input type="text" data-k="sw"></td><td><input type="text" data-k="rb"></td></tr></tbody></table><button class="addrow" data-add="opTbl">+ Add row</button><label>Logging</label><select data-k="log"><option>None</option><option>Action log kept manually</option><option>Automatic log retained 12 months</option><option>Automatic log + alerting</option></select><label>Review cadence</label><select data-k="cad"><option>Quarterly</option><option>Monthly</option><option>On any change</option><option>Annual</option></select><div class="fsection">SECTION G — DECOMMISSION PLAN</div><div class="hint">How this agent will one day be switched off: data export, deletion confirmation, register closure.</div><label>Decommission plan</label><textarea data-k="dec"></textarea><div class="fsection">SECTION H — LIFE EVENTS LOG</div><table class="tbl" id="lifeTbl"><thead><tr><th>Date</th><th>Event (created / changed / incident / reviewed / decommissioned)</th><th>By</th><th>Notes</th></tr></thead><tbody><tr><td><input type="text" data-k="ld"></td><td><input type="text" data-k="le"></td><td><input type="text" data-k="lb"></td><td><input type="text" data-k="ln"></td></tr></tbody></table><button class="addrow" data-add="lifeTbl">+ Add row</button><div class="sig"><div class="s">AI Owner — sign &amp; date</div><div class="s">Passport reviewed by — sign &amp; date</div></div>
+<div class="footer">Aurion Enterprises (Pty) Ltd &middot; rtmorobe08@gmail.com &middot; +27 82 880 0195<br><span class="hymn">"Every agent accounted for."</span></div>
+</div>
+<script src="instruments.js"></script>
+
+</body>
+</html>

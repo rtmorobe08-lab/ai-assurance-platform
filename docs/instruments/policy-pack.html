@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Policy Pack (5 Policies) — Aurion AI Assurance</title>
+<link rel="stylesheet" href="instruments.css">
+</head>
+<body>
+<div class="topbar">
+<img src="../assets/core-node-logo.png" alt="Aurion Core Node">
+<div><span class="bn">AURION ENTERPRISES</span><span class="tg">Smart systems. Strategic execution.</span></div>
+</div>
+<div class="card">
+<h1>5. AI Policy Pack (5 Policies)</h1>
+<div class="serves">Serves: <b>Control Framework §4</b></div>
+<div class="btns no-print">
+<button id="printBtn">Print / Save as PDF</button>
+<button id="clearBtn" class="ghost">Clear form</button>
+<span class="saved"></span>
+</div>
+<div class="priv">&#128274; This instrument runs entirely in your browser. Nothing is transmitted anywhere unless you choose to send or export it. Entries auto-save to this device only.</div>
+<div class="hint">Five policies, ready to adopt. Edit the bracketed fields, print, sign. Every policy references the AI Incident &amp; Assurance Register — one system of record.</div><div class="row3"><label>Company</label><input type="text" data-k="co"><label>Version</label><input type="text" data-k="ver" placeholder="1.0"><label>Effective date</label><input type="date" data-k="ed"></div><div class="row2"><label>Approved by (AI Owner)</label><input type="text" data-k="ap"><label>Next review date</label><input type="date" data-k="nr"></div><div class="fsection">SECTION 1 — ACCEPTABLE AI USE POLICY</div><div class="hint">Which tools are approved, what employees may do with them, and where a human must stay in the loop.</div><label>Policy text</label><textarea data-k="p1"></textarea><div class="fsection">SECTION 2 — DATA HANDLING &amp; AI POLICY</div><div class="hint">What may be entered into AI tools — and what never leaves the business without approval.</div><label>Policy text</label><textarea data-k="p2"></textarea><div class="fsection">SECTION 3 — AI VENDOR ONBOARDING POLICY</div><div class="hint">No new AI tool enters the business without diligence, an owner, and a register entry.</div><label>Policy text</label><textarea data-k="p3"></textarea><div class="fsection">SECTION 4 — AI INCIDENT REPORTING POLICY</div><div class="hint">See something, say something — within 24 hours, internally, without blame.</div><label>Policy text</label><textarea data-k="p4"></textarea><div class="fsection">SECTION 5 — AI AGENT OFFBOARDING POLICY</div><div class="hint">How an agent leaves: data returned, credentials revoked, passports closed.</div><label>Policy text</label><textarea data-k="p5"></textarea><div class="sig"><div class="s">AI Owner — sign &amp; date</div><div class="s">Accountable executive — sign &amp; date</div></div>
+<div class="footer">Aurion Enterprises (Pty) Ltd &middot; rtmorobe08@gmail.com &middot; +27 82 880 0195<br><span class="hymn">"Guardrails designed, not hoped for."</span></div>
+</div>
+<script src="instruments.js"></script>
+
+
+<script>
+(function(){
+  var seeds = {
+    p1: "1. PURPOSE\nThis policy states which AI tools are approved for company use and the conditions under which employees may use them.\n\n2. APPROVED TOOLS\nEmployees may use only the AI tools listed in the Approved Tools Register maintained by the AI Owner. Requests to add a tool follow the AI Vendor Onboarding Policy.\n\n3. CONDITIONS OF USE\n(a) AI output is a draft, never a final deliverable; a human reviews before use.\n(b) AI tools must not be used to make or materially inform a decision about a person (hiring, credit, discipline) without human review and a documented reason.\n(c) Employees must not create accounts with company email for unapproved tools.\n\n4. PROHIBITED USES\nEntering client or employee personal information into unapproved tools; using AI to generate content presented as human work where disclosure is required; bypassing approval thresholds in the HITL Control Matrix.\n\n5. BREACH\nViolation is an incident under the AI Incident Reporting Policy.",
+    p2: "1. CLASSIFICATION\nCompany data is classified: PUBLIC, INTERNAL, CONFIDENTIAL, RESTRICTED. Personal information of clients, employees or data subjects is CONFIDENTIAL or above.\n\n2. WHAT MAY ENTER AI TOOLS\nOnly PUBLIC and non-sensitive INTERNAL data may be entered into approved AI tools without approval. CONFIDENTIAL or RESTRICTED data may only be processed by AI tools expressly approved for that class, with an Agent Passport on file.\n\n3. NEVER-INTO-AI LIST\nID numbers, payslips, medical records, client contracts, anything under NDA, credentials of any kind.\n\n4. RETENTION & DELETION\nAI tool accounts and chat histories are reviewed quarterly by the AI Owner; sensitive content is deleted and logged in the AI Incident & Assurance Register.",
+    p3: "1. NO STEALTH ONBOARDING\nNo AI tool, agent or plug-in may be used for company work before it passes this policy.\n\n2. DILIGENCE STEPS\n(a) Owner assigned; (b) vendor questionnaire completed (data residency, retention, sub-processors, breach history); (c) data classification decided; (d) Agent Passport issued; (e) entry made in the AI Incident & Assurance Register.\n\n3. APPROVAL\nThe AI Owner approves Low/Medium risk tools; the accountable executive approves High/Critical tools.\n\n4. REVIEW\nAll onboarded tools are reviewed annually against the vendor diligence guide.",
+    p4: "1. WHAT COUNTS AS AN INCIDENT\nAny AI-related event that may compromise personal information, money, systems or reputation: data exposure, an agent acting outside instructions, vendor breach, prompt manipulation, unauthorised tool discovered.\n\n2. REPORT WITHIN 24 HOURS\nAny employee who suspects an incident reports it to the AI Owner within 24 hours, internally, without blame. Use the Incident Intake instrument.\n\n3. RESPONSE\nThe AI Owner contains, assesses, and where there is a reasonable belief that personal information has been compromised, notifies the Information Regulator and affected data subjects as soon as reasonably possible (POPIA s22).\n\n4. LOG\nEvery incident is logged in the AI Incident & Assurance Register with resolution notes and closed date.",
+    p5: "1. WHEN AGENTS LEAVE\nEvery decommissioned AI tool or agent follows this checklist: (a) data export completed; (b) vendor deletion confirmed in writing; (c) credentials and API keys revoked; (d) Agent Passport closed with decommission date; (e) register entry updated.\n\n2. DATA RETURN\nCompany data held by the vendor is returned or deleted, with confirmation retained on file.\n\n3. CONTINUITY\nDependent processes are identified and reassigned before decommission.\n\n4. EVIDENCE\nThe closed passport and deletion confirmation are retained for audit for a minimum of 12 months."
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    Object.keys(seeds).forEach(function(k){
+      var el = document.querySelector('[data-k=' + k + ']');
+      if(!el) return;
+      var lk = 'aurion:' + location.pathname + ':' + k;
+      if(el.value === '' && !localStorage.getItem(lk)){ el.value = seeds[k]; try { localStorage.setItem(lk, seeds[k]); } catch(e){} }
+    });
+  });
+})();
+</script>
+</body>
+</html>

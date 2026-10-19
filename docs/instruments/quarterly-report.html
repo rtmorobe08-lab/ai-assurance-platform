@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quarterly Compliance Report — Aurion AI Assurance</title>
+<link rel="stylesheet" href="instruments.css">
+</head>
+<body>
+<div class="topbar">
+<img src="../assets/core-node-logo.png" alt="Aurion Core Node">
+<div><span class="bn">AURION ENTERPRISES</span><span class="tg">Smart systems. Strategic execution.</span></div>
+</div>
+<div class="card">
+<h1>9. Quarterly Compliance Report</h1>
+<div class="serves">Serves: <b>Continuous Assurance §3</b></div>
+<div class="btns no-print">
+<button id="printBtn">Print / Save as PDF</button>
+<button id="clearBtn" class="ghost">Clear form</button>
+<span class="saved"></span>
+</div>
+<div class="priv">&#128274; This instrument runs entirely in your browser. Nothing is transmitted anywhere unless you choose to send or export it. Entries auto-save to this device only.</div>
+<div class="row3"><label>Client</label><input type="text" data-k="client"><label>Quarter</label><select data-k="q"><option>Q1 (Jan–Mar)</option><option>Q2 (Apr–Jun)</option><option>Q3 (Jul–Sep)</option><option>Q4 (Oct–Dec)</option></select><label>Year</label><input type="number" data-k="yr"></div><div class="row2"><label>Prepared by</label><input type="text" data-k="by" placeholder="Aurion Enterprises"><label>Report date</label><input type="date" data-k="date" data-today="1"></div><div class="fsection">SECTION A — REGISTER SUMMARY</div><div class="row3"><label>Incidents logged this quarter</label><input type="number" data-k="inc"><label>Open at quarter end</label><input type="number" data-k="open"><label>Resolved this quarter</label><input type="number" data-k="res"></div><table class="tbl" id="qiTbl"><thead><tr><th>Date</th><th>Incident / entry</th><th>Severity</th><th>Status</th><th>Resolution notes</th></tr></thead><tbody><tr><td><input type="text" data-k="id"></td><td><input type="text" data-k="ie"></td><td><select data-k="is"><option>Low</option><option>Medium</option><option>High</option><option>Critical</option></select></td><td><select data-k="ist"><option>Open</option><option>Monitoring</option><option>Resolved</option></select></td><td><input type="text" data-k="ir"></td></tr></tbody></table><button class="addrow" data-add="qiTbl">+ Add row</button><div class="fsection">SECTION B — AI ESTATE CHANGES</div><table class="tbl" id="ntTbl"><thead><tr><th>New tools / agents onboarded</th><th>Owner</th><th>Passport issued? (Y/N)</th></tr></thead><tbody><tr><td><input type="text" data-k="nt"></td><td><input type="text" data-k="no"></td><td><select data-k="np"><option>N</option><option>Y</option></select></td></tr></tbody></table><button class="addrow" data-add="ntTbl">+ Add row</button><label>Tools / agents offboarded</label><textarea data-k="off"></textarea><div class="fsection">SECTION C — POPIA POSTURE CHECK</div><table class="tbl" id="ppTbl"><thead><tr><th>Item</th><th>Status</th><th>Notes</th></tr></thead><tbody><tr><td><input type="text" data-k="pi1"></td><td><select data-k="ps1"><option></option><option>On track</option><option>Attention needed</option><option>Overdue</option></select></td><td><input type="text" data-k="pn1"></td></tr></tbody></table><button class="addrow" data-add="ppTbl">+ Add row</button><div class="hint">Typical items: Information Officer registration current; PAIA manual current; breach procedure tested; data subject requests handled; vendor diligence files complete; staff training delivered.</div><div class="fsection">SECTION D — RISK TREND</div><table class="tbl" id="rtTbl"><thead><tr><th>Month</th><th>Tier</th><th>Notes</th></tr></thead><tbody><tr><td><input type="text" data-k="tm"></td><td><select data-k="tt"><option>Low</option><option>Elevated</option><option>High</option><option>Critical</option></select></td><td><input type="text" data-k="tn"></td></tr></tbody></table><button class="addrow" data-add="rtTbl">+ Add row</button><div class="fsection">SECTION E — RECOMMENDATIONS FOR NEXT QUARTER</div><label>Recommendations</label><textarea data-k="rec"></textarea><label>Decisions requested from leadership</label><textarea data-k="dec"></textarea><div class="sig"><div class="s">Aurion lead — sign &amp; date</div><div class="s">Client AI Owner — sign &amp; date</div></div>
+<div class="footer">Aurion Enterprises (Pty) Ltd &middot; rtmorobe08@gmail.com &middot; +27 82 880 0195<br><span class="hymn">"Governance that keeps watch when you can't."</span></div>
+</div>
+<script src="instruments.js"></script>
+
+</body>
+</html>

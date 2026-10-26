@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AurionISO42001AgentPassport",
+  "type": "object",
+  "properties": {
+    "passport_id": { "type": "string", "example": "FO-AGENT-ZA01" },
+    "owner": { "type": "string", "example": "Aurion Enterprises" },
+    "iso42001_compliance": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "string", "enum": ["COMPLIANT", "NON_COMPLIANT", "PENDING_AUDIT"] },
+        "statement_of_applicability_ref": { "type": "string", "example": "SOA-2026-V1" },
+        "data_hygiene_iso5259": { "type": "boolean", "default": true }
+      },
+      "required": ["status", "statement_of_applicability_ref", "data_hygiene_iso5259"]
+    },
+    "runtime_guardrails": {
+      "type": "object",
+      "properties": {
+        "popia_disclosure_required": { "type": "boolean", "default": true },
+        "human_in_the_loop_fallback": { "type": "boolean", "default": true },
+        "max_context_window_tokens": { "type": "integer", "example": 8192 }
+      }
+    },
+    "audit_trail": {
+      "type": "object",
+      "properties": {
+        "live_register_url": { "type": "string", "example": "https://rtmorobe08-lab.github.io/ai-assurance-platform/" }
+      }
+    }
+  },
+  "required": ["passport_id", "owner", "iso42001_compliance", "runtime_guardrails"]
+}

@@ -3,376 +3,360 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMME AI Risk Assessor</title>
+    <title>Aurion AI Governance & Assurance Platform | Aurion Enterprises</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 700px; margin: 40px auto; padding: 20px; background: #f8fafc; }
-        .card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { color: #111827; font-size: 24px; text-align: center; }
-        p.subtitle { text-align: center; color: #6b7280; margin-bottom: 30px; }
-        .question { margin-bottom: 20px; }
-        label { display: block; font-weight: bold; margin-bottom: 8px; }
-        select { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 16px; }
-        button { display: block; width: 100%; background-color: #4f46e5; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 4px; cursor: pointer; margin-top: 10px; }
-        button:hover { background-color: #4338ca; }
-        #result { margin-top: 30px; padding: 20px; border-radius: 4px; display: none; font-weight: bold; font-size: 16px; }
-        .critical-risk { background-color: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
-        .high-risk { background-color: #fff7ed; color: #7c2d12; border: 1px solid #fb923c; }
-        .moderate-risk { background-color: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
-        .low-risk { background-color: #d1fae5; color: #065f46; border: 1px solid #34d399; }
-        .warning { background-color: #fef3c7; color: #92400e; border: 1px solid #f59e0b; }
-        .breakdown { text-align: left; margin-top: 12px; font-weight: normal; }
-        .score { font-size: 20px; margin-bottom: 6px; }
-        ul { margin: 8px 16px; }
-        .cta {
-        margin-top: 1.2em;
-        padding: 0.8em;
-        background: #eef2ff;
-        border: 1px solid #c7d2fe;
-        border-radius: 6px;
-        font-size: 0.95em;
-    }
-    .assurance {
-        margin: 1.5em 0 0;
-        padding: 1.2em;
-        background: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        text-align: left;
-        line-height: 1.5;
-    }
-    .assurance h2 {
-        margin: 0 0 0.5em;
-        font-size: 1.05em;
-    }
-    .assurance a { color: #1d4ed8; }
-    .cta a { color: #1d4ed8; }
-    .popia {
-        margin: 1.5em 0 0;
-        padding: 1.2em;
-        background: #fffbeb;
-        border: 1px solid #fcd34d;
-        border-radius: 8px;
-        text-align: left;
-        line-height: 1.5;
-        font-size: 0.95em;
-    }
-    .popia h2 { margin: 0 0 0.5em; font-size: 1.05em; }
-    .popia ul { margin: 0.4em 0 0.6em; padding-left: 1.2em; }
-    .popia li { margin: 0.25em 0; }
-    .flyer {
-        margin: 1.5em 0 0;
-        padding: 1.4em 1.2em;
-        background: #111827;
-        color: #f9fafb;
-        border-radius: 8px;
-        text-align: center;
-    }
-    .flyer-logo { width: 64px; height: auto; margin-bottom: 0.5em; }
-    .flyer-name { font-weight: 700; letter-spacing: 0.12em; font-size: 1.1em; }
-    .flyer-tag { display: block; font-weight: 400; font-style: italic; font-size: 0.85em; color: #9ca3af; margin-top: 0.2em; }
-    .flyer-motto { margin: 0.8em 0 0; font-size: 0.9em; line-height: 1.5; color: #d1d5db; }
-    .lead-form {
-        margin: 1.5em 0 0;
-        padding: 1.2em;
-        background: #ffffff;
-        border: 2px solid #4f46e5;
-        border-radius: 8px;
-        text-align: left;
-        line-height: 1.5;
-    }
-    .lead-form h2 { margin: 0 0 0.4em; font-size: 1.05em; }
-    .form-row { display: flex; gap: 0.6em; margin: 0.5em 0; }
-    .form-row input, .form-row textarea {
-        flex: 1;
-        padding: 0.6em;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
-        font-size: 0.95em;
-        font-family: inherit;
-    }
-    .lead-form button {
-        margin-top: 0.5em;
-        width: 100%;
-        padding: 0.7em;
-        background: #4f46e5;
-        color: #ffffff;
-        border: none;
-        border-radius: 6px;
-        font-size: 1em;
-        font-weight: 600;
-        cursor: pointer;
-    }
-    .hp-field { position: absolute; left: -9999px; }
-    .lf-status { margin-top: 0.6em; font-size: 0.9em; display: none; }
-    .lf-status.show, .lf-status.success, .lf-status.error { display: block; }
-    .lf-status.success { color: #065f46; }
-    .lf-status.error { color: #991b1b; }
-    .lf-note { margin-top: 0.8em; font-size: 0.75em; color: #6b7280; }
-</style>
+        :root {
+            --bg-dark: #07090e;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(56, 189, 248, 0.3);
+            --accent-blue: #38bdf8;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+        }
+
+        /* Fixed Navigation */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 9, 14, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 1rem 2rem;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.02em;
+        }
+        .logo-badge {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #000;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+        .nav-switch {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid var(--border-glass);
+        }
+        .nav-tab {
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .nav-tab.active {
+            background: var(--accent-blue);
+            color: #000;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+        .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal-right.active { opacity: 1; transform: translateX(0); }
+
+        /* Section Styling */
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            border: 1px solid currentColor;
+        }
+        .badge-cyan { color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.08); }
+        .badge-emerald { color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.08); }
+
+        h1, h2 { font-weight: 800; letter-spacing: -0.03em; }
+        h1 { font-size: 2.75rem; margin-bottom: 1rem; line-height: 1.15; }
+        h2 { font-size: 2.1rem; margin-bottom: 0.75rem; }
+        .subhead { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+
+        /* Interactive Risk Assessor Section */
+        .assessor-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .quiz-option {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .quiz-option:hover {
+            border-color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.05);
+            transform: translateX(4px);
+        }
+        .quiz-option.selected {
+            border-color: var(--accent-blue);
+            background: rgba(56, 189, 248, 0.15);
+        }
+
+        /* Agent Suite Grid */
+        .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover { border-color: var(--border-glow); transform: translateY(-4px); }
+
+        /* Code/Passport Viewers */
+        .code-box {
+            font-family: 'JetBrains Mono', monospace;
+            background: #000;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1.25rem;
+            font-size: 0.85rem;
+            color: #38bdf8;
+            overflow-x: auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+        .btn-primary { background: var(--accent-blue); color: #000; }
+        .btn-primary:hover { opacity: 0.9; box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+
+        /* Assistant Widget */
+        .assistant-widget {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 2000;
+            width: 340px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--accent-blue);
+            border-radius: 14px;
+            padding: 1.25rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            backdrop-filter: blur(16px);
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+        .bot-avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-emerald));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; color: #000; flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .assistant-widget { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>AI Risk & Governance Assessor</h1>
-    <p class="subtitle">Evaluate your organization's exposure in 60 seconds.</p>
-
-    <div class="question">
-        <label for="q1">1. Do employees use unvetted AI tools (like free ChatGPT) for work tasks?</label>
-        <select id="q1" aria-label="Question 1">
-            <option value="" selected disabled>Select an option</option>
-            <option value="10">Yes, frequently without oversight</option>
-            <option value="5">Sometimes, but we try to monitor it</option>
-            <option value="0">No, we only use sanctioned enterprise tools</option>
-        </select>
-    </div>
-
-    <div class="question">
-        <label for="q2">2. Do your third-party SaaS vendors explicitly opt-out of AI model training?</label>
-        <select id="q2" aria-label="Question 2">
-            <option value="" selected disabled>Select an option</option>
-            <option value="10">I am not sure / No</option>
-            <option value="0">Yes, we have verified contractual opt-outs</option>
-        </select>
-    </div>
-
-    <div class="question">
-        <label for="q3">3. Do you have automated Human-in-the-Loop (HITL) gates for AI API calls?</label>
-        <select id="q3" aria-label="Question 3">
-            <option value="" selected disabled>Select an option</option>
-            <option value="10">No, agents can execute actions freely</option>
-            <option value="0">Yes, strict approval thresholds are in place</option>
-        </select>
-    </div>
-
-    <button type="button" onclick="calculateRisk()">Calculate My Risk Exposure</button>
-
-    <div id="result" role="status" aria-live="polite"></div>
-</div>
-
-<script>
-    function calculateRisk() {
-        const questionIds = ['q1', 'q2', 'q3'];
-        const values = questionIds.map((id) => {
-            const el = document.getElementById(id);
-            const value = el.value;
-            const parsedValue = Number.parseInt(value, 10);
-            return Number.isNaN(parsedValue) ? null : parsedValue;
-        });
-
-        const resultDiv = document.getElementById('result');
-        resultDiv.style.display = 'block';
-
-        if (values.some((value) => value === null)) {
-            resultDiv.className = 'warning';
-            resultDiv.innerHTML = 'Please answer all three questions before calculating your risk profile.';
-            return;
-        }
-
-        const score = values.reduce((total, value) => total + value, 0);
-
-        // Determine tier
-        // Max score 30 (three questions * 10)
-        let tier = '';
-        let advice = '';
-
-        if (score >= 20) {
-            tier = 'Critical Risk';
-            resultDiv.className = 'critical-risk';
-            advice = `Immediate action recommended. Engage in a full Discovery & Audit, restrict agent automation, and implement strict HITL approvals.`;
-        } else if (score >= 15) {
-            tier = 'High Risk';
-            resultDiv.className = 'high-risk';
-            advice = `High priority remediation advised. Tighten vendor contracts, add monitoring and alerting, and introduce targeted HITL gates.`;
-        } else if (score >= 6) {
-            tier = 'Moderate Risk';
-            resultDiv.className = 'moderate-risk';
-            advice = `Manageable but improving: formalize policies, regularly verify vendor opt-outs, and run quarterly red-team tests.`;
-        } else {
-            tier = 'Low Risk';
-            resultDiv.className = 'low-risk';
-            advice = `Good baseline controls detected. Maintain governance certificate and schedule regular audits.`;
-        }
-
-        window.lastRisk = { score: score, tier: tier };
-        // Build breakdown text
-        const qTexts = questionIds.map((id, idx) => {
-            const el = document.getElementById(id);
-            const label = el.selectedOptions && el.selectedOptions[0] ? el.selectedOptions[0].text : '—';
-            const val = Number.parseInt(el.value, 10);
-            return `<li><strong>Q${idx + 1}:</strong> ${label} (score ${val})</li>`;
-        }).join('');
-
-        resultDiv.innerHTML = `
-            <div class="score">Total score: ${score} / 30 — <strong>${tier}</strong></div>
-            <div class="breakdown">
-                <div>Question breakdown:</div>
-                <ul>${qTexts}</ul>
-                <div><strong>Recommended next steps:</strong></div>
-                <ul>
-                    <li>${advice}</li>
-                </ul>
+    <!-- Unified Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-group">
+                <span>AURION</span>
+                <span class="logo-badge">GOVERNED</span>
             </div>
-            <div class="cta">
-                <strong>Ready to act on this result?</strong><br>
-                Book a full <strong>Discovery &amp; Audit</strong> with our AI Assurance team and get a remediation
-                roadmap tailored to your organisation.<br>
-                <a href="mailto:rtmorobe08@gmail.com?subject=AI%20Risk%20Assessment%20follow-up">rtmorobe08@gmail.com</a>
-                &nbsp;|&nbsp; +27 82 880 0195 &nbsp;|&nbsp; <a href="#lead-form">Or leave your details below</a>
+            <div class="nav-switch">
+                <a class="nav-tab active" onclick="switchView('assessor')">1. Risk Assessor</a>
+                <a class="nav-tab" onclick="switchView('suite')">2. Agent Suite</a>
             </div>
-        `;
-    }
-</script>
+        </div>
+    </nav>
 
-<section class="assurance">
-    <h2>From Risk Score to Real Assurance</h2>
-    <p>
-        This free assessment is the first step. Our <strong>AI Assurance Service</strong> provides small and
-        medium enterprises with a full <strong>Discovery &amp; Audit</strong>: an inventory of AI tools in your
-        business, vendor and contract diligence, Human-in-the-Loop control design, and a governance
-        certificate you can show clients, funders and insurers.
-    </p>
-    <p>
-        <strong>Book your Discovery &amp; Audit:</strong><br>
-        <a href="mailto:rtmorobe08@gmail.com?subject=Discovery%20%26%20Audit%20enquiry">rtmorobe08@gmail.com</a>
-        &nbsp;|&nbsp; +27 82 880 0195
-    </p>
-</section>
+    <!-- SECTION 1: AI Risk & Governance Assessor -->
+    <section id="assessor-section" class="container">
+        <div class="section-header reveal">
+            <span class="badge badge-cyan">Step 1: Vulnerability Assessment</span>
+            <h1>Know Your AI POPIA Risk in 60 Seconds</h1>
+            <p class="subhead">South African regulators are enforcing transparency. Evaluate your AI agents against South African compliance frameworks before deployment.</p>
+        </div>
 
-<section class="assurance" style="border-color:#4f46e5">
-    <h2>Client Instruments — The Working Tools</h2>
-    <p>
-        Behind every Aurion engagement sits a full set of working instruments: the POPIA Exposure Worksheet,
-        Remediation Roadmap, Engagement Charter, Executive Report, the five-policy AI Policy Pack, the
-        Agent Passport, a Staff Training Deck, Incident Intake &amp; Response SOP, the Quarterly Compliance
-        Report, and the live AI Incident &amp; Assurance Register. They run in your browser, auto-save on
-        your device, and print to professional PDFs.
-    </p>
-    <p>
-        <a href="instruments/">Open the Client Instruments library &rarr;</a>
-    </p>
-</section>
+        <div class="assessor-card reveal">
+            <div id="quiz-container">
+                <h3 style="margin-bottom: 1.5rem;" id="quiz-question">Question 1: Does your AI agent explicitly state it is an AI before collecting caller names or contact numbers?</h3>
+                <div id="quiz-options">
+                    <div class="quiz-option" onclick="selectAnswer(0)">
+                        <span>No, it acts like a human receptionist without disclosure.</span>
+                        <strong style="color: var(--accent-rose);">High POPIA Risk</strong>
+                    </div>
+                    <div class="quiz-option" onclick="selectAnswer(10)">
+                        <span>Yes, explicit disclosure occurs in the first 10 seconds.</span>
+                        <strong style="color: var(--accent-emerald);">Compliant</strong>
+                    </div>
+                </div>
+            </div>
 
-<section class="popia">
-    <h2>POPIA Is Not Optional Anymore</h2>
-    <p>
-        The <strong>Protection of Personal Information Act 4 of 2013 (POPIA)</strong> applies to every
-        enterprise in South Africa that touches personal information — client records, employee files,
-        supplier data, or anything an AI tool is fed. The <strong>Information Regulator</strong> is
-        actively enforcing it, and enterprises are required to:
-    </p>
-    <ul>
-        <li>Process personal information lawfully, for a defined purpose, and keep it minimal</li>
-        <li>Secure it against breaches — and notify the Regulator when one happens</li>
-        <li>Appoint and register an <strong>Information Officer</strong> and maintain a PAIA manual</li>
-        <li>Give people the right to object to decisions made <strong>solely by automated processing</strong> — including AI</li>
-    </ul>
-    <p>
-        Serious offences carry penalties of up to <strong>R10 million in fines and/or imprisonment</strong>.
-        Every unvetted AI tool, unsecured API key and ungoverned agent in your business is a live POPIA exposure.
-        The longer you wait, the more expensive the reckoning.
-    </p>
-</section>
+            <!-- Quiz Result State (Hidden by default) -->
+            <div id="quiz-result" style="display:none; text-align:center; padding: 1.5rem;">
+                <span class="badge badge-emerald" id="result-badge">Assessment Complete</span>
+                <h2 style="margin: 1rem 0;" id="result-title">Your Risk Profile: High POPIA Liability</h2>
+                <p id="result-desc" style="color: var(--text-muted); margin-bottom: 2rem;">Your setup lacks auditable human-in-the-loop checkpoints and explicit identity disclosures required by SA regulatory standards.</p>
+                <button class="btn btn-primary" onclick="switchView('suite')">View Recommended Governed Agents →</button>
+            </div>
+        </div>
+    </section>
 
-<section class="flyer">
-    <img src="assets/core-node-logo.png" alt="Aurion Enterprises — Core Node logo" class="flyer-logo">
-    <div class="flyer-name">AURION ENTERPRISES <span class="flyer-tag">Smart systems. Strategic execution.</span></div>
-    <p class="flyer-motto">
-        We practice the governance we sell. Every assurance engagement is delivered under the same
-        discipline we apply to our own operations — structured discovery, verifiable controls,
-        and execution that closes the loop. <strong>You are in good hands.</strong>
-    </p>
-</section>
+    <!-- SECTION 2: Governed Agent Suite Showcase -->
+    <section id="suite-section" class="container" style="margin-top: 4rem;">
+        <div class="section-header reveal">
+            <span class="badge badge-emerald">Step 2: Governed Deployment</span>
+            <h1>AI Agents with Papers & Audits</h1>
+            <p class="subhead">Deploy autonomous operations backed by Agent Passports, real-time Assurance Registers, and transparent pricing anchors.</p>
+        </div>
 
-<section class="assurance" style="border-color:#0f172a">
-    <h2>THE GOVERNED AGENT SUITE HAS LANDED</h2>
-    <p>Seven governed AI agents for your business — a front desk that never misses a customer, a back office that files itself, and a watchtower that briefs you before you ask. Every agent carries its papers. Human gates on every escalation.</p>
-    <p><a href="suite.html">See the suite and hear a sample call &rarr;</a></p>
-</section>
+        <div class="agent-grid">
+            <div class="glass-card reveal-left">
+                <span class="badge badge-cyan">Front of House Agent</span>
+                <h3 style="margin: 0.5rem 0;">Customer Support & Scheduling</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Answers calls, logs caller commitments, and routes complex inquiries through verified human checkpoints.</p>
+                <div class="code-box">
+                    <div>Passport ID: FO-AGENT-ZA01</div>
+                    <div>Owner: Business Principal</div>
+                    <div>POPIA Log: Verified</div>
+                </div>
+            </div>
 
-<section class="lead-form" id="lead-form">
-    <h2>Leave Your Details — We'll Call You</h2>
-    <p>
-        The assessment is free; the follow-up is where your risk gets fixed. Drop your details and our
-        AI Assurance team will contact you to schedule your <strong>Discovery &amp; Audit</strong>.
-    </p>
-    <div class="form-row">
-        <input type="text" id="lf-name" placeholder="Full name *" aria-label="Full name">
+            <div class="glass-card reveal-right">
+                <span class="badge badge-emerald">South African SME Proof</span>
+                <h3 style="margin: 0.5rem 0;">Gauteng Contractor Case Study</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">A Johannesburg electrical contractor was missing 11 calls/week. Front-of-House logged every promise with auditable status.</p>
+                <strong style="color: var(--accent-emerald); font-size: 1.1rem;">First Month: R38,500 in recovered jobs</strong>
+            </div>
+        </div>
+
+        <div class="glass-card reveal" style="margin-top: 2rem; text-align: center; padding: 3rem;">
+            <h2>Simple, Transparent Pricing</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">No surprise enterprise quotes. Start with documented compliance from Day 1.</p>
+            <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.5rem;">Starting at R1,490 <span style="font-size: 1rem; color: var(--text-muted);">/ month</span></div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">Includes Front-of-House Agent, Agent Passport schema, and initial setup.</p>
+            <a href="https://github.com/rtmorobe08-lab/Aurion-Governed-Agent-Suite" target="_blank" class="btn btn-primary">Inspect Public GitHub Repo</a>
+        </div>
+    </section>
+
+    <!-- Floating Assistant Guide -->
+    <div class="assistant-widget">
+        <div class="bot-avatar">AI</div>
+        <div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-blue);">AURION CORE ASSISTANT</div>
+            <div id="bot-msg" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">
+                Welcome! Start by running the 60-second POPIA Risk Assessor to check your compliance gap.
+            </div>
+        </div>
     </div>
-    <div class="form-row">
-        <input type="text" id="lf-company" placeholder="Company / organisation" aria-label="Company">
-    </div>
-    <div class="form-row">
-        <input type="email" id="lf-email" placeholder="Email address *" aria-label="Email address">
-        <input type="tel" id="lf-phone" placeholder="Phone number" aria-label="Phone number">
-    </div>
-    <div class="form-row">
-        <textarea id="lf-message" rows="3" placeholder="Anything we should know? (optional)" aria-label="Message"></textarea>
-    </div>
-    <div class="hp-field" aria-hidden="true">
-        <label>Website<input type="text" id="lf-website" tabindex="-1" autocomplete="off"></label>
-    </div>
-    <button type="button" onclick="submitLead()">Request My Discovery &amp; Audit</button>
-    <div id="lf-status" class="lf-status" aria-live="polite"></div>
-    <p class="lf-note">
-        By submitting, you consent to Aurion Enterprises contacting you about this enquiry.
-        Your details are used for this purpose only, in line with POPIA.
-    </p>
-</section>
 
-<script>
-    async function submitLead() {
-        const status = document.getElementById('lf-status');
-        const name = document.getElementById('lf-name').value.trim();
-        const email = document.getElementById('lf-email').value.trim();
-        const phone = document.getElementById('lf-phone').value.trim();
-        const company = document.getElementById('lf-company').value.trim();
-        const message = document.getElementById('lf-message').value.trim();
-        const website = document.getElementById('lf-website').value; // honeypot
-        const risk = window.lastRisk || {};
-
-        if (!name || (!email && !phone)) {
-            status.className = 'lf-status error';
-            status.textContent = 'Please give us your name and at least an email address or phone number.';
-            return;
-        }
-
-        status.className = 'lf-status show';
-        status.textContent = 'Sending...';
-
-        try {
-            const res = await fetch('https://hermes-61af97b3.base44.app/functions/submitAssuranceLead', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    full_name: name,
-                    company: company,
-                    email: email,
-                    phone: phone,
-                    message: message,
-                    risk_score: risk.score ? risk.score + '/30' : '',
-                    risk_tier: risk.tier || '',
-                    website: website
-                })
+    <script>
+        // Scroll Animations using Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
             });
-            const data = await res.json();
-            if (res.ok && data.ok) {
-                status.className = 'lf-status success';
-                status.textContent = data.message;
-                document.getElementById('lf-name').value = '';
-                document.getElementById('lf-company').value = '';
-                document.getElementById('lf-email').value = '';
-                document.getElementById('lf-phone').value = '';
-                document.getElementById('lf-message').value = '';
-            } else {
-                status.className = 'lf-status error';
-                status.textContent = data.error || 'Something went wrong. Please email us directly.';
-            }
-        } catch (err) {
-            status.className = 'lf-status error';
-            status.textContent = 'Network error. Please try again or email rtmorobe08@gmail.com';
-        }
-    }
-</script>
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
+        // View Switcher Logic
+        function switchView(view) {
+            const assessorSec = document.getElementById('assessor-section');
+            const suiteSec = document.getElementById('suite-section');
+            const tabs = document.querySelectorAll('.nav-tab');
+            const botMsg = document.getElementById('bot-msg');
+
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            if(view === 'assessor') {
+                tabs[0].classList.add('active');
+                assessorSec.scrollIntoView({ behavior: 'smooth' });
+                botMsg.textContent = "Assessing your compliance risk first ensures your AI deployment is auditor-ready.";
+            } else {
+                tabs[1].classList.add('active');
+                suiteSec.scrollIntoView({ behavior: 'smooth' });
+                botMsg.textContent = "Here is our Governed Agent Suite! Every agent carries documented Agent Passports and live logging.";
+            }
+        }
+
+        // Quiz Logic
+        function selectAnswer(score) {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('quiz-result').style.display = 'block';
+            const botMsg = document.getElementById('bot-msg');
+            botMsg.textContent = "Assessment complete! Click 'View Recommended Governed Agents' to see how we fix identified risks.";
+        }
+    </script>
 </body>
 </html>

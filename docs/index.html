@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<!-- Fixed Header Structure -->
+<header style="position: sticky; top: 0; z-index: 1000; background: #0b0f19; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e293b;">
+  <div style="display: flex; align-items: center; gap: 0.75rem;">
+    <img src="assets/aurion-logo.png" alt="Aurion Enterprises Logo" style="height: 36px; width: auto;" />
+    <span style="font-weight: 700; color: #ffffff; font-size: 1.1rem; letter-spacing: 0.5px;">AURION ENTERPRISES</span>
+  </div>
+  <a href="#pilot-form" style="background: #2563eb; color: #fff; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.875rem; font-weight: 600;">Secure Pilot</a>
+</header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurion AI Assurance & Defense Suite</title>
@@ -482,6 +489,34 @@
             </div>
             <div class="chatbot-body" id="chatBody">
                 <p><strong>Aurion Bot:</strong> Greetings! How can we assist with your AI governance or pilot deployment today? Type your query below to log a request.</p>
+           // Example Conversation State Handler for Aurion Assistant
+const conversationState = {
+  step: 'INIT',
+  data: { name: '', organization: '', topic: '', email: '' }
+};
+
+function processUserMessage(userMessage) {
+  switch (conversationState.step) {
+    case 'INIT':
+      conversationState.step = 'AWAITING_ORG';
+      return "We'd be glad to set that up! To make sure we match you with the right specialist, what is the name of your company or organization?";
+
+    case 'AWAITING_ORG':
+      conversationState.data.organization = userMessage;
+      conversationState.step = 'AWAITING_GOAL';
+      return `Got it! What is the primary area you're hoping to explore or solve with AI? (e.g., automated customer intake, compliance/governance, threat defense, or internal efficiency)`;
+
+    case 'AWAITING_GOAL':
+      conversationState.data.topic = userMessage;
+      conversationState.step = 'AWAITING_EMAIL';
+      return "Excellent. What is the best email address or direct phone number for our team to reach you?";
+
+    case 'AWAITING_EMAIL':
+      conversationState.data.email = userMessage;
+      conversationState.step = 'COMPLETE';
+      return `Perfect! We have logged your request for ${conversationState.data.organization}. A senior advisor will reach out to ${conversationState.data.email} shortly.`;
+  }
+}
             </div>
             <div class="chatbot-footer">
                 <input type="text" id="chatInput" placeholder="Type a request..." onkeypress="handleChatKey(event)">

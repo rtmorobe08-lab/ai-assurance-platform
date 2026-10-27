@@ -1,575 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- Fixed Header Structure -->
-<header style="position: sticky; top: 0; z-index: 1000; background: #0b0f19; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e293b;">
-  <div style="display: flex; align-items: center; gap: 0.75rem;">
-    <img src="assets/aurion-logo.png" alt="Aurion Enterprises Logo" style="height: 36px; width: auto;" />
-    <span style="font-weight: 700; color: #ffffff; font-size: 1.1rem; letter-spacing: 0.5px;">AURION ENTERPRISES</span>
-  </div>
-  <a href="#pilot-form" style="background: #2563eb; color: #fff; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-size: 0.875rem; font-weight: 600;">Secure Pilot</a>
-</header>
+<html lang="en" class="scroll-smooth">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurion AI Assurance & Defense Suite</title>
+    <title>Aurion Enterprises | SMME AI Assurance & Governance Platform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --bg-color: #0b0f19;
-            --surface-color: #111827;
-            --surface-card: #1f2937;
-            --accent-primary: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.15);
-            --text-main: #f9fafb;
-            --text-muted: #9ca3af;
-            --border-color: #374151;
-            --success-color: #10b981;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.4;
-            padding: 20px;
+            background: linear-gradient(180deg, #1e2530 0%, #0d1117 100%);
+            color: #f0f6fc;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
         }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        h1, h2, h3 {
-            color: var(--text-main);
-            font-weight: 700;
-        }
-
-        h1 {
-            font-size: 2.75rem;
-            margin-bottom: 20px;
-            letter-spacing: -0.025em;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 24px;
-        }
-
-        /* Header Brand & Logo with Tagline */
-        .site-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-        }
-
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .brand-logo img {
-            width: 48px;
-            height: auto;
-        }
-
-        .brand-text h3 {
-            font-size: 1.15rem;
-            color: var(--text-main);
-            letter-spacing: 0.05em;
-            margin-bottom: 2px;
-        }
-
-        .brand-text span {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 40px 0;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 50px;
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: 0 auto 32px auto;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .btn {
-            background-color: var(--accent-primary);
-            color: #ffffff;
-            padding: 14px 28px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        .btn:hover {
-            background-color: #2563eb;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--surface-card);
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: var(--accent-glow);
-            color: var(--accent-primary);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-
-        .section-desc {
-            text-align: center;
-            max-width: 650px;
-            margin: 0 auto 40px auto;
-        }
-
-        /* Interactive Packages Grid */
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .package-card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 24px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .package-card:hover, .package-card.active {
-            border-color: var(--accent-primary);
-            background-color: var(--surface-card);
-        }
-
-        .package-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-
-        .package-details {
-            display: none;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .package-card.active .package-details {
-            display: block;
-        }
-
-        /* Testimonials Section */
-        .testimonials-section {
-            margin: 50px 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .testimonial-card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 24px;
-            font-style: italic;
-        }
-
-        .testimonial-card p {
-            color: var(--text-main);
-            font-size: 0.95rem;
-            margin-bottom: 12px;
-        }
-
-        .testimonial-card span {
-            font-style: normal;
-            font-size: 0.85rem;
-            color: var(--accent-primary);
-            font-weight: bold;
-        }
-
-        /* Funnel / Assessment Form */
-        .funnel-box {
-            background: linear-gradient(135deg, var(--surface-color), var(--surface-card));
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 40px;
-            margin: 50px 0;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-main);
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: var(--text-main);
-            font-size: 1rem;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--accent-primary);
-        }
-
-        /* Floating Engagement Bot */
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        .chatbot-toggle {
-            background-color: var(--accent-primary);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 12px 20px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        .chatbot-box {
-            display: none;
-            width: 320px;
-            background-color: var(--surface-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-
-        .chatbot-header {
-            background-color: var(--surface-color);
-            padding: 14px;
-            font-weight: bold;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chatbot-body {
-            padding: 14px;
-            font-size: 0.9rem;
-            max-height: 250px;
-            overflow-y: auto;
-        }
-
-        .chatbot-footer {
-            padding: 10px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 8px;
-        }
-
-        .chatbot-footer input {
-            flex: 1;
-            padding: 8px;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            color: white;
-            font-size: 0.85rem;
-        }
-
-        .chatbot-footer button {
-            padding: 8px 12px;
-            background-color: var(--accent-primary);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        pre {
-            background-color: var(--surface-color);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            overflow-x: auto;
-            color: var(--success-color);
-            font-family: monospace;
-            font-size: 0.95rem;
-            margin: 20px 0;
+        .glass-card {
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <!-- Header with Logo and Tagline -->
-        <header class="site-header">
-            <div class="brand-logo">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Aurion Logo">
-                <div class="brand-text">
-                    <h3>AURION ENTERPRISES</h3>
-                    <span>Smart systems. Strategic execution.</span>
+<body class="selection:bg-amber-500 selection:text-black">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 glass-card border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-bold text-amber-400 text-lg shadow-lg shadow-amber-500/10">A</div>
+                <div>
+                    <span class="font-extrabold tracking-wider text-white text-lg block leading-none">AURION</span>
+                    <span class="text-[10px] tracking-widest text-amber-400 font-semibold uppercase">Enterprises</span>
                 </div>
             </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#pillars" class="hover:text-amber-400 transition-colors">Four Pillars</a>
+                <a href="#insights" class="hover:text-amber-400 transition-colors">Expert Insights</a>
+                <a href="#assistant" class="hover:text-amber-400 transition-colors">AI Assistant</a>
+                <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="hover:text-amber-400 transition-colors">GitHub Live Docs</a>
+            </nav>
             <div>
-                <a href="#assessment" class="btn" style="padding: 8px 16px; font-size: 0.9rem;">Secure Pilot</a>
-            </div>
-        </header>
-
-        <!-- Hero Section -->
-        <div class="hero">
-            <span class="badge">🚀 Launch Offer: First-Mover Pilot Discounts Active</span>
-            <h1>Defensible AI Governance & Automated Defense for Regulated Enterprises</h1>
-            <p>Deploy modular agentic oversight, continuous assurance, and enterprise risk controls without operational complexity.</p>
-            <div class="btn-group">
-                <a href="#assessment" class="btn">Claim First-Mover Pilot Access</a>
-                <a href="#packages" class="btn btn-secondary">Explore 4-Core Packages</a>
+                <a href="#assistant" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm transition-all shadow-lg shadow-amber-500/20">
+                    Run Risk Assessment
+                </a>
             </div>
         </div>
+    </header>
 
-        <!-- 4-Core Packages Section with Second-Layer Toggles -->
-        <div id="packages">
-            <h2>The Four Core Packages</h2>
-            <p class="section-desc">Click any package below to inspect its technical scope, compliance mapping, and business deliverables.</p>
+    <!-- Hero Section -->
+    <section class="max-w-5xl mx-auto px-6 pt-24 pb-16 text-center">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-6">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            <span>POPIA & ISO 42001 Compliant Frameworks for SMMEs</span>
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+            Pragmatic AI Governance & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Agent Guardrails</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+            Deploy autonomous AI models with speed, safety, and stakeholder trust. Right-sized compliance matrices built specifically for growing enterprise supply chain requirements.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#assistant" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-xl shadow-amber-500/10 text-center">
+                Launch Interactive Assessor
+            </a>
+            <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="w-full sm:w-auto glass-card hover:bg-slate-800/80 text-white font-semibold px-8 py-3.5 rounded-xl transition-all text-center border border-white/10">
+                Explore GitHub Repository
+            </a>
+        </div>
+    </section>
 
-            <div class="packages-grid">
-                <div class="package-card" onclick="togglePackage(this)">
-                    <h3>1. Governed Front Desk</h3>
-                    <p>Secure boundary handling for incoming enterprise interactions.</p>
-                    <div class="package-details">
-                        <strong>Scope:</strong> Manages secure entry points, token sanitization, and structured routing to prevent prompt injection and data leaks at the perimeter.
-                    </div>
-                </div>
-
-                <div class="package-card" onclick="togglePackage(this)">
-                    <h3>2. AI Assurance Platform</h3>
-                    <p>Continuous monitoring, real-time logging, and policy enforcement.</p>
-                    <div class="package-details">
-                        <strong>Scope:</strong> Tracks model inference, maintains tamper-evident audit trails, and aligns directly with ISO 42001 and integrated reporting standards.
-                    </div>
-                </div>
-
-                <div class="package-card" onclick="togglePackage(this)">
-                    <h3>3. AADGP Threat Defense</h3>
-                    <p>Automated threat detection and proactive risk mitigation.</p>
-                    <div class="package-details">
-                        <strong>Scope:</strong> Behavioral guardrails and real-time anomaly detection designed to neutralize adversarial inputs before operational execution.
-                    </div>
-                </div>
-
-                <div class="package-card" onclick="togglePackage(this)">
-                    <h3>4. Shared Fractional C-Suite</h3>
-                    <p>Executive-level oversight frameworks for growing enterprises.</p>
-                    <div class="package-details">
-                        <strong>Scope:</strong> Embedded governance advisory, risk committee reporting templates, and DFI-readiness frameworks tailored for SMME scaling.
-                    </div>
-                </div>
+    <!-- The Four Main Pillars Section -->
+    <section id="pillars" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">End-to-End Governance Model</h2>
+            <p class="text-slate-400 text-sm">Four robust operational layers replacing complex corporate paperwork with agile execution.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Pillar 1 -->
+            <div class="glass-card p-6 rounded-2xl relative group hover:border-amber-500/50 transition-all">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg mb-4 border border-amber-500/20">01</div>
+                <h3 class="text-lg font-bold text-white mb-2">Discovery & Audit</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Map tools, data flows, shadow accounts, and exposure points across your operational infrastructure.</p>
+            </div>
+            <!-- Pillar 2 -->
+            <div class="glass-card p-6 rounded-2xl relative group hover:border-amber-500/50 transition-all">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg mb-4 border border-amber-500/20">02</div>
+                <h3 class="text-lg font-bold text-white mb-2">Controls & Policy</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Set up human approvals, Human-in-the-Loop (HITL) decision triggers, and secure acceptable use guardrails.</p>
+            </div>
+            <!-- Pillar 3 -->
+            <div class="glass-card p-6 rounded-2xl relative group hover:border-amber-500/50 transition-all">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg mb-4 border border-amber-500/20">03</div>
+                <h3 class="text-lg font-bold text-white mb-2">Vendor Diligence</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Standardize third-party SaaS security reviews, API parameters, and model training opt-out checks.</p>
+            </div>
+            <!-- Pillar 4 -->
+            <div class="glass-card p-6 rounded-2xl relative group hover:border-amber-500/50 transition-all">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold text-lg mb-4 border border-amber-500/20">04</div>
+                <h3 class="text-lg font-bold text-white mb-2">Continuous Testing</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Execute quarterly red-teaming, prompt injection checks, and automated compliance log reviews.</p>
             </div>
         </div>
+    </section>
 
-        <!-- Testimonials Section -->
-        <div class="testimonials-section">
-            <div class="testimonial-card">
-                <p>&ldquo;Aurion&rsquo;s modular assurance framework gave our board the exact audit transparency required for institutional readiness without slowing our tech velocity.&rdquo;</p>
-                <span>&mdash; Regional Enterprise Partner, Gauteng</span>
-            </div>
-            <div class="testimonial-card">
-                <p>&ldquo;The AADGP threat defense and governed front desk integration eliminated our shadow AI blind spots within days of deployment.&rdquo;</p>
-                <span>&mdash; DFI-Backed Programme Coordinator</span>
-            </div>
+    <!-- Expert Insights & YouTube Video Section -->
+    <section id="insights" class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Expert Perspectives on POPIA & AIMS</h2>
+            <p class="text-slate-400 text-sm">Third-party commentary on how evolving data privacy and international AI management standards impact modern organizations.</p>
         </div>
 
-        <!-- 60-Second Assessment & Lead Capture Funnel -->
-        <div class="funnel-box" id="assessment">
-            <h2>60-Second Assessment & Pilot Application</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Submit your enterprise details to lock in your first-mover discount and schedule your guided architecture briefing.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Video 1: POPIA & AI -->
+            <div class="glass-card p-5 rounded-2xl border border-white/10">
+                <div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/1dXd9QqHB8s" title="POPIA Already Says More About AI Than People Realise" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h3 class="text-base font-bold text-white mb-2">POPIA & AI Regulatory Scope</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">Explore how existing data privacy statutes and local compliance frameworks regulate automated decision-making and context windows.</p>
+            </div>
+
+            <!-- Video 2: ISO 42001 / AIMS -->
+            <div class="glass-card p-5 rounded-2xl border border-white/10">
+                <div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/yxE3bCP3aTg" title="What is ISO 42001? Simple Explanation With Examples" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <h3 class="text-base font-bold text-white mb-2">ISO/IEC 42001 AI Management Standard</h3>
+                <p class="text-slate-400 text-xs leading-relaxed">A clear foundational walkthrough of the world's leading Artificial Intelligence Management System standard for responsible deployment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive AI Assistant Bot Widget Section -->
+    <section id="assistant" class="max-w-4xl mx-auto px-6 py-20 border-t border-white/5">
+        <div class="glass-card rounded-3xl p-8 sm:p-10 border border-amber-500/20 shadow-2xl">
+            <div class="flex items-center space-x-4 mb-6 pb-6 border-b border-white/10">
+                <div class="w-12 h-12 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xl shadow-md">🤖</div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Aurion Assurance Agent</h3>
+                    <p class="text-xs text-amber-400 font-medium">Ready to analyze your risk profile & generate immediate mitigation guidelines.</p>
+                </div>
+            </div>
+
+            <!-- Chat Window Simulation -->
+            <div class="space-y-4 mb-6 h-64 overflow-y-auto pr-2 text-sm" id="chat-stream">
+                <div class="bg-slate-800/80 p-4 rounded-2xl rounded-tl-none max-w-lg border border-white/5 text-slate-200">
+                    Hello RT. I am your active governance copilot. Select an operational query below or type your compliance challenge to begin building your modular bid pack.
+                </div>
+            </div>
+
+            <!-- Interactive Inputs / Controls -->
+            <div class="flex flex-col sm:flex-row gap-3">
+                <input type="text" id="user-input" placeholder="Type your compliance or agent risk question..." class="flex-1 bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 transition-colors">
+                <button onclick="handleUserQuery()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all text-sm shadow-md">
+                    Send Query
+                </button>
+            </div>
             
-            <form onsubmit="handleFormSubmit(event)">
-                <div class="form-group">
-                    <label>Company / Organization Name</label>
-                    <input type="text" placeholder="e.g. Aurion Consulting / Enterprise Partner" required>
-                </div>
-                <div class="form-group">
-                    <label>Primary Focus Area</label>
-                    <select>
-                        <option>Governed Front Desk Deployment</option>
-                        <option>AI Assurance & Compliance Auditing</option>
-                        <option>Agentic Defense Program (AADGP)</option>
-                        <option>Full 4-Package Enterprise Suite</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Executive Contact Email</label>
-                    <input type="email" placeholder="name@enterprise.co.za" required>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button type="submit" class="btn" style="width: 100%; max-width: 600px;">Secure First-Mover Pilot Slot & Request Briefing</button>
-                </div>
-            </form>
-        </div>
-
-        <!-- Live Transparency Preview -->
-        <div>
-            <h2>Live Transparency & System Register</h2>
-            <p class="section-desc">Instant verification of operational logs and policy compliance.</p>
-            <pre><code>[INFO] 2026-10-27 10:41:00 - Aurion Agent Passport initialized.
-[SECURE] Governed Front Desk boundary check: PASSED.
-[ASSURANCE] AADGP Real-time Threat Defense: ACTIVE (0 anomalies detected).
-[COMPLIANCE] Integrated Reporting framework metrics: SYNCED.</code></pre>
-        </div>
-    </div>
-
-    <!-- Floating Engagement Bot -->
-    <div class="chatbot-container">
-        <div class="chatbot-box" id="chatBox">
-            <div class="chatbot-header">
-                <span>Aurion Assistant & Request Logger</span>
-                <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer; font-weight:bold;">&times;</button>
-            </div>
-            <div class="chatbot-body" id="chatBody">
-                <p><strong>Aurion Bot:</strong> Greetings! How can we assist with your AI governance or pilot deployment today? Type your query below to log a request.</p>
-           // Example Conversation State Handler for Aurion Assistant
-const conversationState = {
-  step: 'INIT',
-  data: { name: '', organization: '', topic: '', email: '' }
-};
-
-function processUserMessage(userMessage) {
-  switch (conversationState.step) {
-    case 'INIT':
-      conversationState.step = 'AWAITING_ORG';
-      return "We'd be glad to set that up! To make sure we match you with the right specialist, what is the name of your company or organization?";
-
-    case 'AWAITING_ORG':
-      conversationState.data.organization = userMessage;
-      conversationState.step = 'AWAITING_GOAL';
-      return `Got it! What is the primary area you're hoping to explore or solve with AI? (e.g., automated customer intake, compliance/governance, threat defense, or internal efficiency)`;
-
-    case 'AWAITING_GOAL':
-      conversationState.data.topic = userMessage;
-      conversationState.step = 'AWAITING_EMAIL';
-      return "Excellent. What is the best email address or direct phone number for our team to reach you?";
-
-    case 'AWAITING_EMAIL':
-      conversationState.data.email = userMessage;
-      conversationState.step = 'COMPLETE';
-      return `Perfect! We have logged your request for ${conversationState.data.organization}. A senior advisor will reach out to ${conversationState.data.email} shortly.`;
-  }
-}
-            </div>
-            <div class="chatbot-footer">
-                <input type="text" id="chatInput" placeholder="Type a request..." onkeypress="handleChatKey(event)">
-                <button onclick="sendChatMessage()">Send</button>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-400">
+                <span class="text-slate-500">Quick Prompts:</span>
+                <button onclick="quickPrompt('How do we configure HITL triggers?')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1 rounded-lg border border-white/5 transition-colors">Configure HITL Triggers</button>
+                <button onclick="quickPrompt('What are the POPIA cloud storage rules?')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-1 rounded-lg border border-white/5 transition-colors">POPIA Storage Rules</button>
             </div>
         </div>
-        <button class="chatbot-toggle" onclick="toggleChat()">💬 Need Assistance?</button>
-    </div>
+    </section>
 
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-12 text-center text-sm text-slate-500">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 Aurion Enterprises (Pty) Ltd. All rights reserved.</p>
+            <div class="flex space-x-6">
+                <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="hover:text-amber-400 transition-colors">GitHub Repository</a>
+                <a href="#pillars" class="hover:text-amber-400 transition-colors">Frameworks</a>
+                <a href="#insights" class="hover:text-amber-400 transition-colors">Compliance Hub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Script for Bot Interaction -->
     <script>
-        function togglePackage(card) {
-            card.classList.toggle('active');
-        }
+        function handleUserQuery() {
+            const inputField = document.getElementById('user-input');
+            const chatStream = document.getElementById('chat-stream');
+            if(!inputField.value.trim()) return;
 
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            alert('Thank you! Your pilot application and company details have been submitted successfully. Our team will be in touch shortly to schedule your executive briefing.');
-        }
+            // User Bubble
+            const userMsg = document.createElement('div');
+            userMsg.className = 'bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl rounded-tr-none max-w-lg ml-auto text-amber-200';
+            userMsg.textContent = inputField.value;
+            chatStream.appendChild(userMsg);
 
-        function toggleChat() {
-            const box = document.getElementById('chatBox');
-            box.style.display = box.style.display === 'block' ? 'none' : 'block';
-        }
+            const queryText = inputField.value;
+            inputField.value = '';
+            chatStream.scrollTop = chatStream.scrollHeight;
 
-        function sendChatMessage() {
-            const input = document.getElementById('chatInput');
-            const body = document.getElementById('chatBody');
-            if (!input.value.trim()) return;
-
-            const userMsg = document.createElement('p');
-            userMsg.style.margin = '8px 0';
-            userMsg.innerHTML = '<strong>You:</strong> ' + input.value;
-            body.appendChild(userMsg);
-
-            const query = input.value;
-            input.value = '';
-
+            // Simulated Agent Response
             setTimeout(() => {
-                const botMsg = document.createElement('p');
-                botMsg.style.margin = '8px 0';
-                botMsg.style.color = 'var(--accent-primary)';
-                botMsg.innerHTML = '<strong>Aurion Bot:</strong> Request logged regarding "' + query + '". Our technical team has captured this for immediate follow-up.';
-                body.appendChild(botMsg);
-                body.scrollTop = body.scrollHeight;
-            }, 600);
-
-            body.scrollTop = body.scrollHeight;
+                const botMsg = document.createElement('div');
+                botMsg.className = 'bg-slate-800/80 p-4 rounded-2xl rounded-tl-none max-w-lg border border-white/5 text-slate-200';
+                botMsg.innerHTML = `Analysis complete for: <em>"${queryText}"</em>. Verified against ISO 42001 and POPIA requirements. Review the modular templates on your <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="text-amber-400 underline">GitHub Pages repository</a> to deploy mitigation controls.`;
+                chatStream.appendChild(botMsg);
+                chatStream.scrollTop = chatStream.scrollHeight;
+            }, 800);
         }
 
-        function handleChatKey(e) {
-            if (e.key === 'Enter') {
-                sendChatMessage();
-            }
+        function quickPrompt(text) {
+            document.getElementById('user-input').value = text;
+            handleUserQuery();
         }
     </script>
 </body>

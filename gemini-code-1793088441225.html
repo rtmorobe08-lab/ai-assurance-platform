@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurion AI Assurance & Defense Suite</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --surface-color: #111827;
+            --surface-card: #1f2937;
+            --accent-primary: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-color: #374151;
+            --success-color: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.25;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1, h2, h3 {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            margin-bottom: 20px;
+            letter-spacing: -0.025em;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 32px auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            background-color: var(--accent-primary);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #2563eb;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--surface-card);
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-glow);
+            color: var(--accent-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .section-desc {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 48px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--surface-card);
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        td {
+            color: var(--text-muted);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .promo-box {
+            background: linear-gradient(135deg, var(--surface-color), var(--surface-card));
+            border: 1px solid var(--accent-primary);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        pre {
+            background-color: var(--surface-color);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            color: var(--success-color);
+            font-family: monospace;
+            font-size: 0.95rem;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <span class="badge">🚀 Launch Offer: First-Mover Pilot Discounts Active</span>
+            <h1>Defensible AI Governance & Automated Defense for Regulated Enterprises</h1>
+            <p>Deploy modular agentic oversight, continuous assurance, and enterprise risk controls without the operational complexity.</p>
+            <div class="btn-group">
+                <a href="#pilot" class="btn">Claim First-Mover Pilot Access</a>
+                <a href="#packages" class="btn btn-secondary">Explore 4-Core Packages</a>
+            </div>
+        </div>
+
+        <!-- 4-Core Packages Section -->
+        <div id="packages">
+            <h2>The Four Core Packages</h2>
+            <p class="section-desc">Streamlined architecture designed to eliminate fragmented risk and deliver uncompromised enterprise accountability.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Core Package</th>
+                        <th style="width: 70%;">Business Value & Technical Scope</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Governed Front Desk</strong></td>
+                        <td>Secure, compliant boundary handling for incoming enterprise interactions, managing secure entry points and structured routing.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI Assurance Platform</strong></td>
+                        <td>Continuous monitoring, real-time logging, and rigorous compliance policy enforcement across all deployed models.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Agentic Defense & Governance (AADGP)</strong></td>
+                        <td>Automated threat detection, behavioral guardrails, and proactive risk mitigation against adversarial inputs and anomalies.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shared Fractional C-Suite</strong></td>
+                        <td>Executive-level oversight frameworks and risk management advisory integrated directly into system workflows for DFI-backed and growing enterprises.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- First-Mover Advantage Incentive -->
+        <div class="promo-box" id="pilot">
+            <h2>Early Adopter Initiative</h2>
+            <p>We are partnering with select forward-thinking enterprises and institutions to deploy the suite with exclusive implementation discounts and dedicated founding support.</p>
+            <ul style="list-style: none; text-align: left; max-width: 500px; margin: 0 auto 30px auto;">
+                <li>✓ Reduced pilot pricing & tiered deployment discounts</li>
+                <li>✓ Priority onboarding and customized configuration assistance</li>
+                <li>✓ Direct feedback channel into future feature releases</li>
+            </ul>
+            <a href="mailto:support@aurionconsulting.co.za" class="btn">Secure Your Pilot Slot</a>
+        </div>
+
+        <!-- Live Assurance Preview -->
+        <div>
+            <h2>Live Transparency & Architecture Sample</h2>
+            <p class="section-desc">Instant verification of system integrity, operational logs, and policy compliance.</p>
+            <pre><code>[INFO] 2026-10-27 10:00:00 - Aurion Agent Passport initialized.
+[SECURE] Governed Front Desk boundary check: PASSED.
+[ASSURANCE] AADGP Real-time Threat Defense: ACTIVE (0 anomalies detected).
+[COMPLIANCE] Integrated Reporting framework metrics: SYNCED.</code></pre>
+        </div>
+    </div>
+</body>
+</html>

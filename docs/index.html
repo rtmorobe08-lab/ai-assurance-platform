@@ -1,10 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<!-- Header with Logo and Tagline -->
+        <header class="site-header">
+            <div class="brand-logo">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Aurion Logo">
+                <div class="brand-text">
+                    <h3>AURION ENTERPRISES</h3>
+                    <span>Smart systems. Strategic execution.</span>
+                </div>
+            </div>
+            <div>
+                <a href="#assessment" class="btn" style="padding: 8px 16px; font-size: 0.9rem;">Secure Pilot</a>
+            </div>
+        </header>
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurion AI Assurance & Defense Suite</title>
     <style>
+        /* Header Brand & Logo with Tagline */
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo img {
+            width: 48px;
+            height: auto;
+        }
+
+        .brand-text h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+        }
+
+        .brand-text span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
         :root {
             --bg-color: #0b0f19;
             --surface-color: #111827;

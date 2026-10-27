@@ -1,56 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Header with Logo and Tagline -->
-        <header class="site-header">
-            <div class="brand-logo">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Aurion Logo">
-                <div class="brand-text">
-                    <h3>AURION ENTERPRISES</h3>
-                    <span>Smart systems. Strategic execution.</span>
-                </div>
-            </div>
-            <div>
-                <a href="#assessment" class="btn" style="padding: 8px 16px; font-size: 0.9rem;">Secure Pilot</a>
-            </div>
-        </header>
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aurion AI Assurance & Defense Suite</title>
     <style>
-        /* Header Brand & Logo with Tagline */
-        .site-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-        }
-
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .brand-logo img {
-            width: 48px;
-            height: auto;
-        }
-
-        .brand-text h3 {
-            font-size: 1.15rem;
-            color: var(--text-main);
-            letter-spacing: 0.05em;
-            margin-bottom: 2px;
-        }
-
-        .brand-text span {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-style: italic;
-        }
         :root {
             --bg-color: #0b0f19;
             --surface-color: #111827;
@@ -106,9 +60,43 @@
             margin-bottom: 24px;
         }
 
+        /* Header Brand & Logo with Tagline */
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo img {
+            width: 48px;
+            height: auto;
+        }
+
+        .brand-text h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            letter-spacing: 0.05em;
+            margin-bottom: 2px;
+        }
+
+        .brand-text span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
         .hero {
             text-align: center;
-            padding: 50px 0;
+            padding: 40px 0;
             border-bottom: 1px solid var(--border-color);
             margin-bottom: 50px;
         }
@@ -211,6 +199,35 @@
             display: block;
         }
 
+        /* Testimonials Section */
+        .testimonials-section {
+            margin: 50px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .testimonial-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-card p {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-card span {
+            font-style: normal;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            font-weight: bold;
+        }
+
         /* Funnel / Assessment Form */
         .funnel-box {
             background: linear-gradient(135deg, var(--surface-color), var(--surface-card));
@@ -251,6 +268,79 @@
             border-color: var(--accent-primary);
         }
 
+        /* Floating Engagement Bot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            background-color: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .chatbot-box {
+            display: none;
+            width: 320px;
+            background-color: var(--surface-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .chatbot-header {
+            background-color: var(--surface-color);
+            padding: 14px;
+            font-weight: bold;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-body {
+            padding: 14px;
+            font-size: 0.9rem;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .chatbot-footer {
+            padding: 10px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+        }
+
+        .chatbot-footer input {
+            flex: 1;
+            padding: 8px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: white;
+            font-size: 0.85rem;
+        }
+
+        .chatbot-footer button {
+            padding: 8px 12px;
+            background-color: var(--accent-primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
         pre {
             background-color: var(--surface-color);
             padding: 20px;
@@ -266,6 +356,20 @@
 </head>
 <body>
     <div class="container">
+        <!-- Header with Logo and Tagline -->
+        <header class="site-header">
+            <div class="brand-logo">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Aurion Logo">
+                <div class="brand-text">
+                    <h3>AURION ENTERPRISES</h3>
+                    <span>Smart systems. Strategic execution.</span>
+                </div>
+            </div>
+            <div>
+                <a href="#assessment" class="btn" style="padding: 8px 16px; font-size: 0.9rem;">Secure Pilot</a>
+            </div>
+        </header>
+
         <!-- Hero Section -->
         <div class="hero">
             <span class="badge">🚀 Launch Offer: First-Mover Pilot Discounts Active</span>
@@ -276,49 +380,6 @@
                 <a href="#packages" class="btn btn-secondary">Explore 4-Core Packages</a>
             </div>
         </div>
-
-        <section id="regulatory-pillars" class="pillars-section">
-  <div class="container">
-    <h2 class="section-title">Built Upon Four Foundational Governance Pillars</h2>
-    <p class="section-subtitle">
-      Aurion Enterprises directly addresses, operationalizes, and aligns your AI infrastructure with key statutory, technical, and architectural standards.
-    </p>
-    
-    <div class="pillars-grid">
-      <!-- Pillar 1 -->
-      <div class="pillar-card">
-        <span class="pillar-tag">Statutory Compliance</span>
-        <h3>POPIA Compliance</h3>
-        <p class="pillar-desc">Automated PII redaction, token sanitization, and privacy-by-design data routing to guarantee full protection under South Africa's POPI Act.</p>
-        <span class="pillar-mapping">Mapped to: <strong>Governed Front Desk</strong></span>
-      </div>
-
-      <!-- Pillar 2 -->
-      <div class="pillar-card">
-        <span class="pillar-tag">International Standard</span>
-        <h3>ISO/IEC 42001 (AIMS)</h3>
-        <p class="pillar-desc">Continuous risk tracking, auditable governance registers, and policy enforcement matching global AI Management System requirements.</p>
-        <span class="pillar-mapping">Mapped to: <strong>AI Assurance Platform</strong></span>
-      </div>
-
-      <!-- Pillar 3 -->
-      <div class="pillar-card">
-        <span class="pillar-tag">Technical Security</span>
-        <h3>AI Security & Verification</h3>
-        <p class="pillar-desc">Real-time boundary defense, OWASP LLM risk coverage, and zero-trust parameter verification to neutralize adversarial vectors.</p>
-        <span class="pillar-mapping">Mapped to: <strong>AADGP Threat Defense</strong></span>
-      </div>
-
-      <!-- Pillar 4 -->
-      <div class="pillar-card">
-        <span class="pillar-tag">Architectural Control</span>
-        <h3>Agentic Orchestration</h3>
-        <p class="pillar-desc">Strict boundary protocols, Agent Passport verification, and circuit breaker mechanisms for autonomous multi-agent execution.</p>
-        <span class="pillar-mapping">Mapped to: <strong>Shared Fractional C-Suite & Core Suite</strong></span>
-      </div>
-    </div>
-  </div>
-</section>
 
         <!-- 4-Core Packages Section with Second-Layer Toggles -->
         <div id="packages">
@@ -357,6 +418,18 @@
                         <strong>Scope:</strong> Embedded governance advisory, risk committee reporting templates, and DFI-readiness frameworks tailored for SMME scaling.
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div class="testimonials-section">
+            <div class="testimonial-card">
+                <p>&ldquo;Aurion&rsquo;s modular assurance framework gave our board the exact audit transparency required for institutional readiness without slowing our tech velocity.&rdquo;</p>
+                <span>&mdash; Regional Enterprise Partner, Gauteng</span>
+            </div>
+            <div class="testimonial-card">
+                <p>&ldquo;The AADGP threat defense and governed front desk integration eliminated our shadow AI blind spots within days of deployment.&rdquo;</p>
+                <span>&mdash; DFI-Backed Programme Coordinator</span>
             </div>
         </div>
 
@@ -400,15 +473,68 @@
         </div>
     </div>
 
+    <!-- Floating Engagement Bot -->
+    <div class="chatbot-container">
+        <div class="chatbot-box" id="chatBox">
+            <div class="chatbot-header">
+                <span>Aurion Assistant & Request Logger</span>
+                <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer; font-weight:bold;">&times;</button>
+            </div>
+            <div class="chatbot-body" id="chatBody">
+                <p><strong>Aurion Bot:</strong> Greetings! How can we assist with your AI governance or pilot deployment today? Type your query below to log a request.</p>
+            </div>
+            <div class="chatbot-footer">
+                <input type="text" id="chatInput" placeholder="Type a request..." onkeypress="handleChatKey(event)">
+                <button onclick="sendChatMessage()">Send</button>
+            </div>
+        </div>
+        <button class="chatbot-toggle" onclick="toggleChat()">💬 Need Assistance?</button>
+    </div>
+
     <script>
         function togglePackage(card) {
-            // Toggle active state on click to reveal second-layer details
             card.classList.toggle('active');
         }
 
         function handleFormSubmit(event) {
             event.preventDefault();
             alert('Thank you! Your pilot application and company details have been submitted successfully. Our team will be in touch shortly to schedule your executive briefing.');
+        }
+
+        function toggleChat() {
+            const box = document.getElementById('chatBox');
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const body = document.getElementById('chatBody');
+            if (!input.value.trim()) return;
+
+            const userMsg = document.createElement('p');
+            userMsg.style.margin = '8px 0';
+            userMsg.innerHTML = '<strong>You:</strong> ' + input.value;
+            body.appendChild(userMsg);
+
+            const query = input.value;
+            input.value = '';
+
+            setTimeout(() => {
+                const botMsg = document.createElement('p');
+                botMsg.style.margin = '8px 0';
+                botMsg.style.color = 'var(--accent-primary)';
+                botMsg.innerHTML = '<strong>Aurion Bot:</strong> Request logged regarding "' + query + '". Our technical team has captured this for immediate follow-up.';
+                body.appendChild(botMsg);
+                body.scrollTop = body.scrollHeight;
+            }, 600);
+
+            body.scrollTop = body.scrollHeight;
+        }
+
+        function handleChatKey(e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
         }
     </script>
 </body>

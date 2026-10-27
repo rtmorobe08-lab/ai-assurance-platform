@@ -1,437 +1,253 @@
-<!-- AI Assurance Framework Pyramid Visual -->
-  <!-- SECTION 1: AI Risk & Governance Assessor -->
-  <section id="assessor-section" class="container">
-    <div class="section-header reveal">
-      <span class="badge badge-cyan">Step 1: Vulnerability Assessment</span>
-      <h1>Know Your AI POPIA Risk in 60 Seconds</h1>
-      <p class="subhead">South African regulators are enforcing transparency. Evaluate your AI agents against South African compliance frameworks before deployment.</p>
-    </div>  
-<div class="glass-card reveal" style="margin: 2rem auto; max-width: 650px; text-align: center; padding: 2rem;">
-      <h4 style="color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 1.5rem;">
-        Aurion AI Governance & Assurance Stack
-      </h4>
-      <svg viewBox="0 0 500 280" style="width: 100%; height: auto; font-family: sans-serif;">
-        <!-- Layer 3: Security & Verification (Top) -->
-        <polygon points="250,20 340,90 160,90" fill="rgba(6, 182, 212, 0.25)" stroke="#06b6d4" stroke-width="2"/>
-        <text x="250" y="65" fill="#06b6d4" font-size="12" font-weight="bold" text-anchor="middle">LAYER 3: Security & Verification</text>
-        <text x="250" y="80" fill="#94a3b8" font-size="9" text-anchor="middle">Prompt Injection Shield | Fuzz Tests</text>
-
-        <!-- Layer 2: Governance & Passports (Middle) -->
-        <polygon points="155,95 345,95 410,175 90,175" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2"/>
-        <text x="250" y="130" fill="#60a5fa" font-size="13" font-weight="bold" text-anchor="middle">LAYER 2: Governed Agent Suite</text>
-        <text x="250" y="148" fill="#94a3b8" font-size="10" text-anchor="middle">Agent Passports | Cryptographic Provenance</text>
-
-        <!-- Layer 1: ISO 42001 & Regulatory Compliance (Base) -->
-        <polygon points="85,180 415,180 480,260 20,260" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="2"/>
-        <text x="250" y="215" fill="#34d399" font-size="14" font-weight="bold" text-anchor="middle">LAYER 1: ISO/IEC 42001 & POPIA Core</text>
-        <text x="250" y="235" fill="#94a3b8" font-size="10" text-anchor="middle">AIMS Framework | ISO 5259 Data Quality | Risk Assessor</text>
-      </svg>
-    </div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurion AI Governance & Assurance Platform | Aurion Enterprises</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Aurion AI Assurance & Defense Suite</title>
     <style>
         :root {
-            --bg-dark: #07090e;
-            --bg-card: rgba(15, 23, 42, 0.75);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --border-glow: rgba(56, 189, 248, 0.3);
-            --accent-blue: #38bdf8;
-            --accent-cyan: #06b6d4;
-            --accent-emerald: #10b981;
-            --accent-amber: #f59e0b;
-            --accent-rose: #f43f5e;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --bg-color: #0b0f19;
+            --surface-color: #111827;
+            --surface-card: #1f2937;
+            --accent-primary: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border-color: #374151;
+            --success-color: #10b981;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.05) 0%, transparent 40%);
+            line-height: 1.25;
+            padding: 20px;
         }
 
-        /* Fixed Navigation */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(7, 9, 14, 0.85);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border-glass);
-            padding: 1rem 2rem;
-        }
-        .nav-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 40px 20px;
         }
-        .logo-group {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 800;
-            font-size: 1.15rem;
-            letter-spacing: -0.02em;
+
+        h1, h2, h3 {
+            color: var(--text-main);
+            font-weight: 700;
         }
-        .logo-badge {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-            color: #000;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 800;
+
+        h1 {
+            font-size: 2.75rem;
+            margin-bottom: 20px;
+            letter-spacing: -0.025em;
         }
-        .nav-switch {
-            display: flex;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 4px;
-            border-radius: 30px;
-            border: 1px solid var(--border-glass);
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            text-align: center;
         }
-        .nav-tab {
-            padding: 0.5rem 1.25rem;
-            border-radius: 20px;
+
+        p {
             color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 32px auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            background-color: var(--accent-primary);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 6px;
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .nav-tab.active {
-            background: var(--accent-blue);
-            color: #000;
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.2s;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem; }
-
-        /* Scroll Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        .btn:hover {
+            background-color: #2563eb;
         }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal-left.active { opacity: 1; transform: translateX(0); }
-        .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal-right.active { opacity: 1; transform: translateX(0); }
 
-        /* Section Styling */
-        .section-header { text-align: center; margin-bottom: 3rem; }
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--surface-card);
+        }
+
         .badge {
             display: inline-block;
-            padding: 0.35rem 0.85rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1rem;
-            border: 1px solid currentColor;
-        }
-        .badge-cyan { color: var(--accent-cyan); border-color: rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.08); }
-        .badge-emerald { color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.08); }
-
-        h1, h2 { font-weight: 800; letter-spacing: -0.03em; }
-        h1 { font-size: 2.75rem; margin-bottom: 1rem; line-height: 1.15; }
-        h2 { font-size: 2.1rem; margin-bottom: 0.75rem; }
-        .subhead { color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
-
-        /* Interactive Risk Assessor Section */
-        .assessor-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 16px;
-            padding: 2.5rem;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        .quiz-option {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border-glass);
-            border-radius: 10px;
-            padding: 1rem 1.25rem;
-            margin-bottom: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .quiz-option:hover {
-            border-color: var(--accent-blue);
-            background: rgba(56, 189, 248, 0.05);
-            transform: translateX(4px);
-        }
-        .quiz-option.selected {
-            border-color: var(--accent-blue);
-            background: rgba(56, 189, 248, 0.15);
-        }
-
-        /* Agent Suite Grid */
-        .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .glass-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: 14px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-        .glass-card:hover { border-color: var(--border-glow); transform: translateY(-4px); }
-
-        /* Code/Passport Viewers */
-        .code-box {
-            font-family: 'JetBrains Mono', monospace;
-            background: #000;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 1.25rem;
+            background-color: var(--accent-glow);
+            color: var(--accent-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
             font-size: 0.85rem;
-            color: #38bdf8;
-            overflow-x: auto;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.75rem;
+        .section-desc {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 48px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background-color: var(--surface-color);
             border-radius: 8px;
-            font-weight: 700;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 16px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--surface-card);
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        td {
+            color: var(--text-muted);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .promo-box {
+            background: linear-gradient(135deg, var(--surface-color), var(--surface-card));
+            border: 1px solid var(--accent-primary);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        pre {
+            background-color: var(--surface-color);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+            color: var(--success-color);
+            font-family: monospace;
             font-size: 0.95rem;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-        }
-        .btn-primary { background: var(--accent-blue); color: #000; }
-        .btn-primary:hover { opacity: 0.9; box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
-
-        /* Assistant Widget */
-        .assistant-widget {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 2000;
-            width: 340px;
-            background: rgba(15, 23, 42, 0.95);
-            border: 1px solid var(--accent-blue);
-            border-radius: 14px;
-            padding: 1.25rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            backdrop-filter: blur(16px);
-            display: flex;
-            gap: 0.85rem;
-            align-items: flex-start;
-        }
-        .bot-avatar {
-            width: 40px; height: 40px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-emerald));
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; color: #000; flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .assistant-widget { display: none; }
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
-
-    <!-- Unified Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo-group">
-                <span>AURION</span>
-                <span class="logo-badge">GOVERNED</span>
-            </div>
-            <div class="nav-switch">
-                <a class="nav-tab active" onclick="switchView('assessor')">1. Risk Assessor</a>
-                <a class="nav-tab" onclick="switchView('suite')">2. Agent Suite</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- SECTION 1: AI Risk & Governance Assessor -->
-    <section id="assessor-section" class="container">
-        <div class="section-header reveal">
-            <span class="badge badge-cyan">Step 1: Vulnerability Assessment</span>
-            <h1>Know Your AI POPIA Risk in 60 Seconds</h1>
-            <p class="subhead">South African regulators are enforcing transparency. Evaluate your AI agents against South African compliance frameworks before deployment.</p>
-        </div>
-
-        <div class="assessor-card reveal">
-            <div id="quiz-container">
-                <h3 style="margin-bottom: 1.5rem;" id="quiz-question">Question 1: Does your AI agent explicitly state it is an AI before collecting caller names or contact numbers?</h3>
-                <div id="quiz-options">
-                    <div class="quiz-option" onclick="selectAnswer(0)">
-                        <span>No, it acts like a human receptionist without disclosure.</span>
-                        <strong style="color: var(--accent-rose);">High POPIA Risk</strong>
-                    </div>
-                    <div class="quiz-option" onclick="selectAnswer(10)">
-                        <span>Yes, explicit disclosure occurs in the first 10 seconds.</span>
-                        <strong style="color: var(--accent-emerald);">Compliant</strong>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quiz Result State (Hidden by default) -->
-            <div id="quiz-result" style="display:none; text-align:center; padding: 1.5rem;">
-                <span class="badge badge-emerald" id="result-badge">Assessment Complete</span>
-                <h2 style="margin: 1rem 0;" id="result-title">Your Risk Profile: High POPIA Liability</h2>
-                <p id="result-desc" style="color: var(--text-muted); margin-bottom: 2rem;">Your setup lacks auditable human-in-the-loop checkpoints and explicit identity disclosures required by SA regulatory standards.</p>
-                <button class="btn btn-primary" onclick="switchView('suite')">View Recommended Governed Agents →</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 2: Governed Agent Suite Showcase -->
-    <section id="suite-section" class="container" style="margin-top: 4rem;">
-        <div class="section-header reveal">
-            <span class="badge badge-emerald">Step 2: Governed Deployment</span>
-            <h1>AI Agents with Papers & Audits</h1>
-            <p class="subhead">Deploy autonomous operations backed by Agent Passports, real-time Assurance Registers, and transparent pricing anchors.</p>
-        </div>
-
-        <div class="agent-grid">
-            <div class="glass-card reveal-left">
-                <span class="badge badge-cyan">Front of House Agent</span>
-                <h3 style="margin: 0.5rem 0;">Customer Support & Scheduling</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Answers calls, logs caller commitments, and routes complex inquiries through verified human checkpoints.</p>
-                <div class="code-box">
-                    <div>Passport ID: FO-AGENT-ZA01</div>
-                    <div>Owner: Business Principal</div>
-                    <div>POPIA Log: Verified</div>
-                </div>
-            </div>
-
-            <div class="glass-card reveal-right">
-                <span class="badge badge-emerald">South African SME Proof</span>
-                <h3 style="margin: 0.5rem 0;">Gauteng Contractor Case Study</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">A Johannesburg electrical contractor was missing 11 calls/week. Front-of-House logged every promise with auditable status.</p>
-                <strong style="color: var(--accent-emerald); font-size: 1.1rem;">First Month: R38,500 in recovered jobs</strong>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <span class="badge">🚀 Launch Offer: First-Mover Pilot Discounts Active</span>
+            <h1>Defensible AI Governance & Automated Defense for Regulated Enterprises</h1>
+            <p>Deploy modular agentic oversight, continuous assurance, and enterprise risk controls without the operational complexity.</p>
+            <div class="btn-group">
+                <a href="#pilot" class="btn">Claim First-Mover Pilot Access</a>
+                <a href="#packages" class="btn btn-secondary">Explore 4-Core Packages</a>
             </div>
         </div>
 
-        <div class="glass-card reveal" style="margin-top: 2rem; text-align: center; padding: 3rem;">
-            <h2>Simple, Transparent Pricing</h2>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">No surprise enterprise quotes. Start with documented compliance from Day 1.</p>
-            <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.5rem;">Starting at R1,490 <span style="font-size: 1rem; color: var(--text-muted);">/ month</span></div>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">Includes Front-of-House Agent, Agent Passport schema, and initial setup.</p>
-            <a href="https://github.com/rtmorobe08-lab/Aurion-Governed-Agent-Suite" target="_blank" class="btn btn-primary">Inspect Public GitHub Repo</a>
-        </div>
-    </section>
-<!-- ISO/IEC 42001 Enterprise Certification Module -->
-    <div class="glass-card reveal" style="margin-top: 2rem; border-color: var(--accent-blue); background: rgba(15, 23, 42, 0.9);">
-      <span class="badge badge-cyan">ISO/IEC 42001 & ISO 5259 Certified</span>
-      <h3 style="margin: 0.5rem 0;">Global AIMS & Data Assurance</h3>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-        Our agentic frameworks feature automated Statement of Applicability (SoA) tracking, cryptographic Agent Passports, and Stage I/II audit-ready incident registers.
-      </p>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; text-align: left; font-size: 0.85rem; color: var(--text-main);">
-        <div style="background: rgba(255,255,255,0.03); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-glass);">
-          ✔ <strong style="color: var(--accent-blue);">Annex B Controls:</strong> Automated AIRA & AIIA risk evaluations
-        </div>
-        <div style="background: rgba(255,255,255,0.03); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-glass);">
-          ✔ <strong style="color: var(--accent-emerald);">ISO/IEC 5259:</strong> Data quality, lineage & PII scrubbing pipelines
-        </div>
-        <div style="background: rgba(255,255,255,0.03); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-glass);">
-          ✔ <strong style="color: var(--accent-cyan);">Global Alignment:</strong> EU AI Act & NIST AI RMF framework integration
-        </div>
-      </div>
-<!-- Layer 3: AI Security & Verification Module -->
-<div class="glass-card reveal" style="margin-top: 2rem; border-color: var(--accent-cyan); background: rgba(15, 23, 42, 0.9);">
-  <span class="badge badge-cyan">Layer 3: Active Defense & Verification</span>
-  <h3 style="margin: 0.5rem 0;">AI Security & Robustness Suite</h3>
-  <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">
-    Real-time prompt injection shielding, runtime guardrail validation, and automated red-teaming checks integrated directly into CI/CD workflows.
-  </p>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; text-align: left; font-size: 0.85rem; color: var(--text-main);">
-    <div style="background: rgba(255,255,255,0.03); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-glass);">
-      ✔ <strong style="color: var(--accent-cyan);">SEC-01:</strong> Direct & indirect prompt injection defense
-    </div>
-    <div style="background: rgba(255,255,255,0.03); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-glass);">
-      ✔ <strong style="color: var(--accent-emerald);">SEC-02:</strong> Outbound DLP & PII token masking
-    </div>
-    <div style="background: rgba(255,255,255,0.03); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-glass);">
-      ✔ <strong style="color: var(--accent-blue);">ISO TR 24029:</strong> Adversarial robustness & red-teaming
-    </div>
-  </div>
+        <!-- 4-Core Packages Section -->
+        <div id="packages">
+            <h2>The Four Core Packages</h2>
+            <p class="section-desc">Streamlined architecture designed to eliminate fragmented risk and deliver uncompromised enterprise accountability.</p>
 
-  <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform/blob/main/01-frameworks/ai-security-verification-spec.md" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">
-    View Security & Verification Spec on GitHub →
-  </a>
-</div>
-      <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform/blob/main/01-frameworks/iso-42001-control-matrix.md" target="_blank" class="btn btn-primary" style="font-size: 0.85rem;">
-        View Master ISO 42001 Control Matrix on GitHub →
-      </a>
-    </div>
-    <!-- Floating Assistant Guide -->
-    <div class="assistant-widget">
-        <div class="bot-avatar">AI</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Core Package</th>
+                        <th style="width: 70%;">Business Value & Technical Scope</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Governed Front Desk</strong></td>
+                        <td>Secure, compliant boundary handling for incoming enterprise interactions, managing secure entry points and structured routing.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI Assurance Platform</strong></td>
+                        <td>Continuous monitoring, real-time logging, and rigorous compliance policy enforcement across all deployed models.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Agentic Defense & Governance (AADGP)</strong></td>
+                        <td>Automated threat detection, behavioral guardrails, and proactive risk mitigation against adversarial inputs and anomalies.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Shared Fractional C-Suite</strong></td>
+                        <td>Executive-level oversight frameworks and risk management advisory integrated directly into system workflows for DFI-backed and growing enterprises.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- First-Mover Advantage Incentive -->
+        <div class="promo-box" id="pilot">
+            <h2>Early Adopter Initiative</h2>
+            <p>We are partnering with select forward-thinking enterprises and institutions to deploy the suite with exclusive implementation discounts and dedicated founding support.</p>
+            <ul style="list-style: none; text-align: left; max-width: 500px; margin: 0 auto 30px auto;">
+                <li>✓ Reduced pilot pricing & tiered deployment discounts</li>
+                <li>✓ Priority onboarding and customized configuration assistance</li>
+                <li>✓ Direct feedback channel into future feature releases</li>
+            </ul>
+            <a href="mailto:support@aurionconsulting.co.za" class="btn">Secure Your Pilot Slot</a>
+        </div>
+
+        <!-- Live Assurance Preview -->
         <div>
-            <div style="font-size: 0.75rem; font-weight: 700; color: var(--accent-blue);">AURION CORE ASSISTANT</div>
-            <div id="bot-msg" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">
-                Welcome! Start by running the 60-second POPIA Risk Assessor to check your compliance gap.
-            </div>
+            <h2>Live Transparency & Architecture Sample</h2>
+            <p class="section-desc">Instant verification of system integrity, operational logs, and policy compliance.</p>
+            <pre><code>[INFO] 2026-10-27 10:00:00 - Aurion Agent Passport initialized.
+[SECURE] Governed Front Desk boundary check: PASSED.
+[ASSURANCE] AADGP Real-time Threat Defense: ACTIVE (0 anomalies detected).
+[COMPLIANCE] Integrated Reporting framework metrics: SYNCED.</code></pre>
         </div>
     </div>
-
-    <script>
-        // Scroll Animations using Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('active'); }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
-
-        // View Switcher Logic
-        function switchView(view) {
-            const assessorSec = document.getElementById('assessor-section');
-            const suiteSec = document.getElementById('suite-section');
-            const tabs = document.querySelectorAll('.nav-tab');
-            const botMsg = document.getElementById('bot-msg');
-
-            tabs.forEach(tab => tab.classList.remove('active'));
-
-            if(view === 'assessor') {
-                tabs[0].classList.add('active');
-                assessorSec.scrollIntoView({ behavior: 'smooth' });
-                botMsg.textContent = "Assessing your compliance risk first ensures your AI deployment is auditor-ready.";
-            } else {
-                tabs[1].classList.add('active');
-                suiteSec.scrollIntoView({ behavior: 'smooth' });
-                botMsg.textContent = "Here is our Governed Agent Suite! Every agent carries documented Agent Passports and live logging.";
-            }
-        }
-
-        // Quiz Logic
-        function selectAnswer(score) {
-            document.getElementById('quiz-container').style.display = 'none';
-            document.getElementById('quiz-result').style.display = 'block';
-            const botMsg = document.getElementById('bot-msg');
-            botMsg.textContent = "Assessment complete! Click 'View Recommended Governed Agents' to see how we fix identified risks.";
-        }
-    </script>
 </body>
 </html>

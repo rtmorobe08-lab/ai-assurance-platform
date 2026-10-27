@@ -27,12 +27,12 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.25;
+            line-height: 1.4;
             padding: 20px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -50,21 +50,21 @@
 
         h2 {
             font-size: 2rem;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             text-align: center;
         }
 
         p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             margin-bottom: 24px;
         }
 
         .hero {
             text-align: center;
-            padding: 60px 0;
+            padding: 50px 0;
             border-bottom: 1px solid var(--border-color);
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .hero p {
@@ -87,6 +87,8 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 1rem;
+            border: none;
+            cursor: pointer;
             transition: background-color 0.2s;
         }
 
@@ -119,53 +121,88 @@
         .section-desc {
             text-align: center;
             max-width: 650px;
-            margin: 0 auto 48px auto;
+            margin: 0 auto 40px auto;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
+        /* Interactive Packages Grid */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .package-card {
             background-color: var(--surface-color);
-            border-radius: 8px;
-            overflow: hidden;
             border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        th, td {
-            padding: 16px 20px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
+        .package-card:hover, .package-card.active {
+            border-color: var(--accent-primary);
             background-color: var(--surface-card);
-            color: var(--text-main);
-            font-weight: bold;
         }
 
-        td {
-            color: var(--text-muted);
-        }
-
-        ul {
-            margin-left: 20px;
-            margin-bottom: 20px;
-            color: var(--text-muted);
-        }
-
-        li {
+        .package-card h3 {
+            font-size: 1.15rem;
             margin-bottom: 8px;
-            font-size: 1.05rem;
+            color: var(--text-main);
         }
 
-        .promo-box {
+        .package-details {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .package-card.active .package-details {
+            display: block;
+        }
+
+        /* Funnel / Assessment Form */
+        .funnel-box {
             background: linear-gradient(135deg, var(--surface-color), var(--surface-card));
-            border: 1px solid var(--accent-primary);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 40px;
-            margin: 60px 0;
-            text-align: center;
+            margin: 50px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
         }
 
         pre {
@@ -187,67 +224,103 @@
         <div class="hero">
             <span class="badge">🚀 Launch Offer: First-Mover Pilot Discounts Active</span>
             <h1>Defensible AI Governance & Automated Defense for Regulated Enterprises</h1>
-            <p>Deploy modular agentic oversight, continuous assurance, and enterprise risk controls without the operational complexity.</p>
+            <p>Deploy modular agentic oversight, continuous assurance, and enterprise risk controls without operational complexity.</p>
             <div class="btn-group">
-                <a href="#pilot" class="btn">Claim First-Mover Pilot Access</a>
+                <a href="#assessment" class="btn">Claim First-Mover Pilot Access</a>
                 <a href="#packages" class="btn btn-secondary">Explore 4-Core Packages</a>
             </div>
         </div>
 
-        <!-- 4-Core Packages Section -->
+        <!-- 4-Core Packages Section with Second-Layer Toggles -->
         <div id="packages">
             <h2>The Four Core Packages</h2>
-            <p class="section-desc">Streamlined architecture designed to eliminate fragmented risk and deliver uncompromised enterprise accountability.</p>
+            <p class="section-desc">Click any package below to inspect its technical scope, compliance mapping, and business deliverables.</p>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width: 30%;">Core Package</th>
-                        <th style="width: 70%;">Business Value & Technical Scope</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Governed Front Desk</strong></td>
-                        <td>Secure, compliant boundary handling for incoming enterprise interactions, managing secure entry points and structured routing.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>AI Assurance Platform</strong></td>
-                        <td>Continuous monitoring, real-time logging, and rigorous compliance policy enforcement across all deployed models.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Agentic Defense & Governance (AADGP)</strong></td>
-                        <td>Automated threat detection, behavioral guardrails, and proactive risk mitigation against adversarial inputs and anomalies.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Shared Fractional C-Suite</strong></td>
-                        <td>Executive-level oversight frameworks and risk management advisory integrated directly into system workflows for DFI-backed and growing enterprises.</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="packages-grid">
+                <div class="package-card" onclick="togglePackage(this)">
+                    <h3>1. Governed Front Desk</h3>
+                    <p>Secure boundary handling for incoming enterprise interactions.</p>
+                    <div class="package-details">
+                        <strong>Scope:</strong> Manages secure entry points, token sanitization, and structured routing to prevent prompt injection and data leaks at the perimeter.
+                    </div>
+                </div>
+
+                <div class="package-card" onclick="togglePackage(this)">
+                    <h3>2. AI Assurance Platform</h3>
+                    <p>Continuous monitoring, real-time logging, and policy enforcement.</p>
+                    <div class="package-details">
+                        <strong>Scope:</strong> Tracks model inference, maintains tamper-evident audit trails, and aligns directly with ISO 42001 and integrated reporting standards.
+                    </div>
+                </div>
+
+                <div class="package-card" onclick="togglePackage(this)">
+                    <h3>3. AADGP Threat Defense</h3>
+                    <p>Automated threat detection and proactive risk mitigation.</p>
+                    <div class="package-details">
+                        <strong>Scope:</strong> Behavioral guardrails and real-time anomaly detection designed to neutralize adversarial inputs before operational execution.
+                    </div>
+                </div>
+
+                <div class="package-card" onclick="togglePackage(this)">
+                    <h3>4. Shared Fractional C-Suite</h3>
+                    <p>Executive-level oversight frameworks for growing enterprises.</p>
+                    <div class="package-details">
+                        <strong>Scope:</strong> Embedded governance advisory, risk committee reporting templates, and DFI-readiness frameworks tailored for SMME scaling.
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- First-Mover Advantage Incentive -->
-        <div class="promo-box" id="pilot">
-            <h2>Early Adopter Initiative</h2>
-            <p>We are partnering with select forward-thinking enterprises and institutions to deploy the suite with exclusive implementation discounts and dedicated founding support.</p>
-            <ul style="list-style: none; text-align: left; max-width: 500px; margin: 0 auto 30px auto;">
-                <li>✓ Reduced pilot pricing & tiered deployment discounts</li>
-                <li>✓ Priority onboarding and customized configuration assistance</li>
-                <li>✓ Direct feedback channel into future feature releases</li>
-            </ul>
-            <a href="mailto:support@aurionconsulting.co.za" class="btn">Secure Your Pilot Slot</a>
+        <!-- 60-Second Assessment & Lead Capture Funnel -->
+        <div class="funnel-box" id="assessment">
+            <h2>60-Second Assessment & Pilot Application</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Submit your enterprise details to lock in your first-mover discount and schedule your guided architecture briefing.</p>
+            
+            <form onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Company / Organization Name</label>
+                    <input type="text" placeholder="e.g. Aurion Consulting / Enterprise Partner" required>
+                </div>
+                <div class="form-group">
+                    <label>Primary Focus Area</label>
+                    <select>
+                        <option>Governed Front Desk Deployment</option>
+                        <option>AI Assurance & Compliance Auditing</option>
+                        <option>Agentic Defense Program (AADGP)</option>
+                        <option>Full 4-Package Enterprise Suite</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Executive Contact Email</label>
+                    <input type="email" placeholder="name@enterprise.co.za" required>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button type="submit" class="btn" style="width: 100%; max-width: 600px;">Secure First-Mover Pilot Slot & Request Briefing</button>
+                </div>
+            </form>
         </div>
 
-        <!-- Live Assurance Preview -->
+        <!-- Live Transparency Preview -->
         <div>
-            <h2>Live Transparency & Architecture Sample</h2>
-            <p class="section-desc">Instant verification of system integrity, operational logs, and policy compliance.</p>
-            <pre><code>[INFO] 2026-10-27 10:00:00 - Aurion Agent Passport initialized.
+            <h2>Live Transparency & System Register</h2>
+            <p class="section-desc">Instant verification of operational logs and policy compliance.</p>
+            <pre><code>[INFO] 2026-10-27 10:41:00 - Aurion Agent Passport initialized.
 [SECURE] Governed Front Desk boundary check: PASSED.
 [ASSURANCE] AADGP Real-time Threat Defense: ACTIVE (0 anomalies detected).
 [COMPLIANCE] Integrated Reporting framework metrics: SYNCED.</code></pre>
         </div>
     </div>
+
+    <script>
+        function togglePackage(card) {
+            // Toggle active state on click to reveal second-layer details
+            card.classList.toggle('active');
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            alert('Thank you! Your pilot application and company details have been submitted successfully. Our team will be in touch shortly to schedule your executive briefing.');
+        }
+    </script>
 </body>
 </html>

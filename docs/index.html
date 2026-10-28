@@ -37,7 +37,7 @@
     <!-- Sticky Header & Tab Navigation -->
     <header class="sticky top-0 z-50 glass-card border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('pillars')">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
                 <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-bold text-amber-400 text-lg shadow-lg shadow-amber-500/10">A</div>
                 <div>
                     <span class="font-extrabold tracking-wider text-white text-lg block leading-none">AURION</span>
@@ -47,11 +47,11 @@
             
             <!-- Interactive Tab Navigational Controls -->
             <nav class="hidden md:flex items-center space-x-2 text-sm font-medium">
-                <button onclick="switchTab('pillars')" id="btn-pillars" class="nav-btn px-4 py-2 rounded-lg transition-colors text-amber-400 bg-amber-500/10 border border-amber-500/30">Four Pillars</button>
+                <button onclick="switchTab('home')" id="btn-home" class="nav-btn px-4 py-2 rounded-lg transition-colors text-amber-400 bg-amber-500/10 border border-amber-500/30">Home</button>
+                <button onclick="switchTab('pillars')" id="btn-pillars" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Four Pillars</button>
                 <button onclick="switchTab('insights')" id="btn-insights" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Expert Hub & Docs</button>
                 <button onclick="switchTab('pricing')" id="btn-pricing" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Packages & Special</button>
                 <button onclick="switchTab('assessment')" id="btn-assessment" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">60-Sec Assessment</button>
-                <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="px-4 py-2 rounded-lg text-slate-300 hover:text-amber-400 transition-colors">GitHub Repo ↗</a>
             </nav>
 
             <div>
@@ -65,8 +65,49 @@
     <!-- Main Dynamic Content Area -->
     <main class="max-w-7xl mx-auto px-6 py-12">
 
-        <!-- TAB 1: FOUR PILLARS -->
-        <div id="tab-pillars" class="tab-content active space-y-12">
+        <!-- TAB 0: ORIGINAL LANDING / HOME -->
+        <div id="tab-home" class="tab-content active space-y-16">
+            <!-- Hero Section -->
+            <section class="max-w-5xl mx-auto pt-12 pb-8 text-center">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-6">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    <span>POPIA & ISO/IEC 42001 Compliance Frameworks for Growing Enterprises</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                    Pragmatic AI Governance & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Autonomous Guardrails</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                    Deploy secure agentic systems with built-in audit trails, data privacy compliance, and third-party supply chain verification matrices tailored for South African SMMEs.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="switchTab('assessment')" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-xl shadow-amber-500/10 text-center">
+                        Take 60-Second Assessment
+                    </button>
+                    <button onclick="switchTab('pillars')" class="w-full sm:w-auto glass-card hover:bg-slate-800/80 text-white font-semibold px-8 py-3.5 rounded-xl transition-all text-center border border-white/10">
+                        Explore Four Pillars
+                    </button>
+                </div>
+            </section>
+
+            <!-- Quick Overview Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-white/5">
+                <div class="glass-card p-6 rounded-2xl border border-white/10">
+                    <div class="text-amber-400 font-bold text-lg mb-2">01. Regulatory Assurance</div>
+                    <p class="text-slate-300 text-xs leading-relaxed">Rigorous alignment with South Africa's POPIA data protection statutes and international ISO/IEC 42001 AI standards.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-white/10">
+                    <div class="text-amber-400 font-bold text-lg mb-2">02. Supply Chain Ready</div>
+                    <p class="text-slate-300 text-xs leading-relaxed">Equipping township and regional SMMEs with verified compliance credentials to qualify for major corporate tenders.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border border-white/10">
+                    <div class="text-amber-400 font-bold text-lg mb-2">03. Automated Copilot</div>
+                    <p class="text-slate-300 text-xs leading-relaxed">Interactive risk assessment engine generating instant diagnostic readouts and custom policy packs.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 1: FOUR PILLARS (Updated Titles) -->
+        <div id="tab-pillars" class="tab-content space-y-12">
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
                     <span>Operational Blueprint</span>
@@ -83,7 +124,7 @@
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">01</span>
-                            <h3 class="text-xl font-bold text-white">Discovery & Audit</h3>
+                            <h3 class="text-xl font-bold text-white">AI Inventory & Data Discovery Audit</h3>
                         </div>
                         <p class="text-slate-300 text-xs leading-relaxed mb-6">
                             Conducts an exhaustive inventory sweep of internal shadow AI accounts, unvetted API integrations, and cloud ingestion endpoints. Maps data flows to isolate exposure vectors before enterprise audits begin.
@@ -100,7 +141,7 @@
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">02</span>
-                            <h3 class="text-xl font-bold text-white">Controls & Policy</h3>
+                            <h3 class="text-xl font-bold text-white">Human-in-the-Loop Controls & Policy</h3>
                         </div>
                         <p class="text-slate-300 text-xs leading-relaxed mb-6">
                             Deploys enforceable Human-in-the-Loop (HITL) authorization checkpoints, strict role-based access control (RBAC), and custom acceptable use policy packs aligned with local statutory mandates.
@@ -117,7 +158,7 @@
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">03</span>
-                            <h3 class="text-xl font-bold text-white">Vendor Diligence</h3>
+                            <h3 class="text-xl font-bold text-white">Third-Party Vendor Diligence & SaaS Vetting</h3>
                         </div>
                         <p class="text-slate-300 text-xs leading-relaxed mb-6">
                             Standardizes third-party SaaS vetting protocols. Verifies zero-data-retention clauses, API encryption standards, and opt-out training parameters for external model providers.
@@ -134,7 +175,7 @@
                     <div>
                         <div class="flex items-center space-x-3 mb-4">
                             <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">04</span>
-                            <h3 class="text-xl font-bold text-white">Continuous Testing</h3>
+                            <h3 class="text-xl font-bold text-white">Continuous Red-Teaming & Compliance Testing</h3>
                         </div>
                         <p class="text-slate-300 text-xs leading-relaxed mb-6">
                             Automates regression checking, prompt injection defense testing, hallucination monitoring, and quarterly compliance log validation to maintain perpetual audit readiness.
@@ -148,19 +189,19 @@
             </div>
         </div>
 
-        <!-- TAB 2: EXPERT HUB & ON-SITE DOCUMENT VAULT -->
+        <!-- TAB 2: EXPERT HUB (With Regulator Penalties & Four Tabs Below) -->
         <div id="tab-insights" class="tab-content space-y-12">
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
-                    <span>Regulatory & Technical Knowledge Base</span>
+                    <span>Regulatory Intelligence & Knowledge Base</span>
                 </div>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Expert Hub & Compliance Vault</h1>
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Expert Hub & Enforcement Briefings</h1>
                 <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Watch expert briefings and read fully accessible internal compliance specifications directly on site without leaving the portal.
+                    Review expert video briefings, recent statutory penalties issued by the Information Regulator, and on-site technical specifications.
                 </p>
             </div>
 
-            <!-- Videos -->
+            <!-- Videos Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="glass-card p-5 rounded-2xl border border-white/10">
                     <div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900">
@@ -179,7 +220,32 @@
                 </div>
             </div>
 
-            <!-- On-Site Document Selector Tabs -->
+            <!-- Information Regulator Penalties Briefing Card -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 border border-red-500/30 bg-gradient-to-r from-red-950/20 via-slate-900 to-slate-900">
+                <div class="flex items-center space-x-3 mb-3">
+                    <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+                    <h3 class="text-base font-bold text-white uppercase tracking-wider">Regulatory Alert: Information Regulator Enforcement & Penalties</h3>
+                </div>
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                    The South African Information Regulator has stepped up enforcement actions, issuing substantial administrative fines and enforcement notices against corporations and public entities failing to secure personal identifiable information (PII) or neglecting POPIA compliance mandates. Implicated organizations face severe financial penalties and reputational damage.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs bg-slate-950/60 p-4 rounded-xl border border-white/5">
+                    <div>
+                        <strong class="text-amber-400 block mb-1">Administrative Fines</strong>
+                        <span class="text-slate-400">Statutory penalties up to R10 million for severe non-compliance infractions.</span>
+                    </div>
+                    <div>
+                        <strong class="text-amber-400 block mb-1">Enforcement Notices</strong>
+                        <span class="text-slate-400">Mandatory operational halts and mandatory data security overhauls.</span>
+                    </div>
+                    <div>
+                        <strong class="text-amber-400 block mb-1">Supply Chain Risk</strong>
+                        <span class="text-slate-400">Enterprise buyers immediately dropping vendors failing data privacy audits.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- On-Site Document Selector Tabs (Kept Below) -->
             <div class="glass-card rounded-2xl p-8 border border-white/10 space-y-6">
                 <div class="flex flex-wrap gap-3 border-b border-white/10 pb-4">
                     <button onclick="loadDoc('doc-discovery')" id="tab-doc-discovery" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950">1. Discovery Checklist</button>
@@ -190,7 +256,7 @@
 
                 <!-- Document Panels -->
                 <div id="doc-discovery" class="sub-doc-panel active space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Discovery & Audit Checklist (Pillar 1 Specification)</h3>
+                    <h3 class="text-base font-bold text-white">AI Inventory & Data Discovery Audit (Pillar 1 Specification)</h3>
                     <p>This operational checklist governs the identification and cataloging of all artificial intelligence systems deployed across SMME environments:</p>
                     <ul class="list-disc pl-5 space-y-2">
                         <li><strong>Shadow AI Inventory:</strong> Identify all unauthorized browser extensions, external cloud LLM accounts, and API keys utilized by staff.</li>
@@ -200,7 +266,7 @@
                 </div>
 
                 <div id="doc-hitl" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Human-in-the-Loop (HITL) Control Matrix (Pillar 2 Specification)</h3>
+                    <h3 class="text-base font-bold text-white">Human-in-the-Loop Controls & Policy (Pillar 2 Specification)</h3>
                     <p>Mandatory decision checkpoints preventing autonomous agent execution errors in critical operations:</p>
                     <ul class="list-disc pl-5 space-y-2">
                         <li><strong>Financial Thresholds:</strong> Any automated invoice processing or transaction refund exceeding R1,000 requires explicit secondary human sign-off.</li>
@@ -210,7 +276,7 @@
                 </div>
 
                 <div id="doc-vendor" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Vendor Diligence & SaaS Vetting Guide (Pillar 3 Specification)</h3>
+                    <h3 class="text-base font-bold text-white">Third-Party Vendor Diligence & SaaS Vetting (Pillar 3 Specification)</h3>
                     <p>Standardized evaluation criteria for external AI model vendors and cloud hosting sub-processors:</p>
                     <ul class="list-disc pl-5 space-y-2">
                         <li><strong>Zero Data Retention:</strong> Verification that vendor APIs do not store, log, or train on proprietary client inputs.</li>
@@ -220,7 +286,7 @@
                 </div>
 
                 <div id="doc-testing" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Continuous Red-Teaming & Testing Protocols (Pillar 4 Specification)</h3>
+                    <h3 class="text-base font-bold text-white">Continuous Red-Teaming & Compliance Testing (Pillar 4 Specification)</h3>
                     <p>Ongoing verification procedures maintaining long-term system integrity:</p>
                     <ul class="list-disc pl-5 space-y-2">
                         <li><strong>Adversarial Prompt Checks:</strong> Quarterly injection and jailbreak resistance testing against custom model deployments.</li>
@@ -436,7 +502,7 @@
                     <div class="text-xs text-slate-300 space-y-2">
                         <p><strong class="text-white">Region:</strong> Sedibeng / Vaal Region, Gauteng, South Africa</p>
                         <p><strong class="text-white">Advisory Desk:</strong> inquiry@aurionenterprises.co.za</p>
-                        <p><strong class="text-white">Direct Cell:</strong> +27 (Supported Corporate Desk)</p>
+                        <p><strong class="text-white">Direct Cell:</strong> Available via Advisory Intake</p>
                         <p><strong class="text-white">Digital Portals:</strong> GitHub Pages & Secure Client Workspace</p>
                     </div>
                 </div>
@@ -445,10 +511,10 @@
             <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
                 <p>&copy; 2026 Aurion Enterprises (Pty) Ltd. All rights reserved.</p>
                 <div class="flex space-x-6">
+                    <button onclick="switchTab('home')" class="hover:text-amber-400 transition-colors">Home</button>
                     <button onclick="switchTab('pillars')" class="hover:text-amber-400 transition-colors">Four Pillars</button>
                     <button onclick="switchTab('insights')" class="hover:text-amber-400 transition-colors">Document Vault</button>
                     <button onclick="switchTab('pricing')" class="hover:text-amber-400 transition-colors">Packages</button>
-                    <button onclick="switchTab('assessment')" class="hover:text-amber-400 transition-colors">Assessment</button>
                 </div>
             </div>
         </div>

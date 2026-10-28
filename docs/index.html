@@ -24,6 +24,12 @@
         .tab-content.active {
             display: block;
         }
+        .sub-doc-panel {
+            display: none;
+        }
+        .sub-doc-panel.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="selection:bg-amber-500 selection:text-black">
@@ -31,7 +37,7 @@
     <!-- Sticky Header & Tab Navigation -->
     <header class="sticky top-0 z-50 glass-card border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('pillars')">
                 <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-bold text-amber-400 text-lg shadow-lg shadow-amber-500/10">A</div>
                 <div>
                     <span class="font-extrabold tracking-wider text-white text-lg block leading-none">AURION</span>
@@ -45,11 +51,11 @@
                 <button onclick="switchTab('insights')" id="btn-insights" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Expert Hub & Docs</button>
                 <button onclick="switchTab('pricing')" id="btn-pricing" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Packages & Special</button>
                 <button onclick="switchTab('assessment')" id="btn-assessment" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">60-Sec Assessment</button>
-                <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="px-4 py-2 rounded-lg text-slate-300 hover:text-amber-400 transition-colors">GitHub ↗</a>
+                <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="px-4 py-2 rounded-lg text-slate-300 hover:text-amber-400 transition-colors">GitHub Repo ↗</a>
             </nav>
 
             <div>
-                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm transition-all shadow-lg shadow-amber-500/20">
+                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm transition-all shadow-lg shadow-amber-500/25">
                     Get Assessed
                 </button>
             </div>
@@ -84,8 +90,8 @@
                         </p>
                     </div>
                     <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Framework Standard:</span>
-                        <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform/tree/main/01-frameworks" target="_blank" class="text-amber-400 font-bold hover:underline">Discovery Checklist ↗</a>
+                        <span class="text-slate-400">Internal Standard Spec:</span>
+                        <button onclick="switchTab('insights'); loadDoc('doc-discovery')" class="text-amber-400 font-bold hover:underline">Read Discovery Guide →</button>
                     </div>
                 </div>
 
@@ -101,8 +107,8 @@
                         </p>
                     </div>
                     <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Framework Standard:</span>
-                        <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform/tree/main/01-frameworks" target="_blank" class="text-amber-400 font-bold hover:underline">HITL Control Matrix ↗</a>
+                        <span class="text-slate-400">Internal Standard Spec:</span>
+                        <button onclick="switchTab('insights'); loadDoc('doc-hitl')" class="text-amber-400 font-bold hover:underline">Read HITL Matrix →</button>
                     </div>
                 </div>
 
@@ -118,8 +124,8 @@
                         </p>
                     </div>
                     <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Framework Standard:</span>
-                        <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform/tree/main/01-frameworks" target="_blank" class="text-amber-400 font-bold hover:underline">Vendor Diligence Guide ↗</a>
+                        <span class="text-slate-400">Internal Standard Spec:</span>
+                        <button onclick="switchTab('insights'); loadDoc('doc-vendor')" class="text-amber-400 font-bold hover:underline">Read Vendor Guide →</button>
                     </div>
                 </div>
 
@@ -135,14 +141,14 @@
                         </p>
                     </div>
                     <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Framework Standard:</span>
-                        <a href="https://github.com/rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="text-amber-400 font-bold hover:underline">GitHub Security Workflows ↗</a>
+                        <span class="text-slate-400">Internal Standard Spec:</span>
+                        <button onclick="switchTab('insights'); loadDoc('doc-testing')" class="text-amber-400 font-bold hover:underline">Read Testing Protocols →</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 2: EXPERT HUB & INDUSTRY DOCUMENTS -->
+        <!-- TAB 2: EXPERT HUB & ON-SITE DOCUMENT VAULT -->
         <div id="tab-insights" class="tab-content space-y-12">
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
@@ -150,7 +156,7 @@
                 </div>
                 <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Expert Hub & Compliance Vault</h1>
                 <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Access expert video commentary and direct source routing to repository specifications governing data privacy and international AI management standards.
+                    Watch expert briefings and read fully accessible internal compliance specifications directly on site without leaving the portal.
                 </p>
             </div>
 
@@ -173,36 +179,54 @@
                 </div>
             </div>
 
-            <!-- Industry Document Vault -->
-            <div class="glass-card rounded-2xl p-8 border border-white/10">
-                <h3 class="text-lg font-bold text-white mb-6">📁 Direct Repository Source Documents</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-slate-900/80 p-5 rounded-xl border border-white/5 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] uppercase tracking-wider text-amber-400 font-semibold">01-Frameworks</span>
-                            <h4 class="text-sm font-bold text-white mt-1">Discovery & Audit Checklist</h4>
-                            <p class="text-xs text-slate-400 mt-2">Step-by-step procedures for mapping internal tools, shadow AI, and data ingestion nodes.</p>
-                        </div>
-                        <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform/tree/main/01-frameworks" target="_blank" class="mt-6 text-xs font-bold text-amber-400 hover:underline">Access GitHub Source ↗</a>
-                    </div>
+            <!-- On-Site Document Selector Tabs -->
+            <div class="glass-card rounded-2xl p-8 border border-white/10 space-y-6">
+                <div class="flex flex-wrap gap-3 border-b border-white/10 pb-4">
+                    <button onclick="loadDoc('doc-discovery')" id="tab-doc-discovery" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950">1. Discovery Checklist</button>
+                    <button onclick="loadDoc('doc-hitl')" id="tab-doc-hitl" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">2. HITL Matrix</button>
+                    <button onclick="loadDoc('doc-vendor')" id="tab-doc-vendor" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">3. Vendor Diligence</button>
+                    <button onclick="loadDoc('doc-testing')" id="tab-doc-testing" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">4. Testing Protocol</button>
+                </div>
 
-                    <div class="bg-slate-900/80 p-5 rounded-xl border border-white/5 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] uppercase tracking-wider text-amber-400 font-semibold">02-Templates</span>
-                            <h4 class="text-sm font-bold text-white mt-1">AI Risk Register & Schema</h4>
-                            <p class="text-xs text-slate-400 mt-2">Prioritized log templates for technical and legal failure modes in agentic systems.</p>
-                        </div>
-                        <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform/tree/main/02-templates" target="_blank" class="mt-6 text-xs font-bold text-amber-400 hover:underline">Access GitHub Source ↗</a>
-                    </div>
+                <!-- Document Panels -->
+                <div id="doc-discovery" class="sub-doc-panel active space-y-4 text-xs text-slate-300 leading-relaxed">
+                    <h3 class="text-base font-bold text-white">Discovery & Audit Checklist (Pillar 1 Specification)</h3>
+                    <p>This operational checklist governs the identification and cataloging of all artificial intelligence systems deployed across SMME environments:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Shadow AI Inventory:</strong> Identify all unauthorized browser extensions, external cloud LLM accounts, and API keys utilized by staff.</li>
+                        <li><strong>Data Flow Mapping:</strong> Trace customer PII, financial records, and operational telemetry from input ingestion nodes to third-party model context windows.</li>
+                        <li><strong>Exposure Scoring:</strong> Assign risk weighting based on confidentiality level and statutory jurisdiction (POPIA compliance boundaries).</li>
+                    </ul>
+                </div>
 
-                    <div class="bg-slate-900/80 p-5 rounded-xl border border-white/5 flex flex-col justify-between">
-                        <div>
-                            <span class="text-[10px] uppercase tracking-wider text-amber-400 font-semibold">03-App & Workflows</span>
-                            <h4 class="text-sm font-bold text-white mt-1">AI Security Scanner Workflows</h4>
-                            <p class="text-xs text-slate-400 mt-2">Automated repository verification and security scanning pipelines.</p>
-                        </div>
-                        <a href="https://github.com/rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="mt-6 text-xs font-bold text-amber-400 hover:underline">Access GitHub Pages ↗</a>
-                    </div>
+                <div id="doc-hitl" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
+                    <h3 class="text-base font-bold text-white">Human-in-the-Loop (HITL) Control Matrix (Pillar 2 Specification)</h3>
+                    <p>Mandatory decision checkpoints preventing autonomous agent execution errors in critical operations:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Financial Thresholds:</strong> Any automated invoice processing or transaction refund exceeding R1,000 requires explicit secondary human sign-off.</li>
+                        <li><strong>External Communications:</strong> Automated customer emails or legal notices generated by agents must pass a staged review queue.</li>
+                        <li><strong>Access Governance:</strong> RBAC enforcement restricting autonomous write-access to primary database repositories.</li>
+                    </ul>
+                </div>
+
+                <div id="doc-vendor" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
+                    <h3 class="text-base font-bold text-white">Vendor Diligence & SaaS Vetting Guide (Pillar 3 Specification)</h3>
+                    <p>Standardized evaluation criteria for external AI model vendors and cloud hosting sub-processors:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Zero Data Retention:</strong> Verification that vendor APIs do not store, log, or train on proprietary client inputs.</li>
+                        <li><strong>Cross-Border Compliance:</strong> Ensuring cloud storage encryption and regional server hosting comply with domestic privacy statutes.</li>
+                        <li><strong>SLA Verification:</strong> Minimum uptime and security patch response times mandated for third-party partners.</li>
+                    </ul>
+                </div>
+
+                <div id="doc-testing" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
+                    <h3 class="text-base font-bold text-white">Continuous Red-Teaming & Testing Protocols (Pillar 4 Specification)</h3>
+                    <p>Ongoing verification procedures maintaining long-term system integrity:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>Adversarial Prompt Checks:</strong> Quarterly injection and jailbreak resistance testing against custom model deployments.</li>
+                        <li><strong>Hallucination Tracking:</strong> Logging output discrepancies and grounding failures in retrieval-augmented generation pipelines.</li>
+                        <li><strong>Audit Log Archival:</strong> Immutable record keeping for quarterly enterprise supply chain compliance reviews.</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -324,7 +348,7 @@
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <input type="email" id="visitor-email" placeholder="Business Email Address *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                        <input type="text" id="visitor-phone" placeholder="Phone / Mobile Number *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
+                        <input type="text" id="visitor-phone" placeholder="Cell / Mobile Number *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
                         <input type="text" id="visitor-role" placeholder="Role (e.g., Director, IT Lead)" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
                     </div>
                     <div>
@@ -411,8 +435,9 @@
                     <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Contact & Headquarters</h4>
                     <div class="text-xs text-slate-300 space-y-2">
                         <p><strong class="text-white">Region:</strong> Sedibeng / Vaal Region, Gauteng, South Africa</p>
-                        <p><strong class="text-white">Digital Portals:</strong> GitHub Pages & Secure Client Workspace</p>
                         <p><strong class="text-white">Advisory Desk:</strong> inquiry@aurionenterprises.co.za</p>
+                        <p><strong class="text-white">Direct Cell:</strong> +27 (Supported Corporate Desk)</p>
+                        <p><strong class="text-white">Digital Portals:</strong> GitHub Pages & Secure Client Workspace</p>
                     </div>
                 </div>
             </div>
@@ -420,35 +445,32 @@
             <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
                 <p>&copy; 2026 Aurion Enterprises (Pty) Ltd. All rights reserved.</p>
                 <div class="flex space-x-6">
-                    <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="hover:text-amber-400 transition-colors">GitHub Repository ↗</a>
                     <button onclick="switchTab('pillars')" class="hover:text-amber-400 transition-colors">Four Pillars</button>
+                    <button onclick="switchTab('insights')" class="hover:text-amber-400 transition-colors">Document Vault</button>
+                    <button onclick="switchTab('pricing')" class="hover:text-amber-400 transition-colors">Packages</button>
                     <button onclick="switchTab('assessment')" class="hover:text-amber-400 transition-colors">Assessment</button>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Script for Tab Switching & Assessment Processing -->
+    <!-- Script for Tab Switching & Sub-Document Navigation -->
     <script>
         function switchTab(tabId) {
-            // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
 
-            // Remove active style from all nav buttons
             const buttons = document.querySelectorAll('.nav-btn');
             buttons.forEach(btn => {
                 btn.classList.remove('text-amber-400', 'bg-amber-500/10', 'border', 'border-amber-500/35');
                 btn.classList.add('text-slate-300');
             });
 
-            // Show target tab
             const targetTab = document.getElementById('tab-' + tabId);
             if(targetTab) {
                 targetTab.classList.add('active');
             }
 
-            // Highlight target button if it exists
             const targetBtn = document.getElementById('btn-' + tabId);
             if(targetBtn) {
                 targetBtn.classList.remove('text-slate-300');
@@ -456,6 +478,28 @@
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function loadDoc(docId) {
+            const panels = document.querySelectorAll('.sub-doc-panel');
+            panels.forEach(p => p.classList.remove('active'));
+
+            const docBtns = document.querySelectorAll('.doc-btn');
+            docBtns.forEach(b => {
+                b.classList.remove('bg-amber-500', 'text-slate-950');
+                b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-white/10');
+            });
+
+            const targetPanel = document.getElementById(docId);
+            if(targetPanel) {
+                targetPanel.classList.add('active');
+            }
+
+            const targetBtn = document.getElementById('tab-' + docId);
+            if(targetBtn) {
+                targetBtn.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-white/10');
+                targetBtn.classList.add('bg-amber-500', 'text-slate-950');
+            }
         }
 
         let clientProfile = {};
@@ -475,11 +519,9 @@
 
             clientProfile = { name, org, email, phone, role, focus };
 
-            // Switch views
             document.getElementById('intake-form-container').classList.add('hidden');
             document.getElementById('assessment-results-area').classList.remove('hidden');
 
-            // Populate Report Header
             document.getElementById('report-timestamp').textContent = new Date().toLocaleDateString();
             document.getElementById('report-profile-title').textContent = `Audit Profile: ${org} (${name} - ${role || 'Representative'})`;
             document.getElementById('report-summary').innerHTML = `Contact locked for <strong>${email}</strong> / <strong>${phone}</strong>. Initializing compliance parameters for <em>${focus}</em>. Your entity is provisioned for ISO/IEC 42001 and POPIA readiness review under the Founders Special Offer.`;
@@ -490,7 +532,6 @@
             const chatStream = document.getElementById('chat-stream');
             if(!inputField.value.trim()) return;
 
-            // User message
             const userDiv = document.createElement('div');
             userDiv.className = 'bg-amber-500/10 border border-amber-500/20 p-2.5 rounded-xl ml-auto text-amber-200 max-w-sm';
             userDiv.textContent = inputField.value;
@@ -500,11 +541,10 @@
             inputField.value = '';
             chatStream.scrollTop = chatStream.scrollHeight;
 
-            // Simulated Copilot reply
             setTimeout(() => {
                 const botDiv = document.createElement('div');
                 botDiv.className = 'bg-slate-800/90 p-2.5 rounded-xl border border-white/5 text-slate-200 max-w-sm';
-                botDiv.innerHTML = `<strong>Aurion Copilot:</strong> Inquiry regarding <em>"${userText}"</em> registered. Our advisory desk will dispatch your custom policy pack to <strong>${clientProfile.email}</strong>. You can also inspect framework specifications directly on your <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform" target="_blank" class="text-amber-400 underline">GitHub Repository ↗</a>.`;
+                botDiv.innerHTML = `<strong>Aurion Copilot:</strong> Inquiry regarding <em>"${userText}"</em> registered. Our advisory desk will dispatch your custom policy pack to <strong>${clientProfile.email}</strong> at <strong>${clientProfile.phone}</strong>.`;
                 chatStream.appendChild(botDiv);
                 chatStream.scrollTop = chatStream.scrollHeight;
             }, 600);

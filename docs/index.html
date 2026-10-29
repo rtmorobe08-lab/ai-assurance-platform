@@ -3,618 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurion Enterprises | SMME AI Assurance & Governance Platform</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Aurion Enterprises | AI Assurance & Governance Platform</title>
     <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --accent-glow: rgba(37, 99, 235, 0.15);
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-heading: #0f172a;
+            --border-color: #e2e8f0;
+        }
+
         body {
-            background: linear-gradient(180deg, #1e2530 0%, #0d1117 100%);
-            color: #f0f6fc;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
-        .glass-card {
-            background: rgba(22, 27, 34, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
         }
-        .tab-content {
-            display: none;
+
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.2rem;
         }
-        .tab-content.active {
-            display: block;
+
+        header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin: 0;
         }
-        .sub-doc-panel {
-            display: none;
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
         }
-        .sub-doc-panel.active {
-            display: block;
+
+        /* Special Offer Banner */
+        .special-offer {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px var(--accent-glow);
+        }
+
+        .special-offer h3 {
+            color: #1e40af;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .special-offer p {
+            margin-bottom: 1rem;
+            color: #1e3a8a;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* Four Pillars Layout */
+        .section-title {
+            text-align: center;
+            color: var(--text-heading);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .pillar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pillar-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .pillar-card h3 {
+            color: var(--text-heading);
+            margin-top: 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            font-size: 1.35rem;
+        }
+
+        .pillar-card ul {
+            padding-left: 1.25rem;
+        }
+
+        .pillar-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Regulatory Context Box */
+        .regulatory-box {
+            background-color: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .regulatory-box h4 {
+            color: #991b1b;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .regulatory-box ul {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: #7f1d1d;
+        }
+
+        /* Process Flow Banner */
+        .process-flow {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
         }
     </style>
 </head>
-<body class="selection:bg-amber-500 selection:text-black">
+<body>
 
-    <!-- Sticky Header & Tab Navigation -->
-    <header class="sticky top-0 z-50 glass-card border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
-                <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-bold text-amber-400 text-lg shadow-lg shadow-amber-500/10">A</div>
-                <div>
-                    <span class="font-extrabold tracking-wider text-white text-lg block leading-none">AURION</span>
-                    <span class="text-[10px] tracking-widest text-amber-400 font-semibold uppercase">Enterprises</span>
-                </div>
-            </div>
-            
-            <!-- Interactive Tab Navigational Controls -->
-            <nav class="hidden md:flex items-center space-x-2 text-sm font-medium">
-                <button onclick="switchTab('home')" id="btn-home" class="nav-btn px-4 py-2 rounded-lg transition-colors text-amber-400 bg-amber-500/10 border border-amber-500/30">Home</button>
-                <button onclick="switchTab('pillars')" id="btn-pillars" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Four Pillars</button>
-                <button onclick="switchTab('insights')" id="btn-insights" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Expert Hub & Docs</button>
-                <button onclick="switchTab('pricing')" id="btn-pricing" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Packages & Special</button>
-                <button onclick="switchTab('assessment')" id="btn-assessment" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">60-Sec Assessment</button>
-            </nav>
-
-            <div>
-                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm transition-all shadow-lg shadow-amber-500/25">
-                    Get Assessed
-                </button>
-            </div>
-        </div>
+    <header>
+        <h1>Aurion Enterprises (Pty) Ltd</h1>
+        <p>Pragmatic AI Governance, Agent Guardrails & Risk Assurance Frameworks</p>
     </header>
 
-    <!-- Main Dynamic Content Area -->
-    <main class="max-w-7xl mx-auto px-6 py-12">
+    <div class="container">
 
-        <!-- TAB 0: ORIGINAL LANDING / HOME -->
-        <div id="tab-home" class="tab-content active space-y-16">
-            <!-- Hero Section -->
-            <section class="max-w-5xl mx-auto pt-12 pb-8 text-center">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-6">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    <span>POPIA & ISO/IEC 42001 Compliance Frameworks for Growing Enterprises</span>
-                </div>
-                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-                    Pragmatic AI Governance & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Autonomous Guardrails</span>
-                </h1>
-                <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                    Deploy secure agentic systems with built-in audit trails, data privacy compliance, and third-party supply chain verification matrices tailored for South African SMMEs.
-                </p>
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button onclick="switchTab('assessment')" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-xl shadow-amber-500/10 text-center">
-                        Take 60-Second Assessment
-                    </button>
-                    <button onclick="switchTab('pillars')" class="w-full sm:w-auto glass-card hover:bg-slate-800/80 text-white font-semibold px-8 py-3.5 rounded-xl transition-all text-center border border-white/10">
-                        Explore Four Pillars
-                    </button>
-                </div>
-            </section>
-
-            <!-- Quick Overview Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-white/5">
-                <div class="glass-card p-6 rounded-2xl border border-white/10">
-                    <div class="text-amber-400 font-bold text-lg mb-2">01. Regulatory Assurance</div>
-                    <p class="text-slate-300 text-xs leading-relaxed">Rigorous alignment with South Africa's POPIA data protection statutes and international ISO/IEC 42001 AI standards.</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl border border-white/10">
-                    <div class="text-amber-400 font-bold text-lg mb-2">02. Supply Chain Ready</div>
-                    <p class="text-slate-300 text-xs leading-relaxed">Equipping township and regional SMMEs with verified compliance credentials to qualify for major corporate tenders.</p>
-                </div>
-                <div class="glass-card p-6 rounded-2xl border border-white/10">
-                    <div class="text-amber-400 font-bold text-lg mb-2">03. Automated Copilot</div>
-                    <p class="text-slate-300 text-xs leading-relaxed">Interactive risk assessment engine generating instant diagnostic readouts and custom policy packs.</p>
-                </div>
-            </div>
+        <!-- SPECIAL OFFER BANNER -->
+        <div class="special-offer">
+            <h3>⚡ Limited-Time Launch Special: Complimentary POPIA Health Check & AI Readiness Audit</h3>
+            <p>Book a discovery session this month to receive a complimentary baseline assessment of your organization's data protection posture and autonomous agent workflows.</p>
+            <a href="#contact" class="btn">Claim Special Offer</a>
         </div>
 
-        <!-- TAB 1: FOUR PILLARS (Updated Titles) -->
-        <div id="tab-pillars" class="tab-content space-y-12">
-            <div class="text-center max-w-3xl mx-auto">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
-                    <span>Operational Blueprint</span>
-                </div>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">The Four Pillars of Aurion Assurance</h1>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Designed specifically for SMMEs supplying large enterprise buyers who require rigorous proof of risk mitigation, privacy adherence, and controlled AI deployment.
-                </p>
-            </div>
+        <h2 class="section-title">The Four Pillars of Aurion Enterprises</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Pillar 1 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">01</span>
-                            <h3 class="text-xl font-bold text-white">AI Inventory & Data Discovery Audit</h3>
-                        </div>
-                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
-                            Conducts an exhaustive inventory sweep of internal shadow AI accounts, unvetted API integrations, and cloud ingestion endpoints. Maps data flows to isolate exposure vectors before enterprise audits begin.
-                        </p>
-                    </div>
-                    <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Internal Standard Spec:</span>
-                        <button onclick="switchTab('insights'); loadDoc('doc-discovery')" class="text-amber-400 font-bold hover:underline">Read Discovery Guide →</button>
-                    </div>
-                </div>
+        <div class="pillar-grid">
+            
+            <!-- PILLAR 1 -->
+            <div class="pillar-card">
+                <h3>1. Assessment & Governance (POPIA)</h3>
+                <p>Comprehensive data protection structuring, lifecycle management, and statutory regulatory defense.</p>
+                <ul>
+                    <li><strong>A) Health Check:</strong> Rapid preliminary review of data flows and consent mechanisms.</li>
+                    <li><strong>B) Discovery & Audit:</strong> Full-scale diagnostic mapping and gap analysis.</li>
+                    <li><strong>C) Control Framework:</strong> Establishment of operational guardrails and internal policies.</li>
+                    <li><strong>D) Continuous Assurance:</strong> Ongoing monitoring, compliance hygiene, and audit readiness.</li>
+                </ul>
+                <p><em>Methodology: Inventory &rarr; Classify &rarr; Control &rarr; Evidence</em></p>
 
-                <!-- Pillar 2 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">02</span>
-                            <h3 class="text-xl font-bold text-white">Human-in-the-Loop Controls & Policy</h3>
-                        </div>
-                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
-                            Deploys enforceable Human-in-the-Loop (HITL) authorization checkpoints, strict role-based access control (RBAC), and custom acceptable use policy packs aligned with local statutory mandates.
-                        </p>
-                    </div>
-                    <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Internal Standard Spec:</span>
-                        <button onclick="switchTab('insights'); loadDoc('doc-hitl')" class="text-amber-400 font-bold hover:underline">Read HITL Matrix →</button>
-                    </div>
-                </div>
-
-                <!-- Pillar 3 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">03</span>
-                            <h3 class="text-xl font-bold text-white">Third-Party Vendor Diligence & SaaS Vetting</h3>
-                        </div>
-                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
-                            Standardizes third-party SaaS vetting protocols. Verifies zero-data-retention clauses, API encryption standards, and opt-out training parameters for external model providers.
-                        </p>
-                    </div>
-                    <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Internal Standard Spec:</span>
-                        <button onclick="switchTab('insights'); loadDoc('doc-vendor')" class="text-amber-400 font-bold hover:underline">Read Vendor Guide →</button>
-                    </div>
-                </div>
-
-                <!-- Pillar 4 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">04</span>
-                            <h3 class="text-xl font-bold text-white">Continuous Red-Teaming & Compliance Testing</h3>
-                        </div>
-                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
-                            Automates regression checking, prompt injection defense testing, hallucination monitoring, and quarterly compliance log validation to maintain perpetual audit readiness.
-                        </p>
-                    </div>
-                    <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Internal Standard Spec:</span>
-                        <button onclick="switchTab('insights'); loadDoc('doc-testing')" class="text-amber-400 font-bold hover:underline">Read Testing Protocols →</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 2: EXPERT HUB (With Regulator Penalties & Four Tabs Below) -->
-        <div id="tab-insights" class="tab-content space-y-12">
-            <div class="text-center max-w-3xl mx-auto">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
-                    <span>Regulatory Intelligence & Knowledge Base</span>
-                </div>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Expert Hub & Enforcement Briefings</h1>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Review expert video briefings, recent statutory penalties issued by the Information Regulator, and on-site technical specifications.
-                </p>
-            </div>
-
-            <!-- Videos Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass-card p-5 rounded-2xl border border-white/10">
-                    <div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/1dXd9QqHB8s" title="POPIA & AI Regulatory Scope" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <h3 class="text-base font-bold text-white mb-2">POPIA & Automated Decision-Making</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Vodacom Tech Talk examining how current statutory data protection laws regulate automated profiling and contextual AI outputs.</p>
-                </div>
-
-                <div class="glass-card p-5 rounded-2xl border border-white/10">
-                    <div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/yxE3bCP3aTg" title="ISO 42001 Standard Walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <h3 class="text-base font-bold text-white mb-2">ISO/IEC 42001 AIMS Framework Explained</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Clear structural breakdown of the global Artificial Intelligence Management System standard for responsible organizational deployment.</p>
-                </div>
-            </div>
-
-            <!-- Information Regulator Penalties Briefing Card -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 border border-red-500/30 bg-gradient-to-r from-red-950/20 via-slate-900 to-slate-900">
-                <div class="flex items-center space-x-3 mb-3">
-                    <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
-                    <h3 class="text-base font-bold text-white uppercase tracking-wider">Regulatory Alert: Information Regulator Enforcement & Penalties</h3>
-                </div>
-                <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                    The South African Information Regulator has stepped up enforcement actions, issuing substantial administrative fines and enforcement notices against corporations and public entities failing to secure personal identifiable information (PII) or neglecting POPIA compliance mandates. Implicated organizations face severe financial penalties and reputational damage.
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs bg-slate-950/60 p-4 rounded-xl border border-white/5">
-                    <div>
-                        <strong class="text-amber-400 block mb-1">Administrative Fines</strong>
-                        <span class="text-slate-400">Statutory penalties up to R10 million for severe non-compliance infractions.</span>
-                    </div>
-                    <div>
-                        <strong class="text-amber-400 block mb-1">Enforcement Notices</strong>
-                        <span class="text-slate-400">Mandatory operational halts and mandatory data security overhauls.</span>
-                    </div>
-                    <div>
-                        <strong class="text-amber-400 block mb-1">Supply Chain Risk</strong>
-                        <span class="text-slate-400">Enterprise buyers immediately dropping vendors failing data privacy audits.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- On-Site Document Selector Tabs (Kept Below) -->
-            <div class="glass-card rounded-2xl p-8 border border-white/10 space-y-6">
-                <div class="flex flex-wrap gap-3 border-b border-white/10 pb-4">
-                    <button onclick="loadDoc('doc-discovery')" id="tab-doc-discovery" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950">1. Discovery Checklist</button>
-                    <button onclick="loadDoc('doc-hitl')" id="tab-doc-hitl" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">2. HITL Matrix</button>
-                    <button onclick="loadDoc('doc-vendor')" id="tab-doc-vendor" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">3. Vendor Diligence</button>
-                    <button onclick="loadDoc('doc-testing')" id="tab-doc-testing" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">4. Testing Protocol</button>
-                </div>
-
-                <!-- Document Panels -->
-                <div id="doc-discovery" class="sub-doc-panel active space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">AI Inventory & Data Discovery Audit (Pillar 1 Specification)</h3>
-                    <p>This operational checklist governs the identification and cataloging of all artificial intelligence systems deployed across SMME environments:</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Shadow AI Inventory:</strong> Identify all unauthorized browser extensions, external cloud LLM accounts, and API keys utilized by staff.</li>
-                        <li><strong>Data Flow Mapping:</strong> Trace customer PII, financial records, and operational telemetry from input ingestion nodes to third-party model context windows.</li>
-                        <li><strong>Exposure Scoring:</strong> Assign risk weighting based on confidentiality level and statutory jurisdiction (POPIA compliance boundaries).</li>
-                    </ul>
-                </div>
-
-                <div id="doc-hitl" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Human-in-the-Loop Controls & Policy (Pillar 2 Specification)</h3>
-                    <p>Mandatory decision checkpoints preventing autonomous agent execution errors in critical operations:</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Financial Thresholds:</strong> Any automated invoice processing or transaction refund exceeding R1,000 requires explicit secondary human sign-off.</li>
-                        <li><strong>External Communications:</strong> Automated customer emails or legal notices generated by agents must pass a staged review queue.</li>
-                        <li><strong>Access Governance:</strong> RBAC enforcement restricting autonomous write-access to primary database repositories.</li>
-                    </ul>
-                </div>
-
-                <div id="doc-vendor" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Third-Party Vendor Diligence & SaaS Vetting (Pillar 3 Specification)</h3>
-                    <p>Standardized evaluation criteria for external AI model vendors and cloud hosting sub-processors:</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Zero Data Retention:</strong> Verification that vendor APIs do not store, log, or train on proprietary client inputs.</li>
-                        <li><strong>Cross-Border Compliance:</strong> Ensuring cloud storage encryption and regional server hosting comply with domestic privacy statutes.</li>
-                        <li><strong>SLA Verification:</strong> Minimum uptime and security patch response times mandated for third-party partners.</li>
-                    </ul>
-                </div>
-
-                <div id="doc-testing" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Continuous Red-Teaming & Compliance Testing (Pillar 4 Specification)</h3>
-                    <p>Ongoing verification procedures maintaining long-term system integrity:</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Adversarial Prompt Checks:</strong> Quarterly injection and jailbreak resistance testing against custom model deployments.</li>
-                        <li><strong>Hallucination Tracking:</strong> Logging output discrepancies and grounding failures in retrieval-augmented generation pipelines.</li>
-                        <li><strong>Audit Log Archival:</strong> Immutable record keeping for quarterly enterprise supply chain compliance reviews.</li>
+                <div class="regulatory-box">
+                    <h4>Regulatory Enforcement Context (Why Compliance Matters)</h4>
+                    <p>The SA Information Regulator enforces strict compliance with administrative penalties for data failures:</p>
+                    <ul>
+                        <li><strong>First National Bank (FNB):</strong> Fined <strong>R1 million</strong> following a home loan platform data security breach.</li>
+                        <li><strong>Central Johannesburg TVET College (CJC):</strong> Fined <strong>R500,000</strong> for ignoring enforcement notices regarding unlawful personal data processing.</li>
                     </ul>
                 </div>
             </div>
+
+            <!-- PILLAR 2 -->
+            <div class="pillar-card">
+                <h3>2. Governed AI Suite</h3>
+                <p>Enterprise-grade automated agent deployment equipped with built-in oversight, security boundaries, and modular scaling packages.</p>
+                <ul>
+                    <li><strong>The Six Agents Ecosystem:</strong> Specialized autonomous modules for defensive auditing, risk scanning, and compliance tracking.</li>
+                    <li><strong>Starter Package:</strong> Tailored for lean teams launching single-agent oversight.</li>
+                    <li><strong>Growth Package:</strong> Scaled multi-agent deployment for growing enterprises.</li>
+                    <li><strong>Scale Package:</strong> Advanced cross-departmental integration with robust parameter controls.</li>
+                    <li><strong>Connector Package:</strong> Dedicated API tier linking legacy databases with AI agent workflows.</li>
+                    <li><strong>Full House Package:</strong> The complete multi-agent ecosystem with real-time auditing and executive reporting.</li>
+                </ul>
+            </div>
+
+            <!-- PILLAR 3 -->
+            <div class="pillar-card">
+                <h3>3. AI Security & Verification</h3>
+                <p>Rigorous risk mitigation, red-teaming, and end-to-end technical validation for AI models.</p>
+                <ul>
+                    <li><strong>Tier 1 — Essential (Advisory):</strong> Expert architectural guidance, policy alignment, and risk evaluation.</li>
+                    <li><strong>Tier 2 — Advanced (Guided):</strong> Hands-on implementation support, simulation testing, and verification workshops.</li>
+                    <li><strong>Tier 3 — Complete (Managed):</strong> Fully managed continuous security posture monitoring and vulnerability mitigation.</li>
+                </ul>
+                
+                <div class="process-flow">
+                    Detect &rarr; Verify &rarr; Fix &rarr; Prove &rarr; Record
+                </div>
+            </div>
+
+            <!-- PILLAR 4 -->
+            <div class="pillar-card">
+                <h3>4. ISO/IEC 42001 (AIMS)</h3>
+                <p>Artificial Intelligence Management System (AIMS) certification readiness and structural alignment.</p>
+                <p><strong>Statement of Applicability (SoA) Core Domains:</strong></p>
+                <ol>
+                    <li><strong>Policy & Governance:</strong> Defining organizational intent and accountability.</li>
+                    <li><strong>Risk & Impact:</strong> Systematic assessment of algorithmic risks and bias mitigation.</li>
+                    <li><strong>Data:</strong> Quality control, provenance tracking, and data minimization.</li>
+                    <li><strong>Security & Resilience:</strong> Robust defense against adversarial attacks and downtime.</li>
+                    <li><strong>Transparency & Accountability:</strong> Explainability frameworks and audit trails.</li>
+                    <li><strong>Monitoring & Assurance:</strong> Real-time performance tracking and feedback loops.</li>
+                </ol>
+            </div>
+
         </div>
 
-        <!-- TAB 3: PACKAGES, PRICING & SPECIAL OFFER -->
-        <div id="tab-pricing" class="tab-content space-y-12">
-            <div class="text-center max-w-3xl mx-auto">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
-                    <span>Commercial Strategy & Pricing</span>
-                </div>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Aurion Assurance Packages</h1>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Transparent, right-sized pricing tiers tailored for SMME budgets while meeting strict corporate supply chain criteria.
-                </p>
-            </div>
+    </div>
 
-            <!-- Founders Special Offer Banner -->
-            <div class="glass-card rounded-2xl p-6 border border-amber-500/40 bg-gradient-to-r from-amber-500/10 via-slate-900 to-amber-500/5 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                    <span class="bg-amber-500 text-slate-950 font-bold text-[10px] px-2.5 py-1 rounded-md uppercase tracking-wider">Limited Founder Special</span>
-                    <h3 class="text-xl font-bold text-white mt-2">First 10 On-Boarded Clients Promotion</h3>
-                    <p class="text-slate-300 text-xs sm:text-sm mt-1">
-                        Receive <strong class="text-amber-400">50% off implementation fees</strong> plus a complimentary customized POPIA & ISO 42001 policy pack for your entity.
-                    </p>
-                </div>
-                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs whitespace-nowrap transition-all shadow-lg">
-                    Claim Special Offer →
-                </button>
-            </div>
-
-            <!-- Pricing Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Tier 1 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Starter SMME</span>
-                        <h3 class="text-2xl font-extrabold text-white mt-1">Essential Audit</h3>
-                        <div class="mt-4 mb-6">
-                            <span class="text-3xl font-black text-amber-400">R7,500</span>
-                            <span class="text-xs text-slate-400"> / one-time</span>
-                        </div>
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li>✓ Pillar 1 Shadow AI Discovery Sweep</li>
-                            <li>✓ Basic Data Flow Mapping Template</li>
-                            <li>✓ Standard POPIA Compliance Check</li>
-                            <li>✓ Digital Assessment Certificate</li>
-                        </ul>
-                    </div>
-                    <button onclick="switchTab('assessment')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs transition-colors border border-white/10">
-                        Select Starter
-                    </button>
-                </div>
-
-                <!-- Tier 2 (Featured) -->
-                <div class="glass-card p-8 rounded-2xl border-2 border-amber-500/80 flex flex-col justify-between relative shadow-2xl">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-500 text-slate-950 font-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">
-                        Most Popular
-                    </div>
-                    <div>
-                        <span class="text-xs uppercase tracking-wider text-amber-400 font-bold">Growth Supply Chain</span>
-                        <h3 class="text-2xl font-extrabold text-white mt-1">Full 4-Pillar Suite</h3>
-                        <div class="mt-4 mb-6">
-                            <span class="text-3xl font-black text-amber-400">R18,500</span>
-                            <span class="text-xs text-slate-400"> / comprehensive audit</span>
-                        </div>
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li>✓ Complete All 4 Assurance Pillars</li>
-                            <li>✓ HITL Control Matrix Implementation</li>
-                            <li>✓ Vendor SaaS Vetting Scorecard</li>
-                            <li>✓ Dedicated AI Copilot Access</li>
-                            <li>✓ <strong class="text-amber-400">Includes 50% Founders Discount</strong></li>
-                        </ul>
-                    </div>
-                    <button onclick="switchTab('assessment')" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 rounded-xl text-xs transition-colors shadow-md">
-                        Claim Growth Tier
-                    </button>
-                </div>
-
-                <!-- Tier 3 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Enterprise Advisory</span>
-                        <h3 class="text-2xl font-extrabold text-white mt-1">Custom Governance</h3>
-                        <div class="mt-4 mb-6">
-                            <span class="text-3xl font-black text-white">Custom</span>
-                            <span class="text-xs text-slate-400"> / retainer model</span>
-                        </div>
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li>✓ Continuous Quarterly Red-Teaming</li>
-                            <li>✓ Custom Agentic Workflow Guardrails</li>
-                            <li>✓ Direct Institutional Representation</li>
-                            <li>✓ SLA-backed Priority Support</li>
-                        </ul>
-                    </div>
-                    <button onclick="switchTab('assessment')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs transition-colors border border-white/10">
-                        Inquire Custom
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 4: 60-SECOND ASSESSMENT & COPILOT -->
-        <div id="tab-assessment" class="tab-content space-y-8">
-            <div class="glass-card rounded-3xl p-8 sm:p-10 border border-amber-500/20 shadow-2xl max-w-3xl mx-auto">
-                <div class="flex items-center space-x-4 mb-6 pb-6 border-b border-white/10">
-                    <div class="w-12 h-12 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xl shadow-md">⚡</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white">60-Second AI Risk & Governance Assessment</h3>
-                        <p class="text-xs text-amber-400 font-medium">Complete your representative profile to generate an instant multi-pillar compliance diagnostic.</p>
-                    </div>
-                </div>
-
-                <!-- Visitor Contact & Context Capture Form -->
-                <div id="intake-form-container" class="space-y-4">
-                    <h4 class="text-sm font-bold text-white">Step 1 of 2: Enterprise Representative Details</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <input type="text" id="visitor-name" placeholder="Full Name *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                        <input type="text" id="visitor-org" placeholder="Organization / Entity Name *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <input type="email" id="visitor-email" placeholder="Business Email Address *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                        <input type="text" id="visitor-phone" placeholder="Cell / Mobile Number *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                        <input type="text" id="visitor-role" placeholder="Role (e.g., Director, IT Lead)" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] text-slate-400 mb-1">Select Primary Compliance Challenge / Focus Area:</label>
-                        <select id="visitor-focus" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-amber-500">
-                            <option value="All Four Pillars (Comprehensive Review)">All Four Pillars (Comprehensive Review)</option>
-                            <option value="Pillar 1: Discovery & Shadow AI Audit">Pillar 1: Discovery & Shadow AI Audit</option>
-                            <option value="Pillar 2: Controls & HITL Policy Enforcement">Pillar 2: Controls & HITL Policy Enforcement</option>
-                            <option value="Pillar 3: Vendor Diligence & SaaS Vetting">Pillar 3: Vendor Diligence & SaaS Vetting</option>
-                            <option value="Pillar 4: Continuous Red-Teaming & Testing">Pillar 4: Continuous Red-Teaming & Testing</option>
-                        </select>
-                    </div>
-                    <button onclick="runAssessment()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm py-3.5 rounded-xl transition-all shadow-lg">
-                        Generate Instant 60-Second Assessment →
-                    </button>
-                </div>
-
-                <!-- Assessment Results & Copilot Interactive Chat (Initially Hidden) -->
-                <div id="assessment-results-area" class="hidden space-y-6">
-                    <div class="bg-slate-900/90 p-5 rounded-2xl border border-amber-500/30">
-                        <div class="flex items-center justify-between mb-3 pb-3 border-b border-white/10">
-                            <span class="text-xs uppercase tracking-wider text-amber-400 font-bold">Diagnostic Report Generated</span>
-                            <span id="report-timestamp" class="text-[11px] text-slate-400"></span>
-                        </div>
-                        <h4 id="report-profile-title" class="text-base font-bold text-white mb-2"></h4>
-                        <p id="report-summary" class="text-xs text-slate-300 leading-relaxed mb-4"></p>
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[11px]">
-                            <div class="bg-slate-950 p-2.5 rounded-lg border border-white/5"><span class="block text-amber-400 font-bold">Pillar 1</span>Audit Ready</div>
-                            <div class="bg-slate-950 p-2.5 rounded-lg border border-white/5"><span class="block text-amber-400 font-bold">Pillar 2</span>HITL Guardrails</div>
-                            <div class="bg-slate-950 p-2.5 rounded-lg border border-white/5"><span class="block text-amber-400 font-bold">Pillar 3</span>Vendor Verified</div>
-                            <div class="bg-slate-950 p-2.5 rounded-lg border border-white/5"><span class="block text-amber-400 font-bold">Pillar 4</span>Logged & Tested</div>
-                        </div>
-                    </div>
-
-                    <!-- Interactive Follow-up Chat with Copilot -->
-                    <div class="space-y-3">
-                        <h5 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Ask Follow-up Questions to Copilot:</h5>
-                        <div id="chat-stream" class="space-y-3 max-h-48 overflow-y-auto pr-2 text-xs">
-                            <div class="bg-slate-800/80 p-3 rounded-xl border border-white/5 text-slate-200">
-                                Assessment active. Your contact details are securely logged. How else can Aurion assist with your compliance implementation?
-                            </div>
-                        </div>
-                        <div class="flex gap-2">
-                            <input type="text" id="user-chat-input" placeholder="Ask about ISO 42001 certification or POPIA clauses..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500">
-                            <button onclick="sendFollowUp()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs">Send</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- Footer & Institutional Membership Place-Card -->
-    <footer class="border-t border-white/10 py-16 bg-slate-950/60 mt-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <!-- Place-Card: Memberships & Contact Info -->
-            <div class="glass-card rounded-2xl p-8 mb-12 border border-amber-500/20 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Col 1: Institutional Memberships -->
-                <div>
-                    <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Institutional Memberships</h4>
-                    <p class="text-xs text-slate-300 mb-3 leading-relaxed">
-                        Aurion Enterprises actively adheres to global governance and corporate excellence standards through recognized international affiliations:
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-slate-900 border border-white/10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white">IIRC Network</span>
-                        <span class="bg-slate-900 border border-white/10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white">ICOR Resilience</span>
-                        <span class="bg-slate-900 border border-white/10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white">EFQM Excellence</span>
-                    </div>
-                </div>
-
-                <!-- Col 2: Core Focus -->
-                <div>
-                    <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Operating Divisions</h4>
-                    <ul class="text-xs text-slate-300 space-y-2">
-                        <li>• <strong class="text-white">Aurion Consulting:</strong> AI Governance & Compliance Advisory</li>
-                        <li>• <strong class="text-white">Aurion Construction:</strong> Infrastructure Development & SMME Inclusion</li>
-                        <li>• <strong class="text-white">GitHub Pages Suite:</strong> Public Open-Source Agentic Frameworks</li>
-                    </ul>
-                </div>
-
-                <!-- Col 3: Contact Details -->
-                <div>
-                    <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Contact & Headquarters</h4>
-                    <div class="text-xs text-slate-300 space-y-2">
-                        <p><strong class="text-white">Region:</strong> Sedibeng / Vaal Region, Gauteng, South Africa</p>
-                        <p><strong class="text-white">Advisory Desk:</strong> inquiry@aurionenterprises.co.za</p>
-                        <p><strong class="text-white">Direct Cell:</strong> Available via Advisory Intake</p>
-                        <p><strong class="text-white">Digital Portals:</strong> GitHub Pages & Secure Client Workspace</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                <p>&copy; 2026 Aurion Enterprises (Pty) Ltd. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <button onclick="switchTab('home')" class="hover:text-amber-400 transition-colors">Home</button>
-                    <button onclick="switchTab('pillars')" class="hover:text-amber-400 transition-colors">Four Pillars</button>
-                    <button onclick="switchTab('insights')" class="hover:text-amber-400 transition-colors">Document Vault</button>
-                    <button onclick="switchTab('pricing')" class="hover:text-amber-400 transition-colors">Packages</button>
-                </div>
-            </div>
-        </div>
+    <footer id="contact">
+        <p>&copy; 2026 Aurion Enterprises (Pty) Ltd. All rights reserved. Built for secure enterprise AI adoption.</p>
     </footer>
 
-    <!-- Script for Tab Switching & Sub-Document Navigation -->
-    <script>
-        function switchTab(tabId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('text-amber-400', 'bg-amber-500/10', 'border', 'border-amber-500/35');
-                btn.classList.add('text-slate-300');
-            });
-
-            const targetTab = document.getElementById('tab-' + tabId);
-            if(targetTab) {
-                targetTab.classList.add('active');
-            }
-
-            const targetBtn = document.getElementById('btn-' + tabId);
-            if(targetBtn) {
-                targetBtn.classList.remove('text-slate-300');
-                targetBtn.classList.add('text-amber-400', 'bg-amber-500/10', 'border', 'border-amber-500/30');
-            }
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function loadDoc(docId) {
-            const panels = document.querySelectorAll('.sub-doc-panel');
-            panels.forEach(p => p.classList.remove('active'));
-
-            const docBtns = document.querySelectorAll('.doc-btn');
-            docBtns.forEach(b => {
-                b.classList.remove('bg-amber-500', 'text-slate-950');
-                b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-white/10');
-            });
-
-            const targetPanel = document.getElementById(docId);
-            if(targetPanel) {
-                targetPanel.classList.add('active');
-            }
-
-            const targetBtn = document.getElementById('tab-' + docId);
-            if(targetBtn) {
-                targetBtn.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-white/10');
-                targetBtn.classList.add('bg-amber-500', 'text-slate-950');
-            }
-        }
-
-        let clientProfile = {};
-
-        function runAssessment() {
-            const name = document.getElementById('visitor-name').value.trim();
-            const org = document.getElementById('visitor-org').value.trim();
-            const email = document.getElementById('visitor-email').value.trim();
-            const phone = document.getElementById('visitor-phone').value.trim();
-            const role = document.getElementById('visitor-role').value.trim();
-            const focus = document.getElementById('visitor-focus').value;
-
-            if(!name || !org || !email || !phone) {
-                alert('Please complete all mandatory contact and organizational fields (Name, Org, Email, Phone) to generate your assessment report.');
-                return;
-            }
-
-            clientProfile = { name, org, email, phone, role, focus };
-
-            document.getElementById('intake-form-container').classList.add('hidden');
-            document.getElementById('assessment-results-area').classList.remove('hidden');
-
-            document.getElementById('report-timestamp').textContent = new Date().toLocaleDateString();
-            document.getElementById('report-profile-title').textContent = `Audit Profile: ${org} (${name} - ${role || 'Representative'})`;
-            document.getElementById('report-summary').innerHTML = `Contact locked for <strong>${email}</strong> / <strong>${phone}</strong>. Initializing compliance parameters for <em>${focus}</em>. Your entity is provisioned for ISO/IEC 42001 and POPIA readiness review under the Founders Special Offer.`;
-        }
-
-        function sendFollowUp() {
-            const inputField = document.getElementById('user-chat-input');
-            const chatStream = document.getElementById('chat-stream');
-            if(!inputField.value.trim()) return;
-
-            const userDiv = document.createElement('div');
-            userDiv.className = 'bg-amber-500/10 border border-amber-500/20 p-2.5 rounded-xl ml-auto text-amber-200 max-w-sm';
-            userDiv.textContent = inputField.value;
-            chatStream.appendChild(userDiv);
-
-            const userText = inputField.value;
-            inputField.value = '';
-            chatStream.scrollTop = chatStream.scrollHeight;
-
-            setTimeout(() => {
-                const botDiv = document.createElement('div');
-                botDiv.className = 'bg-slate-800/90 p-2.5 rounded-xl border border-white/5 text-slate-200 max-w-sm';
-                botDiv.innerHTML = `<strong>Aurion Copilot:</strong> Inquiry regarding <em>"${userText}"</em> registered. Our advisory desk will dispatch your custom policy pack to <strong>${clientProfile.email}</strong> at <strong>${clientProfile.phone}</strong>.`;
-                chatStream.appendChild(botDiv);
-                chatStream.scrollTop = chatStream.scrollHeight;
-            }, 600);
-        }
-    </script>
 </body>
 </html>

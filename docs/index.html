@@ -3,289 +3,547 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurion Enterprises | AI Assurance & Governance Platform</title>
+    <title>Aurion Enterprises | Enterprise AI Assurance & Governance</title>
     <style>
         :root {
-            --primary-bg: #0b0f19;
-            --secondary-bg: #111827;
-            --card-bg: #1f2937;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
+            --bg-dark: #0b0f19;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
+            --accent-blue: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.25);
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --border-color: #374151;
             --danger-bg: #451a03;
             --danger-border: #d97706;
             --danger-text: #fef3c7;
+            --success: #10b981;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-main);
-            line-height: 1.6;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        header {
-            background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
-            border-bottom: 1px solid var(--border-color);
-            padding: 3rem 2rem;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Top Banner */
+        .top-bar {
+            background: linear-gradient(90deg, #1e3a8a, #1e1b4b);
+            border-bottom: 1px solid var(--accent-blue);
+            padding: 0.85rem 1.5rem;
             text-align: center;
+            font-size: 0.95rem;
         }
 
-        header h1 {
-            margin: 0 0 0.5rem 0;
-            font-size: 2.5rem;
-            color: #ffffff;
-            letter-spacing: -0.025em;
-        }
-
-        header p {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            margin: 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem;
-        }
-
-        /* Special Offer Banner */
-        .special-offer {
-            background: linear-gradient(135deg, #1e3a8a, #1e1b4b);
-            border: 2px solid var(--accent);
-            border-radius: 12px;
-            padding: 1.75rem 2rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2);
-        }
-
-        .special-offer h3 {
+        .top-bar strong {
             color: #60a5fa;
-            margin-top: 0;
-            font-size: 1.4rem;
         }
 
-        .special-offer p {
+        .top-bar a {
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: underline;
+            margin-left: 0.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 1.5rem 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.15;
+            color: #ffffff;
             margin-bottom: 1.25rem;
-            color: #d1d5db;
+            letter-spacing: -0.03em;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.25rem;
+        }
+
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--accent);
-            color: white;
-            padding: 0.75rem 1.75rem;
+            padding: 0.85rem 1.85rem;
             border-radius: 8px;
-            text-decoration: none;
             font-weight: 600;
-            transition: background 0.2s, transform 0.1s;
+            text-decoration: none;
+            transition: all 0.2s;
         }
 
-        .btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-1px);
-        }
-
-        /* Section Title */
-        .section-title {
-            text-align: center;
+        .btn-primary {
+            background-color: var(--accent-blue);
             color: #ffffff;
-            font-size: 2.2rem;
-            margin-bottom: 2.5rem;
-            letter-spacing: -0.025em;
+            box-shadow: 0 4px 14px var(--accent-glow);
         }
 
-        /* Four Pillars Grid */
-        .pillar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
-            gap: 2rem;
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-card-hover);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
             margin-bottom: 3rem;
         }
 
-        @media (max-width: 768px) {
-            .pillar-grid {
-                grid-template-columns: 1fr;
-            }
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Pillars Interactive Grid */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
         }
 
         .pillar-card {
-            background: var(--card-bg);
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pillar-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        .pillar-number {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
         }
 
         .pillar-card h3 {
+            font-size: 1.35rem;
             color: #ffffff;
-            margin-top: 0;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.85rem;
-            font-size: 1.4rem;
+            margin-bottom: 1rem;
         }
 
         .pillar-card p {
             color: var(--text-muted);
-        }
-
-        .pillar-card ul, .pillar-card ol {
-            padding-left: 1.25rem;
-            color: var(--text-main);
-        }
-
-        .pillar-card li {
-            margin-bottom: 0.6rem;
-        }
-
-        /* Regulatory Context Box */
-        .regulatory-box {
-            background-color: var(--danger-bg);
-            border-left: 4px solid var(--danger-border);
-            padding: 1.25rem;
-            border-radius: 0 8px 8px 0;
-            margin-top: 1.5rem;
             font-size: 0.95rem;
+            margin-bottom: 1.5rem;
         }
 
-        .regulatory-box h4 {
-            color: #f59e0b;
-            margin: 0 0 0.5rem 0;
-            font-size: 1rem;
+        .pillar-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        .regulatory-box p {
-            color: var(--danger-text);
-            margin: 0 0 0.5rem 0;
+        .pillar-list li {
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-bottom: 0.65rem;
+            padding-left: 1.25rem;
+            position: relative;
         }
 
-        .regulatory-box ul {
-            margin: 0;
-            padding-left: 1.2rem;
-            color: var(--danger-text);
+        .pillar-list li::before {
+            content: "•";
+            color: var(--accent-blue);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
 
-        /* Process Flow Banner */
-        .process-flow {
-            background: var(--primary-bg);
+        .pipeline-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed var(--border-color);
+            padding: 0.65rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
             color: #60a5fa;
             text-align: center;
-            padding: 1.25rem;
-            border: 1px dashed var(--accent);
-            border-radius: 8px;
-            margin: 1.5rem 0 0 0;
             font-weight: 600;
-            letter-spacing: 0.05em;
         }
 
-        footer {
-            text-align: center;
-            padding: 2.5rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
+        /* Regulatory Warning Box */
+        .regulatory-card {
+            background: var(--danger-bg);
+            border: 1px solid var(--danger-border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .regulatory-card h3 {
+            color: #f59e0b;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .regulatory-card p {
+            color: var(--danger-text);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .enforcement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .enforcement-item {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--danger-border);
+        }
+
+        .enforcement-item strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .enforcement-item span {
+            color: var(--danger-text);
             font-size: 0.9rem;
-            background-color: var(--secondary-bg);
+        }
+
+        /* Tiers & Packages Section */
+        .tiers-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .tier-box {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .tier-box h4 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            background: var(--accent-blue);
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .tier-box p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            background: var(--bg-card);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer ul {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .cta-group { flex-direction: column; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Aurion Enterprises (Pty) Ltd</h1>
-        <p>Pragmatic AI Governance, Agent Guardrails & Risk Assurance Frameworks</p>
-    </header>
+    <!-- SPECIAL OFFER BANNER -->
+    <div class="top-bar">
+        ⚡ <strong>Limited-Time Special:</strong> Complimentary POPIA Health Check & AI Readiness Audit.
+        <a href="#contact">Claim Your Session &rarr;</a>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Aurion<span>.Enterprises</span></div>
+        <ul class="nav-links">
+            <li><a href="#pillars">Four Pillars</a></li>
+            <li><a href="#governance">POPIA Defense</a></li>
+            <li><a href="#agents">Governed AI Suite</a></li>
+            <li><a href="#iso">ISO 42001</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-badge">AI Defense & Governance Architecture</div>
+        <h1>Continuous Risk Assurance & POPIA Compliance for AI Workflows</h1>
+        <p>Protect your organization against administrative fines, algorithmic risk, and operational failure with our battle-tested assurance framework.</p>
+        <div class="cta-group">
+            <a href="#pillars" class="btn btn-primary">Explore Our 4 Pillars</a>
+            <a href="#contact" class="btn btn-secondary">Schedule Advisory Call</a>
+        </div>
+    </section>
 
     <div class="container">
 
-        <!-- SPECIAL OFFER BANNER -->
-        <div class="special-offer">
-            <h3>⚡ Limited-Time Launch Special: Complimentary POPIA Health Check & AI Readiness Audit</h3>
-            <p>Book a discovery session this month to receive a complimentary baseline assessment of your organization's data protection posture and autonomous agent workflows.</p>
-            <a href="#contact" class="btn">Claim Special Offer</a>
+        <!-- SECTION HEADER -->
+        <div class="section-header" id="pillars">
+            <h2>The Four Pillars of Aurion Enterprises</h2>
+            <p>End-to-end statutory compliance, agent guardrails, and AI management systems.</p>
         </div>
 
-        <h2 class="section-title">The Four Pillars of Aurion Enterprises</h2>
+        <!-- PILLARS GRID -->
+        <div class="pillars-grid">
 
-        <div class="pillar-grid">
-            
             <!-- PILLAR 1 -->
             <div class="pillar-card">
-                <h3>1. Assessment & Governance (POPIA)</h3>
-                <p>Comprehensive data protection structuring, lifecycle management, and statutory regulatory defense.</p>
-                <ul>
-                    <li><strong>A) Health Check:</strong> Rapid preliminary review of data flows and consent mechanisms.</li>
-                    <li><strong>B) Discovery & Audit:</strong> Full-scale diagnostic mapping and gap analysis.</li>
-                    <li><strong>C) Control Framework:</strong> Establishment of operational guardrails and internal policies.</li>
-                    <li><strong>D) Continuous Assurance:</strong> Ongoing monitoring, compliance hygiene, and audit readiness.</li>
+                <div class="pillar-number">Pillar 01</div>
+                <h3>Assessment & Governance (POPIA)</h3>
+                <p>Complete data protection lifecycle management and legal compliance defense.</p>
+                <ul class="pillar-list">
+                    <li><strong>Health Check:</strong> Rapid diagnostic review of data flows and consent channels.</li>
+                    <li><strong>Discovery & Audit:</strong> Full structural mapping and statutory gap analysis.</li>
+                    <li><strong>Control Framework:</strong> Operational guardrails and policy creation.</li>
+                    <li><strong>Continuous Assurance:</strong> Real-time compliance hygiene and audit readiness.</li>
                 </ul>
-                <p><em>Methodology Pipeline: Inventory &rarr; Classify &rarr; Control &rarr; Evidence</em></p>
-
-                <div class="regulatory-box">
-                    <h4>Regulatory Enforcement Precedent (Why Compliance Matters)</h4>
-                    <p>The South African Information Regulator aggressively enforces statutory compliance, levying administrative fines for security failures:</p>
-                    <ul>
-                        <li><strong>First National Bank (FNB):</strong> Fined <strong>R1 million</strong> following a data breach on its home loan platform exposing customer records.</li>
-                        <li><strong>Central Johannesburg TVET College (CJC):</strong> Fined <strong>R500,000</strong> for failing to comply with enforcement notices regarding unlawful personal data processing.</li>
-                    </ul>
-                </div>
+                <div class="pipeline-tag">Inventory → Classify → Control → Evidence</div>
             </div>
 
             <!-- PILLAR 2 -->
             <div class="pillar-card">
-                <h3>2. Governed AI Suite</h3>
-                <p>Enterprise-grade automated agent deployment equipped with built-in oversight, security boundaries, and modular scaling packages.</p>
-                <ul>
-                    <li><strong>The Six Agents Ecosystem:</strong> Specialized autonomous modules engineered for defensive auditing, risk scanning, and compliance tracking.</li>
-                    <li><strong>Starter Package:</strong> Tailored for lean teams launching single-agent oversight.</li>
-                    <li><strong>Growth Package:</strong> Scaled multi-agent deployment for growing enterprises.</li>
-                    <li><strong>Scale Package:</strong> Advanced cross-departmental integration with robust parameter controls.</li>
-                    <li><strong>Connector Package:</strong> Dedicated API tier linking legacy databases with AI agent workflows.</li>
-                    <li><strong>Full House Package:</strong> The complete multi-agent ecosystem delivering full enterprise autonomy, real-time auditing, and executive reporting.</li>
+                <div class="pillar-number">Pillar 02</div>
+                <h3>Governed AI Suite</h3>
+                <p>Enterprise autonomous agent deployment with parameter boundaries and oversight.</p>
+                <ul class="pillar-list">
+                    <li><strong>Six Agents Ecosystem:</strong> Multi-agent auditing, risk scanning, and compliance tracking.</li>
+                    <li><strong>Starter & Growth:</strong> Single-to-multi agent oversight for lean teams.</li>
+                    <li><strong>Scale & Connector:</strong> Cross-departmental integration with API access.</li>
+                    <li><strong>Full House:</strong> Complete autonomous suite with executive reporting.</li>
                 </ul>
+                <div class="pipeline-tag">Starter • Growth • Scale • Connector • Full House</div>
             </div>
 
             <!-- PILLAR 3 -->
             <div class="pillar-card">
-                <h3>3. AI Security & Verification</h3>
-                <p>Rigorous risk mitigation, red-teaming, and end-to-end technical validation for AI systems.</p>
-                <ul>
-                    <li><strong>Tier 1 — Essential (Advisory):</strong> Expert architectural guidance, policy alignment, and risk evaluation.</li>
-                    <li><strong>Tier 2 — Advanced (Guided):</strong> Hands-on implementation support, simulation testing, and verification workshops.</li>
-                    <li><strong>Tier 3 — Complete (Managed):</strong> Fully managed continuous security posture monitoring, vulnerability mitigation, and defense execution.</li>
+                <div class="pillar-number">Pillar 03</div>
+                <h3>AI Security & Verification</h3>
+                <p>Continuous model validation, red-teaming, and technical risk mitigation.</p>
+                <ul class="pillar-list">
+                    <li><strong>Tier 1 — Essential:</strong> Architectural advisory and policy alignment.</li>
+                    <li><strong>Tier 2 — Advanced:</strong> Guided implementation and simulation testing.</li>
+                    <li><strong>Tier 3 — Complete:</strong> Fully managed continuous security monitoring.</li>
                 </ul>
-                
-                <div class="process-flow">
-                    Detect &rarr; Verify &rarr; Fix &rarr; Prove &rarr; Record
-                </div>
+                <div class="pipeline-tag">Detect → Verify → Fix → Prove → Record</div>
             </div>
 
             <!-- PILLAR 4 -->
             <div class="pillar-card">
-                <h3>4. ISO/IEC 42001 (AIMS)</h3>
-                <p>Artificial Intelligence Management System (AIMS) certification readiness and structural alignment.</p>
-                <p><strong>Statement of Applicability (SoA) Core Domains:</strong></p>
-                <ol>
-                    <li><strong>Policy & Governance:</strong> Defining organizational intent, AI ethics, and executive accountability.</li>
-                    <li><strong>Risk & Impact:</strong> Systematic assessment of algorithmic risks and bias mitigation.</li>
-                    <li><strong>Data:</strong> Quality control, provenance tracking, and data minimization.</li>
-                    <li><strong>Security & Resilience:</strong> Robust defense against adversarial attacks and operational downtime.</li>
-                    <li><strong>Transparency & Accountability:</strong> Explainability frameworks and audit trails.</li>
-                    <li><strong>Monitoring & Assurance:</strong> Real-time performance tracking and continuous feedback loops.</li>
-                </ol>
+                <div class="pillar-number">Pillar 04</div>
+                <h3>ISO/IEC 42001 (AIMS)</h3>
+                <p>Comprehensive Artificial Intelligence Management System certification framework.</p>
+                <ul class="pillar-list">
+                    <li><strong>Statement of Applicability (SoA):</strong> Full mapping across 6 core domains.</li>
+                    <li><strong>Policy & Risk:</strong> Organizational ethics, algorithmic impact, and bias control.</li>
+                    <li><strong>Security & Transparency:</strong> Data provenance, model explainability, and audit trails.</li>
+                </ul>
+                <div class="pipeline-tag">ISO/IEC 42001 AIMS Certification Ready</div>
             </div>
 
         </div>
 
+        <!-- REGULATORY WARNING BOX -->
+        <div class="regulatory-card" id="governance">
+            <h3>⚠️ Regulatory Enforcement Precedent</h3>
+            <p>The South African Information Regulator strictly enforces POPIA compliance with heavy administrative fines for organizational non-compliance and data leaks:</p>
+            <div class="enforcement-grid">
+                <div class="enforcement-item">
+                    <strong>First National Bank (FNB) — R1,000,000 Fine</strong>
+                    <span>Penalized following a security vulnerability on its home loan portal that exposed sensitive customer data.</span>
+                </div>
+                <div class="enforcement-item">
+                    <strong>Central Johannesburg TVET College (CJC) — R500,000 Fine</strong>
+                    <span>Issued administrative fine for failing to comply with Information Regulator enforcement notices regarding personal data handling.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- DEPLOYMENT TIERS BREAKDOWN -->
+        <div class="tiers-section" id="agents">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+                <h2>Security & Agent Tiers Breakdown</h2>
+                <p>Flexible engagement models scaled to your operational complexity.</p>
+            </div>
+            <div class="tiers-grid">
+                <div class="tier-box">
+                    <span class="tier-badge">Tier 1: Advisory</span>
+                    <h4>Essential Verification</h4>
+                    <p>Designed for organizations seeking expert guidance on system design, risk identification, and initial policy alignment.</p>
+                </div>
+                <div class="tier-box">
+                    <span class="tier-badge">Tier 2: Guided</span>
+                    <h4>Advanced Assurance</h4>
+                    <p>Hands-on collaborative execution featuring red-teaming simulations, parameter tuning, and guided control setup.</p>
+                </div>
+                <div class="tier-box">
+                    <span class="tier-badge">Tier 3: Managed</span>
+                    <h4>Complete Governance</h4>
+                    <p>End-to-end continuous monitoring, autonomous auditing, live threat detection, and real-time executive dashboarding.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
+    <!-- FOOTER -->
     <footer id="contact">
-        <p>&copy; 2026 Aurion Enterprises (Pty) Ltd. All rights reserved. Built for secure enterprise AI adoption and statutory compliance.</p>
+        <p>&copy; 2026 Aurion Enterprises (Pty) Ltd. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #6b7280;">POPIA Compliant • ISO/IEC 42001 Standardized • AI Security Verified</p>
+        <ul>
+            <li><a href="#pillars">Four Pillars</a></li>
+            <li><a href="#governance">POPIA Defense</a></li>
+            <li><a href="#agents">Packages</a></li>
+        </ul>
     </footer>
 
 </body>

@@ -13,6 +13,23 @@
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
         }
+       /* Add to your <style> section */
+.hero-futuristic-bg {
+    position: relative;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    overflow: hidden;
+}
+
+/* Subtle glowing circuit / grid overlay effect */
+.hero-futuristic-bg::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
         .glass-card {
             background: rgba(22, 27, 34, 0.85);
             backdrop-filter: blur(12px);
@@ -118,6 +135,93 @@
                 </p>
             </div>
 
+            <!-- REPLACE YOUR EXISTING SELF-ASSESSMENT CONTAINER WITH THIS SECTION -->
+<section id="scoping-assessment" class="py-12 bg-slate-900 text-white rounded-xl my-8 p-6 shadow-2xl border border-slate-800">
+    <div class="max-w-3xl mx-mx-auto text-center mb-8">
+        <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800/50">Rapid Audit</span>
+        <h2 class="text-2xl font-bold mt-3">60-Second AI Governance Scoping Check</h2>
+        <p class="text-slate-400 text-sm mt-1">Answer 3 quick questions to evaluate your SMME's AI risk profile and guardrail readiness.</p>
+    </div>
+
+    <form id="scopingForm" class="space-y-6 max-w-2xl mx-auto text-left">
+        <!-- Question 1 -->
+        <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
+            <label class="block text-sm font-medium text-slate-200 mb-3">
+                1. What types of AI tools or autonomous agents are currently used in your business?
+            </label>
+            <div class="space-y-2">
+                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                    <input type="radio" name="q1" value="low" class="accent-cyan-500" required>
+                    <span>Public chatbots only (ChatGPT, Claude, Gemini) for basic drafting</span>
+                </label>
+                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                    <input type="radio" name="q1" value="med" class="accent-cyan-500">
+                    <span>Integrated SaaS tools connected to customer data or internal files</span>
+                </label>
+                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                    <input type="radio" name="q1" value="high" class="accent-cyan-500">
+                    <span>Autonomous AI agents making API calls, processing payments, or emailing clients</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
+            <label class="block text-sm font-medium text-slate-200 mb-3">
+                2. Do you have formal Human-in-the-Loop (HITL) guardrails for sensitive actions?
+            </label>
+            <div class="space-y-2">
+                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                    <input type="radio" name="q2" value="high" class="accent-cyan-500" required>
+                    <span>No formal policy—employees use AI tools ad-hoc</span>
+                </label>
+                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                    <input type="radio" name="q2" value="med" class="accent-cyan-500">
+                    <span>Informal guidelines exist, but no technical enforcement or audit logs</span>
+                </label>
+                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                    <input type="radio" name="q2" value="low" class="accent-cyan-500">
+                    <span>Enforced Human-in-the-Loop controls with mandatory authorization matrices</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
+            <label class="block text-sm font-medium text-slate-200 mb-3">
+                3. How do you handle POPIA compliance and training opt-outs for 3rd-party AI vendors?
+            </label>
+            <div class="space-y-2">
+                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                    <input type="radio" name="q3" value="high" class="accent-cyan-500" required>
+                    <span>We haven't reviewed vendor privacy terms or opt-out settings</span>
+                </label>
+                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                    <input type="radio" name="q3" value="med" class="accent-cyan-500">
+                    <span>We check privacy policies manually but lack zero-data-retention agreements</span>
+                </label>
+                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                    <input type="radio" name="q3" value="low" class="accent-cyan-500">
+                    <span>Full vendor diligence completed with signed enterprise opt-out guarantees</span>
+                </label>
+            </div>
+        </div>
+
+        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition duration-200 shadow-lg">
+            Calculate Governance Readiness Score
+        </button>
+    </form>
+
+    <!-- Assessment Result Box -->
+    <div id="assessmentResult" class="hidden mt-6 p-6 bg-slate-800 rounded-lg border border-cyan-500/30 text-center">
+        <h3 class="text-xl font-bold text-cyan-400" id="resultTitle">Scoping Complete</h3>
+        <p class="text-slate-300 text-sm mt-2" id="resultDescription"></p>
+        <a href="#contact" class="inline-block mt-4 text-xs font-semibold uppercase tracking-wider bg-cyan-500 text-slate-950 px-5 py-2.5 rounded-md hover:bg-cyan-400 transition">
+            Request Custom Assurance Pack
+        </a>
+    </div>
+</section>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Pillar 1 -->
                 <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
@@ -285,6 +389,35 @@
                     </ul>
                 </div>
 
+               // Add or replace inside your existing <script> block:
+document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const q1 = formData.get('q1');
+    const q2 = formData.get('q2');
+    const q3 = formData.get('q3');
+
+    let highRiskCount = [q1, q2, q3].filter(val => val === 'high').length;
+    let resultTitle = '';
+    let resultDesc = '';
+
+    if (highRiskCount >= 2) {
+        resultTitle = "High Exposure Risk Detected";
+        resultDesc = "Your AI deployment lacks essential guardrails and HITL controls. You face immediate shadow AI, POPIA compliance, and liability risks.";
+    } else if (highRiskCount === 1) {
+        resultTitle = "Moderate Governance Gap";
+        resultDesc = "You have basic awareness, but your autonomous workflows require formalized agent passports and vendor verification.";
+    } else {
+        resultTitle = "Low Risk Profile";
+        resultDesc = "Your baseline controls are strong! Standardize your governance with our Aurion ISO/IEC 42001 certification pack.";
+    }
+
+    const resultDiv = document.getElementById('assessmentResult');
+    document.getElementById('resultTitle').textContent = resultTitle;
+    document.getElementById('resultDescription').textContent = resultDesc;
+    resultDiv.classList.remove('hidden');
+    resultDiv.scrollIntoView({ behavior: 'smooth' });
+}); 
                 <div id="doc-testing" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
                     <h3 class="text-base font-bold text-white">Continuous Red-Teaming & Compliance Testing (Pillar 4 Specification)</h3>
                     <p>Ongoing verification procedures maintaining long-term system integrity:</p>

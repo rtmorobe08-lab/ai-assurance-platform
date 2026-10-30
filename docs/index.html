@@ -13,40 +13,30 @@
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
         }
-       /* Add to your <style> section */
-.hero-futuristic-bg {
-    position: relative;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%),
-                url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    overflow: hidden;
-}
-
-/* Subtle glowing circuit / grid overlay effect */
-.hero-futuristic-bg::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
-    pointer-events: none;
-}
+        /* Futuristic AI Robot Theme & Glowing Overlay */
+        .hero-futuristic-bg {
+            position: relative;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            overflow: hidden;
+        }
+        .hero-futuristic-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
         .glass-card {
             background: rgba(22, 27, 34, 0.85);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .sub-doc-panel {
-            display: none;
-        }
-        .sub-doc-panel.active {
-            display: block;
-        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .sub-doc-panel { display: none; }
+        .sub-doc-panel.active { display: block; }
     </style>
 </head>
 <body class="selection:bg-amber-500 selection:text-black">
@@ -70,39 +60,32 @@
                 <button onclick="switchTab('pricing')" id="btn-pricing" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Packages & Special</button>
                 <button onclick="switchTab('assessment')" id="btn-assessment" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">60-Sec Assessment</button>
             </nav>
-
             <div>
-                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm transition-all shadow-lg shadow-amber-500/25">
-                    Get Assessed
-                </button>
+                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm transition-all shadow-lg shadow-amber-500/25">Get Assessed</button>
             </div>
         </div>
     </header>
 
     <!-- Main Dynamic Content Area -->
     <main class="max-w-7xl mx-auto px-6 py-12">
-
+        
         <!-- TAB 0: ORIGINAL LANDING / HOME -->
         <div id="tab-home" class="tab-content active space-y-16">
-            <!-- Hero Section -->
-            <section class="max-w-5xl mx-auto pt-12 pb-8 text-center">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-6">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+            <!-- Hero Section with Futuristic AI Robot Background -->
+            <section class="max-w-5xl mx-auto pt-12 pb-16 px-8 rounded-3xl hero-futuristic-bg text-center border border-slate-800 shadow-2xl">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold mb-6">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
                     <span>POPIA & ISO/IEC 42001 Compliance Frameworks for Growing Enterprises</span>
                 </div>
                 <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-                    Pragmatic AI Governance & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Autonomous Guardrails</span>
+                    Pragmatic AI Governance & <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-amber-300">Autonomous Guardrails</span>
                 </h1>
                 <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
                     Deploy secure agentic systems with built-in audit trails, data privacy compliance, and third-party supply chain verification matrices tailored for South African SMMEs.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button onclick="switchTab('assessment')" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-xl shadow-amber-500/10 text-center">
-                        Take 60-Second Assessment
-                    </button>
-                    <button onclick="switchTab('pillars')" class="w-full sm:w-auto glass-card hover:bg-slate-800/80 text-white font-semibold px-8 py-3.5 rounded-xl transition-all text-center border border-white/10">
-                        Explore Four Pillars
-                    </button>
+                    <button onclick="switchTab('assessment')" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-xl shadow-amber-500/10 text-center">Take 60-Second Assessment</button>
+                    <button onclick="switchTab('pillars')" class="w-full sm:w-auto glass-card hover:bg-slate-800/80 text-white font-semibold px-8 py-3.5 rounded-xl transition-all text-center border border-white/10">Explore Four Pillars</button>
                 </div>
             </section>
 
@@ -123,7 +106,7 @@
             </div>
         </div>
 
-        <!-- TAB 1: FOUR PILLARS (Updated Service Categories) -->
+        <!-- TAB 1: FOUR PILLARS -->
         <div id="tab-pillars" class="tab-content space-y-12">
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
@@ -135,93 +118,94 @@
                 </p>
             </div>
 
-            <!-- REPLACE YOUR EXISTING SELF-ASSESSMENT CONTAINER WITH THIS SECTION -->
-<section id="scoping-assessment" class="py-12 bg-slate-900 text-white rounded-xl my-8 p-6 shadow-2xl border border-slate-800">
-    <div class="max-w-3xl mx-mx-auto text-center mb-8">
-        <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800/50">Rapid Audit</span>
-        <h2 class="text-2xl font-bold mt-3">60-Second AI Governance Scoping Check</h2>
-        <p class="text-slate-400 text-sm mt-1">Answer 3 quick questions to evaluate your SMME's AI risk profile and guardrail readiness.</p>
-    </div>
+            <!-- 60-Second 3-Question Scoping Check -->
+            <section id="scoping-assessment" class="py-12 bg-slate-900 text-white rounded-xl my-8 p-6 shadow-2xl border border-slate-800">
+                <div class="max-w-3xl mx-auto text-center mb-8">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800/50">Rapid Audit</span>
+                    <h2 class="text-2xl font-bold mt-3">60-Second AI Governance Scoping Check</h2>
+                    <p class="text-slate-400 text-sm mt-1">Answer 3 quick questions to evaluate your SMME's AI risk profile and guardrail readiness.</p>
+                </div>
+                
+                <form id="scopingForm" class="space-y-6 max-w-2xl mx-auto text-left">
+                    <!-- Question 1 -->
+                    <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
+                        <label class="block text-sm font-medium text-slate-200 mb-3">
+                            1. What types of AI tools or autonomous agents are currently used in your business?
+                        </label>
+                        <div class="space-y-2">
+                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                                <input type="radio" name="q1" value="low" class="accent-cyan-500" required>
+                                <span>Public chatbots only (ChatGPT, Claude, Gemini) for basic drafting</span>
+                            </label>
+                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                                <input type="radio" name="q1" value="med" class="accent-cyan-500">
+                                <span>Integrated SaaS tools connected to customer data or internal files</span>
+                            </label>
+                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                                <input type="radio" name="q1" value="high" class="accent-cyan-500">
+                                <span>Autonomous AI agents making API calls, processing payments, or emailing clients</span>
+                            </label>
+                        </div>
+                    </div>
 
-    <form id="scopingForm" class="space-y-6 max-w-2xl mx-auto text-left">
-        <!-- Question 1 -->
-        <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
-            <label class="block text-sm font-medium text-slate-200 mb-3">
-                1. What types of AI tools or autonomous agents are currently used in your business?
-            </label>
-            <div class="space-y-2">
-                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                    <input type="radio" name="q1" value="low" class="accent-cyan-500" required>
-                    <span>Public chatbots only (ChatGPT, Claude, Gemini) for basic drafting</span>
-                </label>
-                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                    <input type="radio" name="q1" value="med" class="accent-cyan-500">
-                    <span>Integrated SaaS tools connected to customer data or internal files</span>
-                </label>
-                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                    <input type="radio" name="q1" value="high" class="accent-cyan-500">
-                    <span>Autonomous AI agents making API calls, processing payments, or emailing clients</span>
-                </label>
-            </div>
-        </div>
+                    <!-- Question 2 -->
+                    <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
+                        <label class="block text-sm font-medium text-slate-200 mb-3">
+                            2. Do you have formal Human-in-the-Loop (HITL) guardrails for sensitive actions?
+                        </label>
+                        <div class="space-y-2">
+                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                                <input type="radio" name="q2" value="high" class="accent-cyan-500" required>
+                                <span>No formal policy—employees use AI tools ad-hoc</span>
+                            </label>
+                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                                <input type="radio" name="q2" value="med" class="accent-cyan-500">
+                                <span>Informal guidelines exist, but no technical enforcement or audit logs</span>
+                            </label>
+                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                                <input type="radio" name="q2" value="low" class="accent-cyan-500">
+                                <span>Enforced Human-in-the-Loop controls with mandatory authorization matrices</span>
+                            </label>
+                        </div>
+                    </div>
 
-        <!-- Question 2 -->
-        <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
-            <label class="block text-sm font-medium text-slate-200 mb-3">
-                2. Do you have formal Human-in-the-Loop (HITL) guardrails for sensitive actions?
-            </label>
-            <div class="space-y-2">
-                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                    <input type="radio" name="q2" value="high" class="accent-cyan-500" required>
-                    <span>No formal policy—employees use AI tools ad-hoc</span>
-                </label>
-                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                    <input type="radio" name="q2" value="med" class="accent-cyan-500">
-                    <span>Informal guidelines exist, but no technical enforcement or audit logs</span>
-                </label>
-                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                    <input type="radio" name="q2" value="low" class="accent-cyan-500">
-                    <span>Enforced Human-in-the-Loop controls with mandatory authorization matrices</span>
-                </label>
-            </div>
-        </div>
+                    <!-- Question 3 -->
+                    <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
+                        <label class="block text-sm font-medium text-slate-200 mb-3">
+                            3. How do you handle POPIA compliance and training opt-outs for 3rd-party AI vendors?
+                        </label>
+                        <div class="space-y-2">
+                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                                <input type="radio" name="q3" value="high" class="accent-cyan-500" required>
+                                <span>We haven't reviewed vendor privacy terms or opt-out settings</span>
+                            </label>
+                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                                <input type="radio" name="q3" value="med" class="accent-cyan-500">
+                                <span>We check privacy policies manually but lack zero-data-retention agreements</span>
+                            </label>
+                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
+                                <input type="radio" name="q3" value="low" class="accent-cyan-500">
+                                <span>Full vendor diligence completed with signed enterprise opt-out guarantees</span>
+                            </label>
+                        </div>
+                    </div>
 
-        <!-- Question 3 -->
-        <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
-            <label class="block text-sm font-medium text-slate-200 mb-3">
-                3. How do you handle POPIA compliance and training opt-outs for 3rd-party AI vendors?
-            </label>
-            <div class="space-y-2">
-                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                    <input type="radio" name="q3" value="high" class="accent-cyan-500" required>
-                    <span>We haven't reviewed vendor privacy terms or opt-out settings</span>
-                </label>
-                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                    <input type="radio" name="q3" value="med" class="accent-cyan-500">
-                    <span>We check privacy policies manually but lack zero-data-retention agreements</span>
-                </label>
-                <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                    <input type="radio" name="q3" value="low" class="accent-cyan-500">
-                    <span>Full vendor diligence completed with signed enterprise opt-out guarantees</span>
-                </label>
-            </div>
-        </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition duration-200 shadow-lg">
+                        Calculate Governance Readiness Score
+                    </button>
+                </form>
 
-        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition duration-200 shadow-lg">
-            Calculate Governance Readiness Score
-        </button>
-    </form>
+                <!-- Assessment Result Box -->
+                <div id="assessmentResult" class="hidden mt-6 p-6 bg-slate-800 rounded-lg border border-cyan-500/30 text-center">
+                    <h3 class="text-xl font-bold text-cyan-400" id="resultTitle">Scoping Complete</h3>
+                    <p class="text-slate-300 text-sm mt-2" id="resultDescription"></p>
+                    <a href="#contact" class="inline-block mt-4 text-xs font-semibold uppercase tracking-wider bg-cyan-500 text-slate-950 px-5 py-2.5 rounded-md hover:bg-cyan-400 transition">
+                        Request Custom Assurance Pack
+                    </a>
+                </div>
+            </section>
 
-    <!-- Assessment Result Box -->
-    <div id="assessmentResult" class="hidden mt-6 p-6 bg-slate-800 rounded-lg border border-cyan-500/30 text-center">
-        <h3 class="text-xl font-bold text-cyan-400" id="resultTitle">Scoping Complete</h3>
-        <p class="text-slate-300 text-sm mt-2" id="resultDescription"></p>
-        <a href="#contact" class="inline-block mt-4 text-xs font-semibold uppercase tracking-wider bg-cyan-500 text-slate-950 px-5 py-2.5 rounded-md hover:bg-cyan-400 transition">
-            Request Custom Assurance Pack
-        </a>
-    </div>
-</section>
-            
+            <!-- Four Pillars Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Pillar 1 -->
                 <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
@@ -293,7 +277,7 @@
             </div>
         </div>
 
-        <!-- TAB 2: EXPERT HUB (With Information Regulator Judgments & Four Tabs Below) -->
+        <!-- TAB 2: EXPERT HUB -->
         <div id="tab-insights" class="tab-content space-y-12">
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
@@ -314,7 +298,6 @@
                     <h3 class="text-base font-bold text-white mb-2">POPIA & Automated Decision-Making</h3>
                     <p class="text-slate-400 text-xs leading-relaxed">Vodacom Tech Talk examining how current statutory data protection laws regulate automated profiling and contextual AI outputs.</p>
                 </div>
-
                 <div class="glass-card p-5 rounded-2xl border border-white/10">
                     <div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900">
                         <iframe class="w-full h-full" src="https://www.youtube.com/embed/yxE3bCP3aTg" title="ISO 42001 Standard Walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -324,7 +307,7 @@
                 </div>
             </div>
 
-            <!-- Information Regulator Judgments & Penalties Briefing Card -->
+            <!-- Regulatory Alert Card -->
             <div class="glass-card rounded-2xl p-6 sm:p-8 border border-red-500/30 bg-gradient-to-r from-red-950/20 via-slate-900 to-slate-900">
                 <div class="flex items-center space-x-3 mb-3">
                     <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
@@ -349,7 +332,7 @@
                 </div>
             </div>
 
-            <!-- On-Site Document Selector Tabs (Kept Below) -->
+            <!-- Document Selector Tabs -->
             <div class="glass-card rounded-2xl p-8 border border-white/10 space-y-6">
                 <div class="flex flex-wrap gap-3 border-b border-white/10 pb-4">
                     <button onclick="loadDoc('doc-discovery')" id="tab-doc-discovery" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950">1. Discovery Checklist</button>
@@ -357,8 +340,7 @@
                     <button onclick="loadDoc('doc-vendor')" id="tab-doc-vendor" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">3. Vendor Diligence</button>
                     <button onclick="loadDoc('doc-testing')" id="tab-doc-testing" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">4. Testing Protocol</button>
                 </div>
-
-                <!-- Document Panels -->
+                
                 <div id="doc-discovery" class="sub-doc-panel active space-y-4 text-xs text-slate-300 leading-relaxed">
                     <h3 class="text-base font-bold text-white">AI Inventory & Data Discovery Audit (Pillar 1 Specification)</h3>
                     <p>This operational checklist governs the identification and cataloging of all artificial intelligence systems deployed across SMME environments:</p>
@@ -368,7 +350,6 @@
                         <li><strong>Exposure Scoring:</strong> Assign risk weighting based on confidentiality level and statutory jurisdiction (POPIA compliance boundaries).</li>
                     </ul>
                 </div>
-
                 <div id="doc-hitl" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
                     <h3 class="text-base font-bold text-white">Human-in-the-Loop Controls & Policy (Pillar 2 Specification)</h3>
                     <p>Mandatory decision checkpoints preventing autonomous agent execution errors in critical operations:</p>
@@ -378,7 +359,6 @@
                         <li><strong>Access Governance:</strong> RBAC enforcement restricting autonomous write-access to primary database repositories.</li>
                     </ul>
                 </div>
-
                 <div id="doc-vendor" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
                     <h3 class="text-base font-bold text-white">Third-Party Vendor Diligence & SaaS Vetting (Pillar 3 Specification)</h3>
                     <p>Standardized evaluation criteria for external AI model vendors and cloud hosting sub-processors:</p>
@@ -388,36 +368,6 @@
                         <li><strong>SLA Verification:</strong> Minimum uptime and security patch response times mandated for third-party partners.</li>
                     </ul>
                 </div>
-
-               // Add or replace inside your existing <script> block:
-document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const q1 = formData.get('q1');
-    const q2 = formData.get('q2');
-    const q3 = formData.get('q3');
-
-    let highRiskCount = [q1, q2, q3].filter(val => val === 'high').length;
-    let resultTitle = '';
-    let resultDesc = '';
-
-    if (highRiskCount >= 2) {
-        resultTitle = "High Exposure Risk Detected";
-        resultDesc = "Your AI deployment lacks essential guardrails and HITL controls. You face immediate shadow AI, POPIA compliance, and liability risks.";
-    } else if (highRiskCount === 1) {
-        resultTitle = "Moderate Governance Gap";
-        resultDesc = "You have basic awareness, but your autonomous workflows require formalized agent passports and vendor verification.";
-    } else {
-        resultTitle = "Low Risk Profile";
-        resultDesc = "Your baseline controls are strong! Standardize your governance with our Aurion ISO/IEC 42001 certification pack.";
-    }
-
-    const resultDiv = document.getElementById('assessmentResult');
-    document.getElementById('resultTitle').textContent = resultTitle;
-    document.getElementById('resultDescription').textContent = resultDesc;
-    resultDiv.classList.remove('hidden');
-    resultDiv.scrollIntoView({ behavior: 'smooth' });
-}); 
                 <div id="doc-testing" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
                     <h3 class="text-base font-bold text-white">Continuous Red-Teaming & Compliance Testing (Pillar 4 Specification)</h3>
                     <p>Ongoing verification procedures maintaining long-term system integrity:</p>
@@ -430,7 +380,7 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
             </div>
         </div>
 
-        <!-- TAB 3: PACKAGES, PRICING & SPECIAL OFFER -->
+        <!-- TAB 3: PACKAGES & PRICING -->
         <div id="tab-pricing" class="tab-content space-y-12">
             <div class="text-center max-w-3xl mx-auto">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
@@ -451,14 +401,11 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                         Receive <strong class="text-amber-400">50% off implementation fees</strong> plus a complimentary customized POPIA & ISO 42001 policy pack for your entity.
                     </p>
                 </div>
-                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs whitespace-nowrap transition-all shadow-lg">
-                    Claim Special Offer →
-                </button>
+                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs whitespace-nowrap transition-all shadow-lg">Claim Special Offer →</button>
             </div>
 
             <!-- Pricing Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Tier 1 -->
                 <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
                     <div>
                         <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Starter SMME</span>
@@ -474,16 +421,11 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                             <li>✓ Digital Assessment Certificate</li>
                         </ul>
                     </div>
-                    <button onclick="switchTab('assessment')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs transition-colors border border-white/10">
-                        Select Starter
-                    </button>
+                    <button onclick="switchTab('assessment')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs transition-colors border border-white/10">Select Starter</button>
                 </div>
 
-                <!-- Tier 2 (Featured) -->
                 <div class="glass-card p-8 rounded-2xl border-2 border-amber-500/80 flex flex-col justify-between relative shadow-2xl">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-500 text-slate-950 font-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">
-                        Most Popular
-                    </div>
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-500 text-slate-950 font-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</div>
                     <div>
                         <span class="text-xs uppercase tracking-wider text-amber-400 font-bold">Growth Supply Chain</span>
                         <h3 class="text-2xl font-extrabold text-white mt-1">Full 4-Pillar Suite</h3>
@@ -499,12 +441,9 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                             <li>✓ <strong class="text-amber-400">Includes 50% Founders Discount</strong></li>
                         </ul>
                     </div>
-                    <button onclick="switchTab('assessment')" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 rounded-xl text-xs transition-colors shadow-md">
-                        Claim Growth Tier
-                    </button>
+                    <button onclick="switchTab('assessment')" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 rounded-xl text-xs transition-colors shadow-md">Claim Growth Tier</button>
                 </div>
 
-                <!-- Tier 3 -->
                 <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
                     <div>
                         <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Enterprise Advisory</span>
@@ -520,9 +459,7 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                             <li>✓ SLA-backed Priority Support</li>
                         </ul>
                     </div>
-                    <button onclick="switchTab('assessment')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs transition-colors border border-white/10">
-                        Inquire Custom
-                    </button>
+                    <button onclick="switchTab('assessment')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs transition-colors border border-white/10">Inquire Custom</button>
                 </div>
             </div>
         </div>
@@ -538,7 +475,6 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                     </div>
                 </div>
 
-                <!-- Visitor Contact & Context Capture Form -->
                 <div id="intake-form-container" class="space-y-4">
                     <h4 class="text-sm font-bold text-white">Step 1 of 2: Enterprise Representative Details</h4>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -560,12 +496,9 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                             <option value="Pillar 4: Continuous Red-Teaming & Testing">Pillar 4: Continuous Red-Teaming & Testing</option>
                         </select>
                     </div>
-                    <button onclick="runAssessment()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm py-3.5 rounded-xl transition-all shadow-lg">
-                        Generate Instant 60-Second Assessment →
-                    </button>
+                    <button onclick="runAssessment()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm py-3.5 rounded-xl transition-all shadow-lg">Generate Instant 60-Second Assessment →</button>
                 </div>
 
-                <!-- Assessment Results & Copilot Interactive Chat (Initially Hidden) -->
                 <div id="assessment-results-area" class="hidden space-y-6">
                     <div class="bg-slate-900/90 p-5 rounded-2xl border border-amber-500/30">
                         <div class="flex items-center justify-between mb-3 pb-3 border-b border-white/10">
@@ -582,7 +515,6 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                         </div>
                     </div>
 
-                    <!-- Interactive Follow-up Chat with Copilot -->
                     <div class="space-y-3">
                         <h5 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Ask Follow-up Questions to Copilot:</h5>
                         <div id="chat-stream" class="space-y-3 max-h-48 overflow-y-auto pr-2 text-xs">
@@ -601,25 +533,19 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
 
     </main>
 
-    <!-- Footer & Institutional Membership Place-Card -->
+    <!-- Footer -->
     <footer class="border-t border-white/10 py-16 bg-slate-950/60 mt-20">
         <div class="max-w-7xl mx-auto px-6">
-            <!-- Place-Card: Memberships & Contact Info -->
             <div class="glass-card rounded-2xl p-8 mb-12 border border-amber-500/20 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Col 1: Institutional Memberships -->
                 <div>
                     <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Institutional Memberships</h4>
-                    <p class="text-xs text-slate-300 mb-3 leading-relaxed">
-                        Aurion Enterprises actively adheres to global governance and corporate excellence standards through recognized international affiliations:
-                    </p>
+                    <p class="text-xs text-slate-300 mb-3 leading-relaxed">Aurion Enterprises actively adheres to global governance and corporate excellence standards through recognized international affiliations:</p>
                     <div class="flex flex-wrap gap-2">
                         <span class="bg-slate-900 border border-white/10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white">IIRC Network</span>
                         <span class="bg-slate-900 border border-white/10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white">ICOR Resilience</span>
                         <span class="bg-slate-900 border border-white/10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white">EFQM Excellence</span>
                     </div>
                 </div>
-
-                <!-- Col 2: Core Focus -->
                 <div>
                     <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Operating Divisions</h4>
                     <ul class="text-xs text-slate-300 space-y-2">
@@ -628,8 +554,6 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                         <li>• <strong class="text-white">GitHub Pages Suite:</strong> Public Open-Source Agentic Frameworks</li>
                     </ul>
                 </div>
-
-                <!-- Col 3: Contact Details -->
                 <div>
                     <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Contact & Headquarters</h4>
                     <div class="text-xs text-slate-300 space-y-2">
@@ -640,7 +564,6 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                     </div>
                 </div>
             </div>
-
             <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
                 <p>&copy; 2026 Aurion Enterprises (Pty) Ltd. All rights reserved.</p>
                 <div class="flex space-x-6">
@@ -653,47 +576,36 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
         </div>
     </footer>
 
-    <!-- Script for Tab Switching & Sub-Document Navigation -->
+    <!-- JavaScript Controllers -->
     <script>
         function switchTab(tabId) {
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
-
             const buttons = document.querySelectorAll('.nav-btn');
             buttons.forEach(btn => {
-                btn.classList.remove('text-amber-400', 'bg-amber-500/10', 'border', 'border-amber-500/35');
+                btn.classList.remove('text-amber-400', 'bg-amber-500/10', 'border', 'border-amber-500/30');
                 btn.classList.add('text-slate-300');
             });
-
             const targetTab = document.getElementById('tab-' + tabId);
-            if(targetTab) {
-                targetTab.classList.add('active');
-            }
-
+            if(targetTab) { targetTab.classList.add('active'); }
             const targetBtn = document.getElementById('btn-' + tabId);
             if(targetBtn) {
                 targetBtn.classList.remove('text-slate-300');
                 targetBtn.classList.add('text-amber-400', 'bg-amber-500/10', 'border', 'border-amber-500/30');
             }
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function loadDoc(docId) {
             const panels = document.querySelectorAll('.sub-doc-panel');
             panels.forEach(p => p.classList.remove('active'));
-
             const docBtns = document.querySelectorAll('.doc-btn');
             docBtns.forEach(b => {
                 b.classList.remove('bg-amber-500', 'text-slate-950');
                 b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-white/10');
             });
-
             const targetPanel = document.getElementById(docId);
-            if(targetPanel) {
-                targetPanel.classList.add('active');
-            }
-
+            if(targetPanel) { targetPanel.classList.add('active'); }
             const targetBtn = document.getElementById('tab-' + docId);
             if(targetBtn) {
                 targetBtn.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-white/10');
@@ -702,6 +614,36 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
         }
 
         let clientProfile = {};
+
+        // 60-Second 3-Question Scoping Handler
+        document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const q1 = formData.get('q1');
+            const q2 = formData.get('q2');
+            const q3 = formData.get('q3');
+
+            let highRiskCount = [q1, q2, q3].filter(val => val === 'high').length;
+            let resultTitle = '';
+            let resultDesc = '';
+
+            if (highRiskCount >= 2) {
+                resultTitle = "High Exposure Risk Detected";
+                resultDesc = "Your AI deployment lacks essential guardrails and HITL controls. You face immediate shadow AI, POPIA compliance, and liability risks.";
+            } else if (highRiskCount === 1) {
+                resultTitle = "Moderate Governance Gap";
+                resultDesc = "You have basic awareness, but your autonomous workflows require formalized agent passports and vendor verification.";
+            } else {
+                resultTitle = "Low Risk Profile";
+                resultDesc = "Your baseline controls are strong! Standardize your governance with our Aurion ISO/IEC 42001 certification pack.";
+            }
+
+            const resultDiv = document.getElementById('assessmentResult');
+            document.getElementById('resultTitle').textContent = resultTitle;
+            document.getElementById('resultDescription').textContent = resultDesc;
+            resultDiv.classList.remove('hidden');
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        });
 
         function runAssessment() {
             const name = document.getElementById('visitor-name').value.trim();
@@ -715,12 +657,9 @@ document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
                 alert('Please complete all mandatory contact and organizational fields (Name, Org, Email, Phone) to generate your assessment report.');
                 return;
             }
-
             clientProfile = { name, org, email, phone, role, focus };
-
             document.getElementById('intake-form-container').classList.add('hidden');
             document.getElementById('assessment-results-area').classList.remove('hidden');
-
             document.getElementById('report-timestamp').textContent = new Date().toLocaleDateString();
             document.getElementById('report-profile-title').textContent = `Audit Profile: ${org} (${name} - ${role || 'Representative'})`;
             document.getElementById('report-summary').innerHTML = `Contact locked for <strong>${email}</strong> / <strong>${phone}</strong>. Initializing compliance parameters for <em>${focus}</em>. Your entity is provisioned for ISO/IEC 42001 and POPIA readiness review under the Founders Special Offer.`;

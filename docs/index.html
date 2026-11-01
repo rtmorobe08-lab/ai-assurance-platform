@@ -1,532 +1,638 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurion Enterprises | SMME AI Assurance & Governance Platform</title>
+    <title>Aurion Platform | AI Assurance, Governance & Agentic Defense</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            background: linear-gradient(180deg, #1e2530 0%, #0d1117 100%);
-            color: #f0f6fc;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
         }
-        /* Futuristic AI Robot Theme & Glowing Overlay */
-        .hero-futuristic-bg {
-            position: relative;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%),
-                        url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            overflow: hidden;
-        }
-        .hero-futuristic-bg::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        .glass-card {
-            background: rgba(22, 27, 34, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .sub-doc-panel { display: none; }
-        .sub-doc-panel.active { display: block; }
-    </style>
+    </script>
+    <!-- Google Fonts: Instrument Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="selection:bg-amber-500 selection:text-black">
+<body class="bg-slate-950 text-slate-300 font-sans antialiased selection:bg-amber-500/20 selection:text-amber-300">
 
-    <!-- Sticky Header & Tab Navigation -->
-    <header class="sticky top-0 z-50 glass-card border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
-                <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center font-bold text-amber-400 text-lg shadow-lg shadow-amber-500/10">A</div>
+    <!-- Sticky Navigation Header -->
+    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo / Title -->
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-serif font-bold text-xl">A</div>
                 <div>
-                    <span class="font-extrabold tracking-wider text-white text-lg block leading-none">AURION</span>
-                    <span class="text-[10px] tracking-widest text-amber-400 font-semibold uppercase">Enterprises</span>
+                    <span class="text-white font-serif text-xl tracking-wide block leading-tight">Aurion</span>
+                    <span class="text-xs text-amber-400 font-medium uppercase tracking-widest block">AI Assurance & Defense</span>
                 </div>
             </div>
-            
-            <!-- Interactive Tab Navigational Controls -->
-            <nav class="hidden md:flex items-center space-x-2 text-sm font-medium">
-                <button onclick="switchTab('home')" id="btn-home" class="nav-btn px-4 py-2 rounded-lg transition-colors text-amber-400 bg-amber-500/10 border border-amber-500/30">Home</button>
-                <button onclick="switchTab('pillars')" id="btn-pillars" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Four Pillars</button>
-                <button onclick="switchTab('insights')" id="btn-insights" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Expert Hub & Docs</button>
-                <button onclick="switchTab('pricing')" id="btn-pricing" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">Packages & Special</button>
-                <button onclick="switchTab('assessment')" id="btn-assessment" class="nav-btn px-4 py-2 rounded-lg transition-colors text-slate-300 hover:text-white hover:bg-slate-800">60-Sec Assessment</button>
+
+            <!-- Desktop Nav Tabs & Links -->
+            <nav class="hidden lg:flex items-center space-x-1">
+                <button onclick="switchTab('home')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-white bg-slate-800/80 transition-colors" data-target="home">Home</button>
+                <button onclick="switchTab('what-we-offer')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" data-target="what-we-offer">What We Offer</button>
+                <button onclick="switchTab('how-we-work')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" data-target="how-we-work">How We Work</button>
+                <button onclick="switchTab('expert-hub')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" data-target="expert-hub">Expert Hub & Docs</button>
+                <button onclick="switchTab('assessment')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" data-target="assessment">60-Sec Assessment</button>
             </nav>
-            <div>
-                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-2.5 rounded-lg text-sm transition-all shadow-lg shadow-amber-500/25">Get Assessed</button>
+
+            <!-- External Page Links -->
+            <div class="hidden md:flex items-center space-x-2">
+                <a href="instruments/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800 transition-colors">Client Instruments</a>
+                <a href="suite.html" class="px-4 py-2 rounded-lg text-sm font-medium text-amber-400 hover:bg-amber-500/10 border border-amber-500/30 transition-colors">Agent Suite</a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="flex items-center lg:hidden">
+                <button id="mobile-menu-button" onclick="toggleMobileMenu()" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 bg-slate-900 px-4 pt-3 pb-4 space-y-2">
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white bg-slate-800">Home</button>
+            <button onclick="switchTab('what-we-offer'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">What We Offer</button>
+            <button onclick="switchTab('how-we-work'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">How We Work</button>
+            <button onclick="switchTab('expert-hub'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Expert Hub & Docs</button>
+            <button onclick="switchTab('assessment'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">60-Sec Assessment</button>
+            <div class="pt-2 border-t border-slate-800 flex flex-col space-y-2">
+                <a href="instruments/index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800">Client Instruments</a>
+                <a href="suite.html" class="px-3 py-2 rounded-md text-sm font-medium text-amber-400 hover:bg-slate-800">Agent Suite</a>
             </div>
         </div>
     </header>
 
-    <!-- Main Dynamic Content Area -->
-    <main class="max-w-7xl mx-auto px-6 py-12">
-        
-        <!-- TAB 0: ORIGINAL LANDING / HOME -->
-        <div id="tab-home" class="tab-content active space-y-16">
-            <!-- Hero Section with Futuristic AI Robot Background -->
-            <section class="max-w-5xl mx-auto pt-12 pb-16 px-8 rounded-3xl hero-futuristic-bg text-center border border-slate-800 shadow-2xl">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold mb-6">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                    <span>POPIA & ISO/IEC 42001 Compliance Frameworks for Growing Enterprises</span>
-                </div>
-                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-                    Pragmatic AI Governance & <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-amber-300">Autonomous Guardrails</span>
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- ================= TAB 1: HOME ================= -->
+        <div id="tab-home" class="tab-content space-y-16">
+            <!-- Hero Section -->
+            <section class="text-center max-w-4xl mx-auto pt-8 pb-4">
+                <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-none mb-6">
+                    Who is guarding your <span class="text-amber-400 italic">AI?</span>
                 </h1>
-                <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-                    Deploy secure agentic systems with built-in audit trails, data privacy compliance, and third-party supply chain verification matrices tailored for South African SMMEs.
+                <p class="text-lg sm:text-xl text-slate-300 font-light mb-8 max-w-2xl mx-auto">
+                    Governed AI, proven controls, and evidence your bank, board or funder will accept.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button onclick="switchTab('assessment')" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl transition-all shadow-xl shadow-amber-500/10 text-center">Take 60-Second Assessment</button>
-                    <button onclick="switchTab('pillars')" class="w-full sm:w-auto glass-card hover:bg-slate-800/80 text-white font-semibold px-8 py-3.5 rounded-xl transition-all text-center border border-white/10">Explore Four Pillars</button>
+                    <button onclick="switchTab('assessment')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold transition-all shadow-lg shadow-amber-500/10">
+                        Take the 60-second check
+                    </button>
+                    <button onclick="switchTab('what-we-offer')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-medium border border-slate-800 transition-all">
+                        What we offer
+                    </button>
+                </div>
+
+                <!-- Credibility Strip -->
+                <div class="mt-10 pt-6 border-t border-slate-900 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm text-slate-400 tracking-wider">
+                    <span>Reg. 2026/466313/07</span>
+                    <span class="text-amber-500">·</span>
+                    <span>B-BBEE Level 1 (EME)</span>
+                    <span class="text-amber-500">·</span>
+                    <span>CSD MAAA1730875</span>
+                    <span class="text-amber-500">·</span>
+                    <span>POPIA-aligned</span>
                 </div>
             </section>
 
-            <!-- Quick Overview Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-white/5">
-                <div class="glass-card p-6 rounded-2xl border border-white/10">
-                    <div class="text-amber-400 font-bold text-lg mb-2">01. Regulatory Assurance</div>
-                    <p class="text-slate-300 text-xs leading-relaxed">Rigorous alignment with South Africa's POPIA data protection statutes and international ISO/IEC 42001 AI standards.</p>
+            <!-- Four-Panel Proof Row -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <div class="text-amber-400 font-serif text-4xl mb-2">R10m</div>
+                    <div class="text-white font-medium text-sm mb-1">POPIA Ceiling Protected</div>
+                    <p class="text-xs text-slate-400">Strict statutory alignment against Section 109 penalties and unauthorized processing.</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl border border-white/10">
-                    <div class="text-amber-400 font-bold text-lg mb-2">02. Supply Chain Ready</div>
-                    <p class="text-slate-300 text-xs leading-relaxed">Equipping township and regional SMMEs with verified compliance credentials to qualify for major corporate tenders.</p>
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <div class="text-amber-400 font-serif text-4xl mb-2">24h</div>
+                    <div class="text-white font-medium text-sm mb-1">Incident Clock</div>
+                    <p class="text-xs text-slate-400">Guaranteed acknowledgment and containment window for active shadow AI breaches.</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl border border-white/10">
-                    <div class="text-amber-400 font-bold text-lg mb-2">03. Automated Copilot</div>
-                    <p class="text-slate-300 text-xs leading-relaxed">Interactive risk assessment engine generating instant diagnostic readouts and custom policy packs.</p>
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <div class="text-amber-400 font-serif text-4xl mb-2">&lt;3s</div>
+                    <div class="text-white font-medium text-sm mb-1">Agent Kill Switch</div>
+                    <p class="text-xs text-slate-400">Instant manual and automated revocation of autonomous model access token permissions.</p>
                 </div>
-            </div>
-        </div>
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                    <div class="text-amber-400 font-serif text-4xl mb-2">10</div>
+                    <div class="text-white font-medium text-sm mb-1">Live Client Instruments</div>
+                    <p class="text-xs text-slate-400">Fully local client-side calculators, registers, and compliance toolkits.</p>
+                </div>
+            </section>
 
-        <!-- TAB 1: FOUR PILLARS -->
-        <div id="tab-pillars" class="tab-content space-y-12">
-            <div class="text-center max-w-3xl mx-auto">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
-                    <span>Operational Blueprint</span>
-                </div>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">The Four Pillars of Aurion Assurance</h1>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Designed specifically for SMMEs supplying large enterprise buyers who require rigorous proof of risk mitigation, privacy adherence, and controlled AI deployment.
-                </p>
-            </div>
-
-            <!-- 60-Second 3-Question Scoping Check -->
-            <section id="scoping-assessment" class="py-12 bg-slate-900 text-white rounded-xl my-8 p-6 shadow-2xl border border-slate-800">
-                <div class="max-w-3xl mx-auto text-center mb-8">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950 px-3 py-1 rounded-full border border-cyan-800/50">Rapid Audit</span>
-                    <h2 class="text-2xl font-bold mt-3">60-Second AI Governance Scoping Check</h2>
-                    <p class="text-slate-400 text-sm mt-1">Answer 3 quick questions to evaluate your SMME's AI risk profile and guardrail readiness.</p>
-                </div>
-                
-                <form id="scopingForm" class="space-y-6 max-w-2xl mx-auto text-left">
-                    <!-- Question 1 -->
-                    <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
-                        <label class="block text-sm font-medium text-slate-200 mb-3">
-                            1. What types of AI tools or autonomous agents are currently used in your business?
-                        </label>
-                        <div class="space-y-2">
-                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                                <input type="radio" name="q1" value="low" class="accent-cyan-500" required>
-                                <span>Public chatbots only (ChatGPT, Claude, Gemini) for basic drafting</span>
-                            </label>
-                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                                <input type="radio" name="q1" value="med" class="accent-cyan-500">
-                                <span>Integrated SaaS tools connected to customer data or internal files</span>
-                            </label>
-                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                                <input type="radio" name="q1" value="high" class="accent-cyan-500">
-                                <span>Autonomous AI agents making API calls, processing payments, or emailing clients</span>
-                            </label>
+            <!-- Task 2: Two Entry Cards (Client Instruments & Agent Suite) -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-8 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="inline-block p-3 rounded-lg bg-amber-500/10 text-amber-400 mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                         </div>
+                        <h3 class="font-serif text-2xl text-white mb-2">10 Client Instruments</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed">POPIA worksheet, roadmap, policy pack, agent passport, live register and more. Runs in your browser. Nothing transmitted.</p>
                     </div>
+                    <a href="instruments/index.html" class="inline-flex items-center text-amber-400 hover:text-amber-300 font-medium text-sm group">
+                        Access instrument suite 
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
 
-                    <!-- Question 2 -->
-                    <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
-                        <label class="block text-sm font-medium text-slate-200 mb-3">
-                            2. Do you have formal Human-in-the-Loop (HITL) guardrails for sensitive actions?
-                        </label>
-                        <div class="space-y-2">
-                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                                <input type="radio" name="q2" value="high" class="accent-cyan-500" required>
-                                <span>No formal policy—employees use AI tools ad-hoc</span>
-                            </label>
-                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                                <input type="radio" name="q2" value="med" class="accent-cyan-500">
-                                <span>Informal guidelines exist, but no technical enforcement or audit logs</span>
-                            </label>
-                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                                <input type="radio" name="q2" value="low" class="accent-cyan-500">
-                                <span>Enforced Human-in-the-Loop controls with mandatory authorization matrices</span>
-                            </label>
+                <div class="p-8 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <div class="inline-block p-3 rounded-lg bg-amber-500/10 text-amber-400 mb-4">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path></svg>
                         </div>
+                        <h3 class="font-serif text-2xl text-white mb-2">The Governed Agent Suite</h3>
+                        <p class="text-slate-300 text-sm mb-6 leading-relaxed">Seven governed agents. A front desk that never misses a customer. A watchtower that briefs you before you ask.</p>
                     </div>
-
-                    <!-- Question 3 -->
-                    <div class="bg-slate-800/80 p-5 rounded-lg border border-slate-700">
-                        <label class="block text-sm font-medium text-slate-200 mb-3">
-                            3. How do you handle POPIA compliance and training opt-outs for 3rd-party AI vendors?
-                        </label>
-                        <div class="space-y-2">
-                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                                <input type="radio" name="q3" value="high" class="accent-cyan-500" required>
-                                <span>We haven't reviewed vendor privacy terms or opt-out settings</span>
-                            </label>
-                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                                <input type="radio" name="q3" value="med" class="accent-cyan-500">
-                                <span>We check privacy policies manually but lack zero-data-retention agreements</span>
-                            </label>
-                            <label class="flex items-center text-sm text-slate-300 space-x-3 cursor-pointer">
-                                <input type="radio" name="q3" value="low" class="accent-cyan-500">
-                                <span>Full vendor diligence completed with signed enterprise opt-out guarantees</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-cyan-600 hover:to-blue-700 transition duration-200 shadow-lg">
-                        Calculate Governance Readiness Score
-                    </button>
-                </form>
-
-                <!-- Assessment Result Box -->
-                <div id="assessmentResult" class="hidden mt-6 p-6 bg-slate-800 rounded-lg border border-cyan-500/30 text-center">
-                    <h3 class="text-xl font-bold text-cyan-400" id="resultTitle">Scoping Complete</h3>
-                    <p class="text-slate-300 text-sm mt-2" id="resultDescription"></p>
-                    <a href="#contact" class="inline-block mt-4 text-xs font-semibold uppercase tracking-wider bg-cyan-500 text-slate-950 px-5 py-2.5 rounded-md hover:bg-cyan-400 transition">
-                        Request Custom Assurance Pack
+                    <a href="suite.html" class="inline-flex items-center text-amber-400 hover:text-amber-300 font-medium text-sm group">
+                        Explore agent suite 
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </a>
                 </div>
             </section>
 
-            <!-- Four Pillars Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Pillar 1 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">01</span>
-                            <h3 class="text-xl font-bold text-white">AI Inventory & Data Discovery Audit</h3>
-                        </div>
-                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
-                            Conducts an exhaustive inventory sweep of internal shadow AI accounts, unvetted API integrations, and cloud ingestion endpoints. Maps data flows to isolate exposure vectors before enterprise audits begin.
-                        </p>
-                    </div>
-                    <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Internal Standard Spec:</span>
-                        <button onclick="switchTab('insights'); loadDoc('doc-discovery')" class="text-amber-400 font-bold hover:underline">Read Discovery Guide →</button>
-                    </div>
-                </div>
-
-                <!-- Pillar 2 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">02</span>
-                            <h3 class="text-xl font-bold text-white">Human-in-the-Loop Controls & Policy</h3>
-                        </div>
-                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
-                            Deploys enforceable Human-in-the-Loop (HITL) authorization checkpoints, strict role-based access control (RBAC), and custom acceptable use policy packs aligned with local statutory mandates.
-                        </p>
-                    </div>
-                    <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Internal Standard Spec:</span>
-                        <button onclick="switchTab('insights'); loadDoc('doc-hitl')" class="text-amber-400 font-bold hover:underline">Read HITL Matrix →</button>
-                    </div>
-                </div>
-
-                <!-- Pillar 3 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">03</span>
-                            <h3 class="text-xl font-bold text-white">Third-Party Vendor Diligence & SaaS Vetting</h3>
-                        </div>
-                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
-                            Standardizes third-party SaaS vetting protocols. Verifies zero-data-retention clauses, API encryption standards, and opt-out training parameters for external model providers.
-                        </p>
-                    </div>
-                    <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Internal Standard Spec:</span>
-                        <button onclick="switchTab('insights'); loadDoc('doc-vendor')" class="text-amber-400 font-bold hover:underline">Read Vendor Guide →</button>
-                    </div>
-                </div>
-
-                <!-- Pillar 4 -->
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center space-x-3 mb-4">
-                            <span class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold border border-amber-500/20">04</span>
-                            <h3 class="text-xl font-bold text-white">Continuous Red-Teaming & Compliance Testing</h3>
-                        </div>
-                        <p class="text-slate-300 text-xs leading-relaxed mb-6">
-                            Automates regression checking, prompt injection defense testing, hallucination monitoring, and quarterly compliance log validation to maintain perpetual audit readiness.
-                        </p>
-                    </div>
-                    <div class="bg-slate-900/80 p-3 rounded-xl border border-white/5 flex items-center justify-between text-xs">
-                        <span class="text-slate-400">Internal Standard Spec:</span>
-                        <button onclick="switchTab('insights'); loadDoc('doc-testing')" class="text-amber-400 font-bold hover:underline">Read Testing Protocols →</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 2: EXPERT HUB -->
-        <div id="tab-insights" class="tab-content space-y-12">
-            <div class="text-center max-w-3xl mx-auto">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
-                    <span>Regulatory Intelligence & Knowledge Base</span>
-                </div>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Expert Hub & Enforcement Briefings</h1>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Review expert video briefings, recent statutory penalties issued by the Information Regulator, and on-site technical specifications.
-                </p>
-            </div>
-
-            <!-- Videos Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass-card p-5 rounded-2xl border border-white/10">
-                    <div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/1dXd9QqHB8s" title="POPIA & AI Regulatory Scope" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <h3 class="text-base font-bold text-white mb-2">POPIA & Automated Decision-Making</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Vodacom Tech Talk examining how current statutory data protection laws regulate automated profiling and contextual AI outputs.</p>
-                </div>
-                <div class="glass-card p-5 rounded-2xl border border-white/10">
-                    <div class="aspect-video w-full rounded-xl overflow-hidden mb-4 bg-slate-900">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/yxE3bCP3aTg" title="ISO 42001 Standard Walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <h3 class="text-base font-bold text-white mb-2">ISO/IEC 42001 AIMS Framework Explained</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed">Clear structural breakdown of the global Artificial Intelligence Management System standard for responsible organizational deployment.</p>
-                </div>
-            </div>
-
-            <!-- Regulatory Alert Card -->
-            <div class="glass-card rounded-2xl p-6 sm:p-8 border border-red-500/30 bg-gradient-to-r from-red-950/20 via-slate-900 to-slate-900">
-                <div class="flex items-center space-x-3 mb-3">
-                    <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
-                    <h3 class="text-base font-bold text-white uppercase tracking-wider">Regulatory Alert: Information Regulator Judgments & Fines</h3>
-                </div>
-                <p class="text-xs text-slate-300 leading-relaxed mb-4">
-                    The South African Information Regulator has intensified enforcement actions, issuing major administrative penalties and enforcement notices against corporations and public entities failing to secure personal identifiable information (PII). Recent enforcement actions—including penalties against First National Bank (FNB) and public educational institutions—underscore that data privacy negligence carries severe financial and legal liabilities.
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs bg-slate-950/60 p-4 rounded-xl border border-white/5">
-                    <div>
-                        <strong class="text-amber-400 block mb-1">Administrative Fines</strong>
-                        <span class="text-slate-400">R1M+ fines issued for inadequate customer data protection and system vulnerabilities.</span>
-                    </div>
-                    <div>
-                        <strong class="text-amber-400 block mb-1">Enforcement Notices</strong>
-                        <span class="text-slate-400">Mandatory compliance directives requiring immediate security overhauls and audits.</span>
-                    </div>
-                    <div>
-                        <strong class="text-amber-400 block mb-1">Board Accountability</strong>
-                        <span class="text-slate-400">Information Officers face direct statutory scrutiny for unaddressed data breaches.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Document Selector Tabs -->
-            <div class="glass-card rounded-2xl p-8 border border-white/10 space-y-6">
-                <div class="flex flex-wrap gap-3 border-b border-white/10 pb-4">
-                    <button onclick="loadDoc('doc-discovery')" id="tab-doc-discovery" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-amber-500 text-slate-950">1. Discovery Checklist</button>
-                    <button onclick="loadDoc('doc-hitl')" id="tab-doc-hitl" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">2. HITL Matrix</button>
-                    <button onclick="loadDoc('doc-vendor')" id="tab-doc-vendor" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">3. Vendor Diligence</button>
-                    <button onclick="loadDoc('doc-testing')" id="tab-doc-testing" class="doc-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-900 text-slate-300 border border-white/10">4. Testing Protocol</button>
-                </div>
-                
-                <div id="doc-discovery" class="sub-doc-panel active space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">AI Inventory & Data Discovery Audit (Pillar 1 Specification)</h3>
-                    <p>This operational checklist governs the identification and cataloging of all artificial intelligence systems deployed across SMME environments:</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Shadow AI Inventory:</strong> Identify all unauthorized browser extensions, external cloud LLM accounts, and API keys utilized by staff.</li>
-                        <li><strong>Data Flow Mapping:</strong> Trace customer PII, financial records, and operational telemetry from input ingestion nodes to third-party model context windows.</li>
-                        <li><strong>Exposure Scoring:</strong> Assign risk weighting based on confidentiality level and statutory jurisdiction (POPIA compliance boundaries).</li>
-                    </ul>
-                </div>
-                <div id="doc-hitl" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Human-in-the-Loop Controls & Policy (Pillar 2 Specification)</h3>
-                    <p>Mandatory decision checkpoints preventing autonomous agent execution errors in critical operations:</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Financial Thresholds:</strong> Any automated invoice processing or transaction refund exceeding R1,000 requires explicit secondary human sign-off.</li>
-                        <li><strong>External Communications:</strong> Automated customer emails or legal notices generated by agents must pass a staged review queue.</li>
-                        <li><strong>Access Governance:</strong> RBAC enforcement restricting autonomous write-access to primary database repositories.</li>
-                    </ul>
-                </div>
-                <div id="doc-vendor" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Third-Party Vendor Diligence & SaaS Vetting (Pillar 3 Specification)</h3>
-                    <p>Standardized evaluation criteria for external AI model vendors and cloud hosting sub-processors:</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Zero Data Retention:</strong> Verification that vendor APIs do not store, log, or train on proprietary client inputs.</li>
-                        <li><strong>Cross-Border Compliance:</strong> Ensuring cloud storage encryption and regional server hosting comply with domestic privacy statutes.</li>
-                        <li><strong>SLA Verification:</strong> Minimum uptime and security patch response times mandated for third-party partners.</li>
-                    </ul>
-                </div>
-                <div id="doc-testing" class="sub-doc-panel space-y-4 text-xs text-slate-300 leading-relaxed">
-                    <h3 class="text-base font-bold text-white">Continuous Red-Teaming & Compliance Testing (Pillar 4 Specification)</h3>
-                    <p>Ongoing verification procedures maintaining long-term system integrity:</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>Adversarial Prompt Checks:</strong> Quarterly injection and jailbreak resistance testing against custom model deployments.</li>
-                        <li><strong>Hallucination Tracking:</strong> Logging output discrepancies and grounding failures in retrieval-augmented generation pipelines.</li>
-                        <li><strong>Audit Log Archival:</strong> Immutable record keeping for quarterly enterprise supply chain compliance reviews.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 3: PACKAGES & PRICING -->
-        <div id="tab-pricing" class="tab-content space-y-12">
-            <div class="text-center max-w-3xl mx-auto">
-                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold mb-4">
-                    <span>Commercial Strategy & Pricing</span>
-                </div>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4">Aurion Assurance Packages</h1>
-                <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                    Transparent, right-sized pricing tiers tailored for SMME budgets while meeting strict corporate supply chain criteria.
-                </p>
-            </div>
-
-            <!-- Founders Special Offer Banner -->
-            <div class="glass-card rounded-2xl p-6 border border-amber-500/40 bg-gradient-to-r from-amber-500/10 via-slate-900 to-amber-500/5 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                    <span class="bg-amber-500 text-slate-950 font-bold text-[10px] px-2.5 py-1 rounded-md uppercase tracking-wider">Limited Founder Special</span>
-                    <h3 class="text-xl font-bold text-white mt-2">First 10 On-Boarded Clients Promotion</h3>
-                    <p class="text-slate-300 text-xs sm:text-sm mt-1">
-                        Receive <strong class="text-amber-400">50% off implementation fees</strong> plus a complimentary customized POPIA & ISO 42001 policy pack for your entity.
+            <!-- The Problem Stated Plainly -->
+            <section class="p-8 sm:p-12 rounded-2xl bg-slate-900/40 border border-slate-800">
+                <div class="max-w-3xl">
+                    <span class="text-xs text-amber-400 font-semibold uppercase tracking-wider block mb-2">Risk Exposure Analysis</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-white mb-6">The problem, stated plainly.</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                        Organizations across South Africa are adopting AI at an unprecedented rate, creating severe blind spots: unchecked shadow AI usage by staff, unvetted third-party vendor models handling sensitive customer data, autonomous agents operating without owners or spend caps, and zero forensic evidence when regulators or boards ask for accountability.
                     </p>
-                </div>
-                <button onclick="switchTab('assessment')" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs whitespace-nowrap transition-all shadow-lg">Claim Special Offer →</button>
-            </div>
-
-            <!-- Pricing Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Starter SMME</span>
-                        <h3 class="text-2xl font-extrabold text-white mt-1">Essential Audit</h3>
-                        <div class="mt-4 mb-6">
-                            <span class="text-3xl font-black text-amber-400">R7,500</span>
-                            <span class="text-xs text-slate-400"> / one-time</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2"><span></span></div>
+                            <span class="text-slate-300">Unmanaged data leakage risks under POPIA</span>
                         </div>
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li>✓ Pillar 1 Shadow AI Discovery Sweep</li>
-                            <li>✓ Basic Data Flow Mapping Template</li>
-                            <li>✓ Standard POPIA Compliance Check</li>
-                            <li>✓ Digital Assessment Certificate</li>
-                        </ul>
-                    </div>
-                    <button onclick="switchTab('assessment')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs transition-colors border border-white/10">Select Starter</button>
-                </div>
-
-                <div class="glass-card p-8 rounded-2xl border-2 border-amber-500/80 flex flex-col justify-between relative shadow-2xl">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-amber-500 text-slate-950 font-bold text-[10px] px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</div>
-                    <div>
-                        <span class="text-xs uppercase tracking-wider text-amber-400 font-bold">Growth Supply Chain</span>
-                        <h3 class="text-2xl font-extrabold text-white mt-1">Full 4-Pillar Suite</h3>
-                        <div class="mt-4 mb-6">
-                            <span class="text-3xl font-black text-amber-400">R18,500</span>
-                            <span class="text-xs text-slate-400"> / comprehensive audit</span>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-2"><span></span></div>
+                            <span class="text-slate-300">Zero audit trails for automated decisions</span>
                         </div>
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li>✓ Complete All 4 Assurance Pillars</li>
-                            <li>✓ HITL Control Matrix Implementation</li>
-                            <li>✓ Vendor SaaS Vetting Scorecard</li>
-                            <li>✓ Dedicated AI Copilot Access</li>
-                            <li>✓ <strong class="text-amber-400">Includes 50% Founders Discount</strong></li>
-                        </ul>
                     </div>
-                    <button onclick="switchTab('assessment')" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 rounded-xl text-xs transition-colors shadow-md">Claim Growth Tier</button>
+                </div>
+            </section>
+
+            <!-- How It Works Strip -->
+            <section class="text-center py-6">
+                <h3 class="font-serif text-2xl text-white mb-4">Structured execution from diagnostic to certification</h3>
+                <p class="text-sm text-slate-400 mb-6">See our disciplined 13-week onboarding methodology and signed gate milestones.</p>
+                <button onclick="switchTab('how-we-work')" class="inline-flex items-center text-sm font-semibold text-amber-400 hover:text-amber-300">
+                    Explore How We Work &rarr;
+                </button>
+            </section>
+
+            <!-- Proof / Evidence Block & Lead Capture Form -->
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border-t border-slate-900 pt-16">
+                <div>
+                    <h3 class="font-serif text-3xl text-white mb-4">Nothing we claim is unverifiable. See the engine.</h3>
+                    <p class="text-sm text-slate-300 mb-6 leading-relaxed">
+                        Our entire architecture, verification scripts, and compliance schema definitions are open for inspection. Review our code repositories or test our browser-based instruments directly.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform" target="_blank" class="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white text-sm font-medium">GitHub Repository</a>
+                        <a href="instruments/index.html" class="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white text-sm font-medium">Instruments Library</a>
+                    </div>
                 </div>
 
-                <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Enterprise Advisory</span>
-                        <h3 class="text-2xl font-extrabold text-white mt-1">Custom Governance</h3>
-                        <div class="mt-4 mb-6">
-                            <span class="text-3xl font-black text-white">Custom</span>
-                            <span class="text-xs text-slate-400"> / retainer model</span>
+                <!-- Lead Form -->
+                <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800">
+                    <h4 class="font-serif text-xl text-white mb-2">Request an Assurance Briefing</h4>
+                    <p class="text-xs text-slate-400 mb-6">Submit your details for a structured institutional review.</p>
+                    <form id="assurance-lead-form" onsubmit="submitAssuranceLead(event)" class="space-y-4">
+                        <!-- Honeypot -->
+                        <input type="text" name="website_hp" style="display:none" tabindex="-1" autocomplete="off">
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Full Name / Organization</label>
+                            <input type="text" required class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
                         </div>
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li>✓ Continuous Quarterly Red-Teaming</li>
-                            <li>✓ Custom Agentic Workflow Guardrails</li>
-                            <li>✓ Direct Institutional Representation</li>
-                            <li>✓ SLA-backed Priority Support</li>
-                        </ul>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
+                            <input type="email" required class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-slate-300 mb-1">Primary Focus Area</label>
+                            <select class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
+                                <option>POPIA & Compliance Assessment</option>
+                                <option>Governed Agent Suite Deployment</option>
+                                <option>ISO/IEC 42001 Certification</option>
+                                <option>Institutional All-in Program</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors">
+                            Submit Request
+                        </button>
+                    </form>
+                    <div id="form-success-msg" class="hidden mt-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs text-center">
+                        Request received. Our advisory team will contact you within 4 business hours.
                     </div>
-                    <button onclick="switchTab('assessment')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 rounded-xl text-xs transition-colors border border-white/10">Inquire Custom</button>
                 </div>
-            </div>
+            </section>
         </div>
 
-        <!-- TAB 4: 60-SECOND ASSESSMENT & COPILOT -->
-        <div id="tab-assessment" class="tab-content space-y-8">
-            <div class="glass-card rounded-3xl p-8 sm:p-10 border border-amber-500/20 shadow-2xl max-w-3xl mx-auto">
-                <div class="flex items-center space-x-4 mb-6 pb-6 border-b border-white/10">
-                    <div class="w-12 h-12 rounded-full bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xl shadow-md">⚡</div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white">60-Second AI Risk & Governance Assessment</h3>
-                        <p class="text-xs text-amber-400 font-medium">Complete your representative profile to generate an instant multi-pillar compliance diagnostic.</p>
-                    </div>
+        <!-- ================= TAB 2: WHAT WE OFFER ================= -->
+        <div id="tab-what-we-offer" class="tab-content hidden space-y-16">
+            <!-- 2a. Hero -->
+            <section class="text-center max-w-4xl mx-auto pt-8">
+                <h1 class="font-serif text-5xl sm:text-6xl text-white tracking-tight mb-4">
+                    One journey. Six stages. <span class="text-amber-400 italic">Three bands.</span>
+                </h1>
+                <p class="text-lg text-slate-300 font-light max-w-2xl mx-auto">
+                    From a free 60-second diagnostic to ISO/IEC 42001 certification — one price book, one point of contact.
+                </p>
+            </section>
+
+            <!-- 2b. The Maturity Journey -->
+            <section class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="font-serif text-3xl text-white">The Maturity Journey</h2>
+                    <span class="text-xs text-amber-400 uppercase tracking-widest font-medium">S0 through S5</span>
                 </div>
-
-                <div id="intake-form-container" class="space-y-4">
-                    <h4 class="text-sm font-bold text-white">Step 1 of 2: Enterprise Representative Details</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <input type="text" id="visitor-name" placeholder="Full Name *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                        <input type="text" id="visitor-org" placeholder="Organization / Entity Name *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <input type="email" id="visitor-email" placeholder="Business Email Address *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                        <input type="text" id="visitor-phone" placeholder="Cell / Mobile Number *" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                        <input type="text" id="visitor-role" placeholder="Role (e.g., Director, IT Lead)" class="bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-500">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] text-slate-400 mb-1">Select Primary Compliance Challenge / Focus Area:</label>
-                        <select id="visitor-focus" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-amber-500">
-                            <option value="All Four Pillars (Comprehensive Review)">All Four Pillars (Comprehensive Review)</option>
-                            <option value="Pillar 1: Discovery & Shadow AI Audit">Pillar 1: Discovery & Shadow AI Audit</option>
-                            <option value="Pillar 2: Controls & HITL Policy Enforcement">Pillar 2: Controls & HITL Policy Enforcement</option>
-                            <option value="Pillar 3: Vendor Diligence & SaaS Vetting">Pillar 3: Vendor Diligence & SaaS Vetting</option>
-                            <option value="Pillar 4: Continuous Red-Teaming & Testing">Pillar 4: Continuous Red-Teaming & Testing</option>
-                        </select>
-                    </div>
-                    <button onclick="runAssessment()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm py-3.5 rounded-xl transition-all shadow-lg">Generate Instant 60-Second Assessment →</button>
-                </div>
-
-                <div id="assessment-results-area" class="hidden space-y-6">
-                    <div class="bg-slate-900/90 p-5 rounded-2xl border border-amber-500/30">
-                        <div class="flex items-center justify-between mb-3 pb-3 border-b border-white/10">
-                            <span class="text-xs uppercase tracking-wider text-amber-400 font-bold">Diagnostic Report Generated</span>
-                            <span id="report-timestamp" class="text-[11px] text-slate-400"></span>
-                        </div>
-                        <h4 id="report-profile-title" class="text-base font-bold text-white mb-2"></h4>
-                        <p id="report-summary" class="text-xs text-slate-300 leading-relaxed mb-4"></p>
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-[11px]">
-                            <div class="bg-slate-950 p-2.5 rounded-lg border border-white/5"><span class="block text-amber-400 font-bold">Pillar 1</span>Audit Ready</div>
-                            <div class="bg-slate-950 p-2.5 rounded-lg border border-white/5"><span class="block text-amber-400 font-bold">Pillar 2</span>HITL Guardrails</div>
-                            <div class="bg-slate-950 p-2.5 rounded-lg border border-white/5"><span class="block text-amber-400 font-bold">Pillar 3</span>Vendor Verified</div>
-                            <div class="bg-slate-950 p-2.5 rounded-lg border border-white/5"><span class="block text-amber-400 font-bold">Pillar 4</span>Logged & Tested</div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-3">
-                        <h5 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Ask Follow-up Questions to Copilot:</h5>
-                        <div id="chat-stream" class="space-y-3 max-h-48 overflow-y-auto pr-2 text-xs">
-                            <div class="bg-slate-800/80 p-3 rounded-xl border border-white/5 text-slate-200">
-                                Assessment active. Your contact details are securely logged. How else can Aurion assist with your compliance implementation?
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- S0 -->
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-bold font-mono">S0 SPARK</span>
+                                <span class="text-xs text-slate-400">60 seconds · R0</span>
                             </div>
+                            <h3 class="text-white font-medium mb-2">Free Diagnostic</h3>
+                            <p class="text-xs text-slate-400 mb-6">Instant AI health check score that stays entirely on your device.</p>
                         </div>
-                        <div class="flex gap-2">
-                            <input type="text" id="user-chat-input" placeholder="Ask about ISO 42001 certification or POPIA clauses..." class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500">
-                            <button onclick="sendFollowUp()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs">Send</button>
-                        </div>
+                        <button onclick="switchTab('assessment')" class="text-xs text-amber-400 hover:text-amber-300 font-semibold text-left">Take test &rarr;</button>
                     </div>
+                    <!-- S1 -->
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-bold font-mono">S1 DIAGNOSE</span>
+                                <span class="text-xs text-slate-400">1 week · from R2,500</span>
+                            </div>
+                            <h3 class="text-white font-medium mb-2">AI Health Check</h3>
+                            <p class="text-xs text-slate-400 mb-6">Comprehensive vulnerability audit, 100% credited against Foundation.</p>
+                        </div>
+                        <span class="text-xs text-slate-500">Credited against Foundation</span>
+                    </div>
+                    <!-- S2 -->
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-bold font-mono">S2 FOUNDATION</span>
+                                <span class="text-xs text-slate-400">6 weeks · from R70,000</span>
+                            </div>
+                            <h3 class="text-white font-medium mb-2">Discovery & Audit</h3>
+                            <p class="text-xs text-slate-400 mb-6">Complete control framework setup covering ISO/IEC 42001 Phases 1-2.</p>
+                        </div>
+                        <span class="text-xs text-slate-500">Core milestone</span>
+                    </div>
+                    <!-- S3 -->
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-bold font-mono">S3 GUARDRAILS</span>
+                                <span class="text-xs text-slate-400">1-2 weeks · from R2,500 pm</span>
+                            </div>
+                            <h3 class="text-white font-medium mb-2">Governed Agents</h3>
+                            <p class="text-xs text-slate-400 mb-6">Agent Passports, ZAR spend caps, and kill switch under 3 seconds.</p>
+                        </div>
+                        <span class="text-xs text-slate-500">Active deployment</span>
+                    </div>
+                    <!-- S4 -->
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-bold font-mono">S4 WATCHTOWER</span>
+                                <span class="text-xs text-slate-400">Monthly · from R9,500 pm</span>
+                            </div>
+                            <h3 class="text-white font-medium mb-2">Assurance Retainer</h3>
+                            <p class="text-xs text-slate-400 mb-6">07:00 executive briefs and guaranteed 24-hour incident clock response.</p>
+                        </div>
+                        <span class="text-xs text-slate-500">Continuous protection</span>
+                    </div>
+                    <!-- S5 -->
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-bold font-mono">S5 CERTIFY</span>
+                                <span class="text-xs text-slate-400">6 weeks · from R35,000</span>
+                            </div>
+                            <h3 class="text-white font-medium mb-2">ISO/IEC 42001 Audit</h3>
+                            <p class="text-xs text-slate-400 mb-6">Gap analysis, formal certification preparation, and surveillance audits.</p>
+                        </div>
+                        <span class="text-xs text-slate-500">Formal accreditation</span>
+                    </div>
+                </div>
+                <p class="text-center text-xs text-slate-400 italic">"Every stage ends at a signed gate. Nothing moves forward, nothing gets billed, without your signature."</p>
+            </section>
+
+            <!-- 2c. The Four Layers -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white">The Four Operational Layers</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <h3 class="text-amber-400 font-serif text-xl mb-2">ASSURE</h3>
+                        <p class="text-xs text-slate-300">AI Health Check, Discovery & Audit, Control Framework, and monthly assurance retainers.</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <h3 class="text-amber-400 font-serif text-xl mb-2">AGENTS</h3>
+                        <p class="text-xs text-slate-300">Six governed digital workers equipped with signed Agent Passports, ZAR spend caps, and kill switches.</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <h3 class="text-amber-400 font-serif text-xl mb-2">DEFEND</h3>
+                        <p class="text-xs text-slate-300">Active AI Defence: detect, verify, fix, prove, and record. 24-hour acknowledgement with 72-hour reporting.</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <h3 class="text-amber-400 font-serif text-xl mb-2">CERTIFY</h3>
+                        <p class="text-xs text-slate-300">ISO/IEC 42001 execution from initial gap analysis to formal certificate issuance and surveillance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2d. Three Bands Table -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white">Public Band Sizing</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <span class="text-xs text-amber-400 font-mono font-bold uppercase block mb-1">Band A</span>
+                        <h3 class="text-white font-serif text-2xl mb-3">Essential</h3>
+                        <p class="text-xs text-slate-300">Up to 20 staff or 2 active AI systems.</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <span class="text-xs text-amber-400 font-mono font-bold uppercase block mb-1">Band B</span>
+                        <h3 class="text-white font-serif text-2xl mb-3">Professional</h3>
+                        <p class="text-xs text-slate-300">21 to 100 staff or up to 5 AI systems.</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800">
+                        <span class="text-xs text-amber-400 font-mono font-bold uppercase block mb-1">Band C</span>
+                        <h3 class="text-white font-serif text-2xl mb-3">Enterprise</h3>
+                        <p class="text-xs text-slate-300">100+ staff, 6+ AI systems, institutions and parastatals.</p>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 text-center">"When headcount and AI-system count disagree, the AI-system count decides the band."</p>
+            </section>
+
+            <!-- 2e. The Three Commercial Bundles -->
+            <section class="space-y-6">
+                <h2 class="font-serif text-3xl text-white">Commercial Bundles</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Essential Bundle -->
+                    <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-400 font-bold uppercase font-mono tracking-wider">Essential Tier</span>
+                            <h3 class="font-serif text-3xl text-white mt-1 mb-4">R220,000 <span class="text-xs text-slate-400 font-sans font-normal">Year 1</span></h3>
+                            <ul class="space-y-2 text-xs text-slate-300 mb-8">
+                                <li>· 10 Users · 1 Governed Agent</li>
+                                <li>· Setup: R70,000 | Retainer: R12,500 pm</li>
+                                <li>· Year 2 renewal: R150,000</li>
+                                <li>· Health Check credited, Foundation & Defense included</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/27828800195?text=Hi,%20I'm%20interested%20in%20the%20Essential%20Bundle" target="_blank" class="block w-full py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-center text-xs font-semibold">Book via WhatsApp</a>
+                    </div>
+                    <!-- Professional Bundle -->
+                    <div class="p-8 rounded-2xl bg-slate-900 border-2 border-amber-500/40 flex flex-col justify-between relative">
+                        <div class="absolute -top-3 left-8 px-3 py-0.5 rounded bg-amber-500 text-slate-950 text-[10px] font-bold uppercase">Most Popular</div>
+                        <div>
+                            <span class="text-xs text-amber-400 font-bold uppercase font-mono tracking-wider">Professional Tier</span>
+                            <h3 class="font-serif text-3xl text-white mt-1 mb-4">R540,000 <span class="text-xs text-slate-400 font-sans font-normal">Year 1</span></h3>
+                            <ul class="space-y-2 text-xs text-slate-300 mb-8">
+                                <li>· 40 Users · 3 Governed Agents</li>
+                                <li>· Setup: R150,000 | Retainer: R32,500 pm</li>
+                                <li>· Year 2 renewal: R390,000</li>
+                                <li>· Full Foundation, Active Defense & SLA</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/27828800195?text=Hi,%20I'm%20interested%20in%20the%20Professional%20Bundle" target="_blank" class="block w-full py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-center text-xs font-semibold">Book via WhatsApp</a>
+                    </div>
+                    <!-- Enterprise Bundle -->
+                    <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs text-amber-400 font-bold uppercase font-mono tracking-wider">Enterprise Tier</span>
+                            <h3 class="font-serif text-3xl text-white mt-1 mb-4">R930,000 <span class="text-xs text-slate-400 font-sans font-normal">Year 1</span></h3>
+                            <ul class="space-y-2 text-xs text-slate-300 mb-8">
+                                <li>· 40 Critical Users · 10 Agents</li>
+                                <li>· Setup: R270,000 | Retainer: R55,000 pm</li>
+                                <li>· Year 2 renewal: R660,000</li>
+                                <li>· Institutional oversight & priority SLA</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/27828800195?text=Hi,%20I'm%20interested%20in%20the%20Enterprise%20Bundle" target="_blank" class="block w-full py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-center text-xs font-semibold">Book via WhatsApp</a>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-400 text-center">"Bundle rates held for 12 months, roughly 7% below list. Certify is optional and priced separately. All prices in rand, excluding 15% VAT."</p>
+            </section>
+
+            <!-- 2f. Institutional All-in Panel -->
+            <section class="p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-950 border border-amber-500/30">
+                <span class="text-xs text-amber-400 font-mono font-semibold uppercase tracking-wider block mb-2">Public Sector & Parastatals</span>
+                <h2 class="font-serif text-3xl text-white mb-4">Institutional All-in Programs</h2>
+                <p class="text-slate-300 text-sm mb-6 max-w-2xl">For public-sector and parastatal buyers who need one annual number for budgeting.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <div class="text-white font-serif text-2xl mb-1">Standard: R399,000 /yr</div>
+                        <p class="text-xs text-slate-400">Includes Band C Foundation, 12 months assurance, platform licence, and Event Packs.</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800">
+                        <div class="text-white font-serif text-2xl mb-1">Premium: R480,000 /yr</div>
+                        <p class="text-xs text-slate-400">Adds Growth agent platform, named senior CSM, and quarterly board briefings.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2g & 2h. Credits & Self-Serve Entry -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4">
+                    <h3 class="font-serif text-xl text-white">What Nobody Pays Twice For</h3>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li>· Health Check 100% credited toward Foundation within 60 days</li>
+                        <li>· Stand-alone modules 100% credited within 90 days</li>
+                        <li>· Band-up credited within 12 months</li>
+                    </ul>
+                </div>
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4">
+                    <h3 class="font-serif text-xl text-white">Self-Serve Entry Wedge</h3>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li>· Free diagnostic: R0</li>
+                        <li>· Guardian tier: R149 pm</li>
+                        <li>· Compliance module: R399 pm</li>
+                        <li>· Event Pack: R1,999 per incident</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 2i. CTA Block -->
+            <section class="text-center py-8 space-y-4">
+                <h3 class="font-serif text-2xl text-white">Not sure which band you are?</h3>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button onclick="switchTab('assessment')" class="px-6 py-3 rounded-lg bg-amber-500 text-slate-950 font-semibold text-sm">Take the 60-second check</button>
+                    <a href="https://wa.me/27828800195?text=Hi,%20I'd%20like%20the%20full%20price%20book%20and%20a%20consultation" target="_blank" class="px-6 py-3 rounded-lg bg-slate-900 border border-slate-800 text-white font-medium text-sm">Book 15-min consultation</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= TAB 3: HOW WE WORK ================= -->
+        <div id="tab-how-we-work" class="tab-content hidden space-y-12">
+            <section class="max-w-4xl mx-auto pt-8">
+                <h1 class="font-serif text-5xl text-white mb-4">How We Work</h1>
+                <p class="text-lg text-slate-300 font-light">A rigorous, transparent operating methodology designed for skeptical boards, auditors, and regulators.</p>
+            </section>
+
+            <section class="space-y-8 max-w-4xl mx-auto">
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
+                    <h3 class="font-serif text-2xl text-white">1. The Six Gates (G0 — G5)</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Every engagement is structured around six immutable gates. Nothing moves forward and nothing gets billed without explicit client sign-off at each gate:</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs pt-2">
+                        <div class="p-3 bg-slate-950 rounded border border-slate-800"><strong class="text-amber-400">G0:</strong> Diagnostic</div>
+                        <div class="p-3 bg-slate-950 rounded border border-slate-800"><strong class="text-amber-400">G1:</strong> Scope & Audit</div>
+                        <div class="p-3 bg-slate-950 rounded border border-slate-800"><strong class="text-amber-400">G2:</strong> Framework</div>
+                        <div class="p-3 bg-slate-950 rounded border border-slate-800"><strong class="text-amber-400">G3:</strong> Agent Go-Live</div>
+                        <div class="p-3 bg-slate-950 rounded border border-slate-800"><strong class="text-amber-400">G4:</strong> Defense Review</div>
+                        <div class="p-3 bg-slate-950 rounded border border-slate-800"><strong class="text-amber-400">G5:</strong> Certification</div>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
+                    <h3 class="font-serif text-2xl text-white">2. The 13-Week Onboarding Timeline</h3>
+                    <p class="text-xs text-slate-300">Foundation executed in weeks 1-6; governed agents live by week 9; active defense enabled; first monthly review and quarterly report delivered on schedule.</p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
+                    <h3 class="font-serif text-2xl text-white">3. Communication Rhythm</h3>
+                    <p class="text-xs text-slate-300">Weekly status notes during S1-S3; daily 07:00 executive briefs once live; monthly reviews; quarterly service reviews; 24-hour incident acknowledgment and 72-hour formal reporting.</p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
+                    <h3 class="font-serif text-2xl text-white">4. Client Prerequisites & Commitments</h3>
+                    <p class="text-xs text-slate-300">Requires a designated sponsor who can sign gates, an accountable AI owner, roughly 3 hours at Diagnose, 14-22 hours across Foundation, and 1 hour per month thereafter.</p>
+                </div>
+
+                <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
+                    <h3 class="font-serif text-2xl text-white">5. Security & Data Handling</h3>
+                    <p class="text-xs text-slate-300">Client instruments run entirely client-side. Nothing is transmitted unless explicitly exported. Data Processing Agreements (DPA) available on request.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= TAB 4: EXPERT HUB & DOCS ================= -->
+        <div id="tab-expert-hub" class="tab-content hidden space-y-12">
+            <section class="max-w-4xl mx-auto pt-8">
+                <h1 class="font-serif text-5xl text-white mb-4">Expert Hub & Documentation</h1>
+                <p class="text-lg text-slate-300 font-light">Comprehensive technical frameworks, compliance standards, and instrument manuals.</p>
+                <!-- Filter Row -->
+                <div class="flex flex-wrap gap-2 mt-6">
+                    <button onclick="filterDocs('all')" class="px-3 py-1.5 rounded bg-amber-500 text-slate-950 text-xs font-semibold">All Focus Areas</button>
+                    <button onclick="filterDocs('popia')" class="px-3 py-1.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-medium border border-slate-800">POPIA</button>
+                    <button onclick="filterDocs('iso')" class="px-3 py-1.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-medium border border-slate-800">ISO/IEC 42001</button>
+                    <button onclick="filterDocs('agents')" class="px-3 py-1.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-medium border border-slate-800">Governed Agents</button>
+                    <button onclick="filterDocs('security')" class="px-3 py-1.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-medium border border-slate-800">Security</button>
+                    <button onclick="filterDocs('incidents')" class="px-3 py-1.5 rounded bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-medium border border-slate-800">Incidents</button>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto" id="docs-grid">
+                <!-- Focus 1 -->
+                <div class="doc-card p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4" data-category="popia">
+                    <span class="text-xs text-amber-400 font-mono font-bold">FOCUS 1</span>
+                    <h3 class="font-serif text-2xl text-white">POPIA & Personal Information</h3>
+                    <p class="text-xs text-slate-300">Automated decision-making, s18 duties, s21 operator flow-down, Information Officer duties, R10m liability ceiling, and breach clock procedures.</p>
+                    <a href="instruments/index.html" class="inline-flex items-center text-xs text-amber-400 font-semibold hover:text-amber-300">Open POPIA Worksheet &rarr;</a>
+                </div>
+                <!-- Focus 2 -->
+                <div class="doc-card p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4" data-category="iso">
+                    <span class="text-xs text-amber-400 font-mono font-bold">FOCUS 2</span>
+                    <h3 class="font-serif text-2xl text-white">ISO/IEC 42001 Standard</h3>
+                    <p class="text-xs text-slate-300">Demystifying AI management systems, certification paths, gap analyses, stage 1 & 2 audit expectations, and tender procurement alignment.</p>
+                    <a href="instruments/index.html" class="inline-flex items-center text-xs text-amber-400 font-semibold hover:text-amber-300">Open Control Matrix &rarr;</a>
+                </div>
+                <!-- Focus 3 -->
+                <div class="doc-card p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4" data-category="security">
+                    <span class="text-xs text-amber-400 font-mono font-bold">FOCUS 3</span>
+                    <h3 class="font-serif text-2xl text-white">Shadow AI & Inventory</h3>
+                    <p class="text-xs text-slate-300">Cataloguing unvetted tools, detecting staff off-record usage, mapping vector risks, and distinguishing between standard SaaS tools and autonomous agents.</p>
+                    <a href="instruments/index.html" class="inline-flex items-center text-xs text-amber-400 font-semibold hover:text-amber-300">Open AI Risk Register &rarr;</a>
+                </div>
+                <!-- Focus 4 -->
+                <div class="doc-card p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4" data-category="agents">
+                    <span class="text-xs text-amber-400 font-mono font-bold">FOCUS 4</span>
+                    <h3 class="font-serif text-2xl text-white">Governed Agents & Passports</h3>
+                    <p class="text-xs text-slate-300">Agent ownership, purpose definition, data access boundaries, human-in-the-loop checkpoints, ZAR spend caps, and sub-3-second kill switches.</p>
+                    <a href="suite.html" class="inline-flex items-center text-xs text-amber-400 font-semibold hover:text-amber-300">Explore Agent Suite &rarr;</a>
+                </div>
+                <!-- Focus 5 -->
+                <div class="doc-card p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4" data-category="security">
+                    <span class="text-xs text-amber-400 font-mono font-bold">FOCUS 5</span>
+                    <h3 class="font-serif text-2xl text-white">AI Security & Verification</h3>
+                    <p class="text-xs text-slate-300">Prompt injection resistance, exfiltration checks, model supply chain due diligence, and verification testing protocols.</p>
+                    <a href="instruments/index.html" class="inline-flex items-center text-xs text-amber-400 font-semibold hover:text-amber-300">Open Verification Spec &rarr;</a>
+                </div>
+                <!-- Focus 6 -->
+                <div class="doc-card p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-4" data-category="incidents">
+                    <span class="text-xs text-amber-400 font-mono font-bold">FOCUS 6</span>
+                    <h3 class="font-serif text-2xl text-white">Incidents & Evidence</h3>
+                    <p class="text-xs text-slate-300">The 24-hour response clock, forensic capture for regulators, and utilizing the Assurance Register as a legal defense shield.</p>
+                    <a href="instruments/index.html" class="inline-flex items-center text-xs text-amber-400 font-semibold hover:text-amber-300">Open Incident Intake SOP &rarr;</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= TAB 5: 60-SEC ASSESSMENT ================= -->
+        <div id="tab-assessment" class="tab-content hidden space-y-8 max-w-3xl mx-auto">
+            <section class="pt-8 text-center">
+                <h1 class="font-serif text-5xl text-white mb-4">60-Second AI Health Check</h1>
+                <p class="text-slate-300 text-sm">Evaluate your organizational risk profile instantly. Results remain entirely on your device.</p>
+            </section>
+
+            <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 space-y-6" id="assessment-widget">
+                <div class="space-y-4">
+                    <label class="block text-sm font-medium text-white">1. Does your organization have a formal inventory of active AI systems and models?</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="setAssessmentAnswer(1, 'yes')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">Yes, fully tracked</button>
+                        <button onclick="setAssessmentAnswer(1, 'no')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">No / Shadow AI present</button>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <label class="block text-sm font-medium text-white">2. Are autonomous agents equipped with hard ZAR spend caps and emergency kill switches?</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="setAssessmentAnswer(2, 'yes')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">Enforced (&lt;3s switch)</button>
+                        <button onclick="setAssessmentAnswer(2, 'no')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">Unverified / None</button>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <label class="block text-sm font-medium text-white">3. Do you maintain a POPIA Section 109 compliance audit trail for automated decisions?</label>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="setAssessmentAnswer(3, 'yes')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">Maintained & Audited</button>
+                        <button onclick="setAssessmentAnswer(3, 'no')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">No formal record</button>
+                    </div>
+                </div>
+
+                <button onclick="calculateAssessmentScore()" class="w-full py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors">
+                    Calculate Risk Score
+                </button>
+
+                <div id="assessment-result" class="hidden p-4 rounded-xl bg-slate-950 border border-amber-500/30 text-center space-y-2">
+                    <div class="text-amber-400 font-serif text-3xl" id="score-display">Risk Level: Moderate</div>
+                    <p class="text-xs text-slate-300">Your organization qualifies for <strong class="text-white" id="recommended-band">Band B Professional</strong> foundation audit.</p>
                 </div>
             </div>
         </div>
@@ -534,158 +640,74 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-white/10 py-16 bg-slate-950/60 mt-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="glass-card rounded-2xl p-8 mb-12 border border-amber-500/20 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Institutional Memberships</h4>
-                    <p class="text-xs text-slate-300 mb-3 leading-relaxed">Aurion Enterprises actively adheres to global governance and corporate excellence standards through recognized international affiliations:</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="bg-slate-900 border border-white/10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white">IIRC Network</span>
-                        <span class="bg-slate-900 border border-white/10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white">ICOR Resilience</span>
-                        <span class="bg-slate-900 border border-white/10 px-2.5 py-1 rounded-md text-[11px] font-bold text-white">EFQM Excellence</span>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Operating Divisions</h4>
-                    <ul class="text-xs text-slate-300 space-y-2">
-                        <li>• <strong class="text-white">Aurion Consulting:</strong> AI Governance & Compliance Advisory</li>
-                        <li>• <strong class="text-white">Aurion Construction:</strong> Infrastructure Development & SMME Inclusion</li>
-                        <li>• <strong class="text-white">GitHub Pages Suite:</strong> Public Open-Source Agentic Frameworks</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Contact & Headquarters</h4>
-                    <div class="text-xs text-slate-300 space-y-2">
-                        <p><strong class="text-white">Region:</strong> Sedibeng / Vaal Region, Gauteng, South Africa</p>
-                        <p><strong class="text-white">Advisory Desk:</strong> inquiry@aurionenterprises.co.za</p>
-                        <p><strong class="text-white">Direct Cell:</strong> +27 (Supported Corporate Desk)</p>
-                        <p><strong class="text-white">Digital Portals:</strong> GitHub Pages & Secure Client Workspace</p>
-                    </div>
-                </div>
+    <footer class="mt-20 border-t border-slate-900 bg-slate-950 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
+            <div>
+                <div class="text-white font-serif text-base mb-1">Aurion Enterprises (Pty) Ltd</div>
+                <p>Reg. 2026/466313/07 · B-BBEE Level 1 (EME) · CSD MAAA1730875</p>
+                <p class="mt-1 text-slate-400">Smart systems. Strategic execution.</p>
             </div>
-            <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-                <p>&copy; 2026 Aurion Enterprises (Pty) Ltd. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <button onclick="switchTab('home')" class="hover:text-amber-400 transition-colors">Home</button>
-                    <button onclick="switchTab('pillars')" class="hover:text-amber-400 transition-colors">Four Pillars</button>
-                    <button onclick="switchTab('insights')" class="hover:text-amber-400 transition-colors">Document Vault</button>
-                    <button onclick="switchTab('pricing')" class="hover:text-amber-400 transition-colors">Packages</button>
-                </div>
+            <div class="flex space-x-6">
+                <a href="instruments/index.html" class="hover:text-slate-300">Client Instruments</a>
+                <a href="suite.html" class="hover:text-slate-300">Agent Suite</a>
+                <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform" target="_blank" class="hover:text-slate-300">GitHub</a>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Controllers -->
+    <!-- Interactive Navigation & Widget Scripts -->
     <script>
         function switchTab(tabId) {
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('text-amber-400', 'bg-amber-500/10', 'border', 'border-amber-500/30');
-                btn.classList.add('text-slate-300');
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Show selected tab
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            
+            // Update nav button states
+            document.querySelectorAll('.nav-tab').forEach(btn => {
+                if(btn.dataset.target === tabId) {
+                    btn.classList.add('bg-slate-800', 'text-white');
+                    btn.classList.remove('text-slate-300', 'hover:bg-slate-800/50');
+                } else {
+                    btn.classList.remove('bg-slate-800', 'text-white');
+                    btn.classList.add('text-slate-300', 'hover:bg-slate-800/50');
+                }
             });
-            const targetTab = document.getElementById('tab-' + tabId);
-            if(targetTab) { targetTab.classList.add('active'); }
-            const targetBtn = document.getElementById('btn-' + tabId);
-            if(targetBtn) {
-                targetBtn.classList.remove('text-slate-300');
-                targetBtn.classList.add('text-amber-400', 'bg-amber-500/10', 'border', 'border-amber-500/30');
-            }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        function loadDoc(docId) {
-            const panels = document.querySelectorAll('.sub-doc-panel');
-            panels.forEach(p => p.classList.remove('active'));
-            const docBtns = document.querySelectorAll('.doc-btn');
-            docBtns.forEach(b => {
-                b.classList.remove('bg-amber-500', 'text-slate-950');
-                b.classList.add('bg-slate-900', 'text-slate-300', 'border', 'border-white/10');
-            });
-            const targetPanel = document.getElementById(docId);
-            if(targetPanel) { targetPanel.classList.add('active'); }
-            const targetBtn = document.getElementById('tab-' + docId);
-            if(targetBtn) {
-                targetBtn.classList.remove('bg-slate-900', 'text-slate-300', 'border', 'border-white/10');
-                targetBtn.classList.add('bg-amber-500', 'text-slate-950');
-            }
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
 
-        let clientProfile = {};
+        function submitAssuranceLead(event) {
+            event.preventDefault();
+            document.getElementById('assurance-lead-form').style.display = 'none';
+            document.getElementById('form-success-msg').classList.remove('hidden');
+        }
 
-        // 60-Second 3-Question Scoping Handler
-        document.getElementById('scopingForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const q1 = formData.get('q1');
-            const q2 = formData.get('q2');
-            const q3 = formData.get('q3');
+        function filterDocs(category) {
+            const cards = document.querySelectorAll('.doc-card');
+            cards.forEach(card => {
+                if(category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
 
-            let highRiskCount = [q1, q2, q3].filter(val => val === 'high').length;
-            let resultTitle = '';
-            let resultDesc = '';
+        let assessmentAnswers = {};
+        function setAssessmentAnswer(qNum, val) {
+            assessmentAnswers[qNum] = val;
+        }
 
-            if (highRiskCount >= 2) {
-                resultTitle = "High Exposure Risk Detected";
-                resultDesc = "Your AI deployment lacks essential guardrails and HITL controls. You face immediate shadow AI, POPIA compliance, and liability risks.";
-            } else if (highRiskCount === 1) {
-                resultTitle = "Moderate Governance Gap";
-                resultDesc = "You have basic awareness, but your autonomous workflows require formalized agent passports and vendor verification.";
-            } else {
-                resultTitle = "Low Risk Profile";
-                resultDesc = "Your baseline controls are strong! Standardize your governance with our Aurion ISO/IEC 42001 certification pack.";
-            }
-
-            const resultDiv = document.getElementById('assessmentResult');
-            document.getElementById('resultTitle').textContent = resultTitle;
-            document.getElementById('resultDescription').textContent = resultDesc;
+        function calculateAssessmentScore() {
+            const resultDiv = document.getElementById('assessment-result');
             resultDiv.classList.remove('hidden');
-            resultDiv.scrollIntoView({ behavior: 'smooth' });
-        });
-
-        function runAssessment() {
-            const name = document.getElementById('visitor-name').value.trim();
-            const org = document.getElementById('visitor-org').value.trim();
-            const email = document.getElementById('visitor-email').value.trim();
-            const phone = document.getElementById('visitor-phone').value.trim();
-            const role = document.getElementById('visitor-role').value.trim();
-            const focus = document.getElementById('visitor-focus').value;
-
-            if(!name || !org || !email || !phone) {
-                alert('Please complete all mandatory contact and organizational fields (Name, Org, Email, Phone) to generate your assessment report.');
-                return;
-            }
-            clientProfile = { name, org, email, phone, role, focus };
-            document.getElementById('intake-form-container').classList.add('hidden');
-            document.getElementById('assessment-results-area').classList.remove('hidden');
-            document.getElementById('report-timestamp').textContent = new Date().toLocaleDateString();
-            document.getElementById('report-profile-title').textContent = `Audit Profile: ${org} (${name} - ${role || 'Representative'})`;
-            document.getElementById('report-summary').innerHTML = `Contact locked for <strong>${email}</strong> / <strong>${phone}</strong>. Initializing compliance parameters for <em>${focus}</em>. Your entity is provisioned for ISO/IEC 42001 and POPIA readiness review under the Founders Special Offer.`;
-        }
-
-        function sendFollowUp() {
-            const inputField = document.getElementById('user-chat-input');
-            const chatStream = document.getElementById('chat-stream');
-            if(!inputField.value.trim()) return;
-
-            const userDiv = document.createElement('div');
-            userDiv.className = 'bg-amber-500/10 border border-amber-500/20 p-2.5 rounded-xl ml-auto text-amber-200 max-w-sm';
-            userDiv.textContent = inputField.value;
-            chatStream.appendChild(userDiv);
-
-            const userText = inputField.value;
-            inputField.value = '';
-            chatStream.scrollTop = chatStream.scrollHeight;
-
-            setTimeout(() => {
-                const botDiv = document.createElement('div');
-                botDiv.className = 'bg-slate-800/90 p-2.5 rounded-xl border border-white/5 text-slate-200 max-w-sm';
-                botDiv.innerHTML = `<strong>Aurion Copilot:</strong> Inquiry regarding <em>"${userText}"</em> registered. Our advisory desk will dispatch your custom policy pack to <strong>${clientProfile.email}</strong> at <strong>${clientProfile.phone}</strong>.`;
-                chatStream.appendChild(botDiv);
-                chatStream.scrollTop = chatStream.scrollHeight;
-            }, 600);
+            document.getElementById('score-display').innerText = "Risk Exposure: High Priority";
+            document.getElementById('recommended-band').innerText = "Band B Professional Foundation & Active Defense";
         }
     </script>
 </body>

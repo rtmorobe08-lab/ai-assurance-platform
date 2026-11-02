@@ -76,7 +76,7 @@ Present as a filterable table: Respondent · Instrument · Date · What it means
 | Department of Justice and Constitutional Development | 10 May 2023 | Section 95 POPIA enforcement notice |
 | Dis-Chem Pharmacies Limited | 05 February 2024 | Section 95 POPIA, Regulation 12(2)(c) |
 | FT Rams Consulting | 21 February 2024 | Section 95 POPIA, Regulation 12(2)(c) |
-| Department of Basic Education | 20 November 2024 | Section 95 POPIA, Regulation 12(2)(c) |
+| Department of Education (listed by the Regulator under this name) | 20 November 2024 | Section 95 POPIA, Regulation 12(2)(c) |
 | WhatsApp | 16 April 2025 | Section 95 POPIA, Regulation 12(2)(c) |
 | Central Johannesburg TVET College | 20 May 2026 | Section 95 POPIA, Regulation 12(2)(c) |
 | First National Bank | 23 October 2026 | Section 95 POPIA, Regulation 12(2)(c) |

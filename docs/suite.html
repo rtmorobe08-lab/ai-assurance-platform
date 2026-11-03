@@ -1,152 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aurion Governed Agent Suite — Sleep at night while AI works for you.</title>
-<style>
-  * { box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 760px; margin: 40px auto; padding: 20px; background: #f8fafc; }
-  .card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 24px; }
-  h1 { color: #111827; font-size: 26px; text-align: center; margin-bottom: 6px; }
-  .hymn { text-align: center; color: #4f46e5; font-style: italic; font-weight: 600; margin-bottom: 26px; }
-  h2 { color: #4f46e5; font-size: 18px; border-bottom: 2px solid #e0e7ff; padding-bottom: 6px; }
-  .agent { border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px 18px; margin: 14px 0; background: #fafafa; }
-  .agent h3 { margin: 0 0 2px; color: #111827; font-size: 16px; }
-  .agent .h { color: #4f46e5; font-style: italic; font-size: 14px; margin: 2px 0 8px; }
-  .agent .t { display: inline-block; font-size: 11px; font-weight: bold; letter-spacing: 0.5px; color: #fff; background: #4f46e5; border-radius: 999px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
-  .tier { border-left: 4px solid #4f46e5; padding: 4px 0 4px 14px; margin: 16px 0; }
-  .tier b { color: #111827; }
-  table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
-  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
-  th { color: #374151; background: #eef2ff; }
-  .note { font-size: 13px; color: #6b7280; font-style: italic; }
-  .btn { display: block; width: 100%; background: #4f46e5; color: #fff; border: none; padding: 13px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; text-align: center; text-decoration: none; }
-  .btn:hover { background: #4338ca; }
-  .btn.ghost { background: #fff; color: #4f46e5; border: 2px solid #c7d2fe; }
-  #callbox { background: #0f172a; color: #e2e8f0; border-radius: 10px; padding: 20px; min-height: 210px; font-size: 15px; margin-top: 14px; }
-  #callbox .line { margin: 6px 0; opacity: 0; transform: translateY(4px); transition: all .35s ease; }
-  #callbox .line.on { opacity: 1; transform: none; }
-  #callbox .ai { color: #93c5fd; }
-  #callbox .hu { color: #fde68a; }
-  #callbox .sys { color: #94a3b8; font-size: 12px; font-style: italic; }
-  footer { text-align: center; font-size: 12px; color: #6b7280; margin-top: 30px; }
-  a { color: #4f46e5; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurion Platform | AI Assurance, Governance & Agentic Defense</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Instrument Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-slate-950 font-sans text-slate-200 antialiased">
 
-<section class="card">
-  <h1>AURION GOVERNED AGENT SUITE</h1>
-  <p class="hymn">&ldquo;Sleep at night while AI works for you.&rdquo;</p>
-  <p style="text-align:center; color:#374151;">A governed front desk and back office for your business — AI agents that answer, file, track and watch, each carrying its papers, each under human command.</p>
-</section>
+  <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-slate-950/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="font-serif text-lg tracking-wide text-white">Aurion</span>
+        <span class="hidden text-[10px] tracking-[0.25em] text-amber-400/80 sm:inline">AI ASSURANCE &amp; DEFENCE</span>
+      </a>
+      <nav class="hidden lg:flex items-center space-x-1">
+                <a href="index.html" " class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-white bg-slate-800/80 transition-colors" >Home</a>
+                <a href="index.html" " class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" >What We Offer</a>
+                <a href="index.html" " class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" >How We Work</a>
+                <a href="index.html" " class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" >Expert Hub & Docs</a>
+                <a href="index.html" " class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" >60-Sec Assessment</a>
+            </nav>
+    </div>
+  </header>
 
-<section class="card">
-  <h2>THE AGENTS</h2>
-  <div class="agent">
-    <h3>Governed Front of House <span class="t">AGENT 01 · STARTER</span></h3>
-    <div class="h">&ldquo;Never miss a customer.&rdquo;</div>
-    The front desk that never sleeps. Answers every call at once, engages every caller like a briefed receptionist, calls back every missed number, and turns every conversation into a tracked record. It introduces itself honestly in every call — human in warmth, honest in nature.
-  </div>
-  <div class="agent">
-    <h3>Governed Bookkeeper <span class="t">GROWTH</span></h3>
-    <div class="h">&ldquo;Numbers that never sleep.&rdquo;</div>
-    Ledger verification, transaction allocation and audit trails — every entry traceable to its source.
-  </div>
-  <div class="agent">
-    <h3>Governed Paperwork <span class="t">GROWTH</span></h3>
-    <div class="h">&ldquo;Paperwork that files itself.&rdquo;</div>
-    Compliance documents, briefing memos and policy drafts generated from your own governed records.
-  </div>
-  <div class="agent">
-    <h3>Governed Connector <span class="t">GROWTH</span></h3>
-    <div class="h">&ldquo;Nothing retyped, nothing forgotten.&rdquo;</div>
-    The invisible employee that moves records between your systems — one system of record, verified at every hop.
-  </div>
-  <div class="agent">
-    <h3>Inventory &amp; Supplier <span class="t">SCALE</span></h3>
-    <div class="h">&ldquo;Shelves that order themselves.&rdquo;</div>
-    Stock thresholds, supplier tracking and resource recovery metrics that watch the storeroom for you.
-  </div>
-  <div class="agent">
-    <h3>Payroll Assistant <span class="t">SCALE</span></h3>
-    <div class="h">&ldquo;Payday, governed.&rdquo;</div>
-    Payroll preparation under strict human approval gates — computed by AI, signed off by people.
-  </div>
-  <div class="agent">
-    <h3>The Watchtower <span class="t">SCALE</span></h3>
-    <div class="h">&ldquo;Your business, briefed before you ask.&rdquo;</div>
-    Incident detection, anomaly monitoring and executive briefing. Human gates enforced on every escalation.
-  </div>
-</section>
+  <main class="mx-auto max-w-6xl px-5">
 
-<section class="card">
-  <h2>THE TIERS</h2>
-  <div class="tier"><b>STARTER</b> — Governed Front of House. The foot in the door: your phones, answered and tracked.</div>
-  <div class="tier"><b>GROWTH</b> — + Bookkeeper, Paperwork and Connector. The back office that files itself.</div>
-  <div class="tier"><b>SCALE</b> — + Inventory &amp; Supplier, Payroll Assistant and the Watchtower. The full house, briefed before you ask.</div>
-  <p class="note">Tier pricing is proposal-only — book the briefing and we size it to your business. Every deployment ships with the governance layer below.</p>
-</section>
+    <section class="border-b border-slate-800 py-16 sm:py-24">
+      <p class="text-[11px] tracking-[0.3em] text-amber-400">GOVERNED AGENT SUITE</p>
+      <h1 class="mt-4 max-w-3xl font-serif text-4xl leading-tight text-white sm:text-6xl">Sleep at night while AI works for you.</h1>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-400">A governed front desk and back office for your business &mdash; AI agents that answer, file, track and watch, each carrying a signed passport, a spend cap and a kill switch.</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="index.html#assessment" class="rounded-lg bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-amber-400">Take the free 60-second check</a>
+        <a href="#agents" class="rounded-lg border border-slate-700 px-5 py-2.5 text-sm font-medium text-slate-200 transition hover:border-amber-500/50">See the eight agents</a>
+      </div>
+    </section>
 
-<section class="card">
-  <h2>THE GOVERNANCE SPINE</h2>
-  <table>
-    <tr><th>Control</th><th>What it means for you</th></tr>
-    <tr><td>Agent Passport</td><td>Every agent carries documented papers: owner, purpose, data it may touch, human checkpoints.</td></tr>
-    <tr><td>Disclosure</td><td>Callers are told honestly that they are speaking to the office assistant. No pretending, no deception.</td></tr>
-    <tr><td>Human-in-the-loop</td><td>Agents execute; people approve. Every escalation stops at a human gate.</td></tr>
-    <tr><td>Assurance Register</td><td>Every agent and every incident is inventoried in one live register you can show a funder, client or auditor.</td></tr>
-    <tr><td>POPIA posture</td><td>Personal information captured minimally, retained under a written rule, honoured on request.</td></tr>
-  </table>
-  <p style="margin-top:14px;">The engine is real and it is public — inspect the code, the schemas and the test suite:
-  <br><a href="https://github.com/rtmorobe08-lab/Aurion-Governed-Agent-Suite">github.com/rtmorobe08-lab/Aurion-Governed-Agent-Suite</a></p>
-</section>
+    <section id="agents" class="py-16">
+      <div class="flex items-baseline justify-between">
+        <h2 class="font-serif text-2xl text-white sm:text-3xl">The agents</h2>
+        <span class="text-xs tracking-widest text-slate-500">EIGHT GOVERNED WORKERS</span>
+      </div>
+      <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <article class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-colors hover:border-amber-500/40">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-serif text-xl text-white">Governed Front of House</h3>
+          <span class="shrink-0 rounded-full border border-slate-700 px-2.5 py-1 text-[10px] tracking-widest text-slate-400">AGENT 01 &middot; STARTER</span>
+        </div>
+        <p class="mt-3 text-sm italic text-amber-400/90">&ldquo;Never miss a customer.&rdquo;</p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">The front desk that never sleeps. Answers every call at once, engages every caller like a briefed receptionist, and logs every promise so nothing is forgotten.</p>
+      </article>
 
-<section class="card" id="demo">
-  <h2>HEAR THE FRONT DESK — SAMPLE CALL</h2>
-  <p>This is a real script from the Front of House agent. Press play and listen to how your phone would be answered — honestly disclosed, warmly engaged, fully tracked.</p>
-  <button class="btn ghost" id="playBtn" onclick="playCall()">&#9654; Play a sample call (Lane B — person not available)</button>
-  <div id="callbox">
-    <div class="line sys">[CALL ANSWERED — 2nd ring]</div>
-    <div class="line ai">&ldquo;Thank you for calling [Your Company], you&rsquo;re speaking with the office assistant. How can I help you today?&rdquo;</div>
-    <div class="line hu">Caller: &ldquo;Hi, can I speak to the owner about a quote?&rdquo;</div>
-    <div class="line ai">&ldquo;I&rsquo;m afraid the owner is not available right now — but I can help you straight away. Could I take your name and the best number to reach you on?&rdquo;</div>
-    <div class="line hu">Caller: &ldquo;Sure, it&rsquo;s Thabo, 082 123 4567.&rdquo;</div>
-    <div class="line ai">&ldquo;Thank you, Thabo. And briefly, what is it regarding?&rdquo;</div>
-    <div class="line hu">Caller: &ldquo;I need a quote for the generator installation.&rdquo;</div>
-    <div class="line ai">&ldquo;Noted. Here&rsquo;s what happens next: the owner will call you back before 4pm today. You have my word on it — and it&rsquo;s logged, so it won&rsquo;t be forgotten. Is there anything else I can help you with while I have you?&rdquo;</div>
-    <div class="line sys">[CALL ENDS — RECORD WRITTEN TO THE CALLS LOG]</div>
-    <div class="line sys">Name: Thabo · Number: captured · Reason: generator quote · Promise: callback by 16:00 · Status: ASSIGNED → tracked to close</div>
-  </div>
-  <p style="margin-top:16px;">Want to hear it live, on your own number, with your own company brief?
-  <br>Book a live demo — we&rsquo;ll call you as your own front desk.</p>
-  <a class="btn" href="https://wa.me/27828800195?text=Please%20call%20me%20for%20a%20live%20Front%20of%20House%20demo." target="_blank">REQUEST MY LIVE DEMO CALL</a>
-  <p class="note" style="margin-top:12px;">Or take the free 60-second AI risk check first: <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform/">Know your AI risk in 60 seconds</a></p>
-</section>
+      <article class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-colors hover:border-amber-500/40">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-serif text-xl text-white">Governed Bookkeeper</h3>
+          <span class="shrink-0 rounded-full border border-slate-700 px-2.5 py-1 text-[10px] tracking-widest text-slate-400">AGENT 02 &middot; GROWTH</span>
+        </div>
+        <p class="mt-3 text-sm italic text-amber-400/90">&ldquo;Numbers that never sleep.&rdquo;</p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">Ledger verification, transaction allocation and audit trails &mdash; every entry traceable to its source.</p>
+      </article>
 
-<section class="card">
-  <h2>WHO IT SERVES</h2>
-  <p>SMEs and institutions of every size that use AI but refuse to be AI-blind: construction firms, suppliers, practices, colleges, municipal programmes. One suite, one register, one discipline — from the front desk to the watchtower.</p>
-  <p class="note">AURION ENTERPRISES · Smart systems. Strategic execution. · rtmorobe08@gmail.com · +27 82 880 0195</p>
-</section>
+      <article class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-colors hover:border-amber-500/40">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-serif text-xl text-white">Governed Paperwork</h3>
+          <span class="shrink-0 rounded-full border border-slate-700 px-2.5 py-1 text-[10px] tracking-widest text-slate-400">AGENT 03 &middot; GROWTH</span>
+        </div>
+        <p class="mt-3 text-sm italic text-amber-400/90">&ldquo;Paperwork that files itself.&rdquo;</p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">Compliance documents, briefing memos and policy drafts generated from your own governed records.</p>
+      </article>
 
-<script>
-function playCall(){
-  var btn = document.getElementById('playBtn');
-  btn.textContent = "\u25B6 Playing sample call...";
-  var lines = document.querySelectorAll('#callbox .line');
-  lines.forEach(function(l){ l.classList.remove('on'); });
-  var i = 0;
-  var t = setInterval(function(){
-    if(i >= lines.length){ clearInterval(t); btn.innerHTML = "&#9654; Play a sample call (Lane B — person not available)"; return; }
-    lines[i].classList.add('on');
-    i++;
-  }, 1400);
-}
-</script>
+      <article class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-colors hover:border-amber-500/40">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-serif text-xl text-white">Governed Connector</h3>
+          <span class="shrink-0 rounded-full border border-slate-700 px-2.5 py-1 text-[10px] tracking-widest text-slate-400">AGENT 04 &middot; GROWTH</span>
+        </div>
+        <p class="mt-3 text-sm italic text-amber-400/90">&ldquo;Nothing retyped, nothing forgotten.&rdquo;</p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">The invisible employee that moves records between your systems &mdash; one system of record, verified at every hop.</p>
+      </article>
 
-<footer>Aurion Enterprises &middot; Governed Agent Suite &middot; &ldquo;Never miss a customer.&rdquo; &middot; <a href="https://rtmorobe08-lab.github.io/ai-assurance-platform/">&larr; Back to the AI Assurance Platform</a></footer>
+      <article class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-colors hover:border-amber-500/40">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-serif text-xl text-white">Inventory &amp; Supplier</h3>
+          <span class="shrink-0 rounded-full border border-slate-700 px-2.5 py-1 text-[10px] tracking-widest text-slate-400">AGENT 05 &middot; SCALE</span>
+        </div>
+        <p class="mt-3 text-sm italic text-amber-400/90">&ldquo;Shelves that order themselves.&rdquo;</p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">Stock thresholds, supplier tracking and resource recovery metrics that watch the storeroom for you.</p>
+      </article>
 
+      <article class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-colors hover:border-amber-500/40">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-serif text-xl text-white">Payroll Assistant</h3>
+          <span class="shrink-0 rounded-full border border-slate-700 px-2.5 py-1 text-[10px] tracking-widest text-slate-400">AGENT 06 &middot; SCALE</span>
+        </div>
+        <p class="mt-3 text-sm italic text-amber-400/90">&ldquo;Payday, governed.&rdquo;</p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">Payroll preparation under strict human approval gates &mdash; computed by AI, signed off by people.</p>
+      </article>
+
+      <article class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-colors hover:border-amber-500/40">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-serif text-xl text-white">The Watchtower</h3>
+          <span class="shrink-0 rounded-full border border-slate-700 px-2.5 py-1 text-[10px] tracking-widest text-slate-400">AGENT 07 &middot; SCALE</span>
+        </div>
+        <p class="mt-3 text-sm italic text-amber-400/90">&ldquo;Your business, briefed before you ask.&rdquo;</p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">Incident detection, anomaly monitoring and executive briefing. Human gates enforced on every escalation.</p>
+      </article>
+
+      <article class="group rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-colors hover:border-amber-500/40">
+        <div class="flex items-center justify-between gap-3">
+          <h3 class="font-serif text-xl text-white">Tender Scout</h3>
+          <span class="shrink-0 rounded-full border border-slate-700 px-2.5 py-1 text-[10px] tracking-widest text-slate-400">AGENT 08 &middot; SCALE</span>
+        </div>
+        <p class="mt-3 text-sm italic text-amber-400/90">&ldquo;Every opportunity, seen.&rdquo;</p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">Scans tender notices, tests eligibility against your certifications and closing dates, and assembles the bid pack for your signature. It never submits and never signs.</p>
+      </article>
+      </div>
+    </section>
+
+    <section class="border-t border-slate-800 py-14">
+      <h2 class="font-serif text-2xl text-white sm:text-3xl">The tiers</h2>
+      <div class="mt-6">
+
+        <div class="flex flex-col gap-2 border-t border-slate-800 py-5 sm:flex-row sm:items-start">
+          <div class="w-32 shrink-0 text-xs tracking-[0.2em] text-amber-400">STARTER</div>
+          <p class="text-sm leading-relaxed text-slate-300">Governed Front of House. The foot in the door: your phones, answered and tracked.</p>
+        </div>
+
+        <div class="flex flex-col gap-2 border-t border-slate-800 py-5 sm:flex-row sm:items-start">
+          <div class="w-32 shrink-0 text-xs tracking-[0.2em] text-amber-400">GROWTH</div>
+          <p class="text-sm leading-relaxed text-slate-300">+ Bookkeeper, Paperwork and Connector. The back office that files itself.</p>
+        </div>
+
+        <div class="flex flex-col gap-2 border-t border-slate-800 py-5 sm:flex-row sm:items-start">
+          <div class="w-32 shrink-0 text-xs tracking-[0.2em] text-amber-400">SCALE</div>
+          <p class="text-sm leading-relaxed text-slate-300">+ Inventory &amp; Supplier, Payroll Assistant, the Watchtower and Tender Scout. The full house, briefed before you ask.</p>
+        </div>
+      </div>
+      <p class="mt-6 max-w-2xl text-xs leading-relaxed text-slate-500">Tier pricing is proposal-only &mdash; book the briefing and we size it to your business. Every deployment ships with a signed Agent Passport, a spend cap and a kill switch under three seconds.</p>
+    </section>
+
+    <section class="border-t border-slate-800 py-14">
+      <h2 class="font-serif text-2xl text-white sm:text-3xl">The governance spine</h2>
+      <table class="mt-6 w-full">
+        <thead>
+          <tr>
+            <th class="pb-3 pr-6 text-left text-[11px] tracking-[0.2em] text-slate-500">CONTROL</th>
+            <th class="pb-3 text-left text-[11px] tracking-[0.2em] text-slate-500">WHAT IT MEANS FOR YOU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t border-slate-800">
+            <td class="py-3 pr-6 align-top text-sm font-medium text-white">Agent Passport</td>
+            <td class="py-3 align-top text-sm text-slate-400">Every agent carries documented papers: owner, purpose, data it may touch, human checkpoints.</td>
+          </tr>
+
+          <tr class="border-t border-slate-800">
+            <td class="py-3 pr-6 align-top text-sm font-medium text-white">Disclosure</td>
+            <td class="py-3 align-top text-sm text-slate-400">Callers are told honestly that they are speaking to the office assistant. No pretending, no deception.</td>
+          </tr>
+
+          <tr class="border-t border-slate-800">
+            <td class="py-3 pr-6 align-top text-sm font-medium text-white">Human-in-the-loop</td>
+            <td class="py-3 align-top text-sm text-slate-400">Agents execute; people approve. Every escalation stops at a human gate.</td>
+          </tr>
+
+          <tr class="border-t border-slate-800">
+            <td class="py-3 pr-6 align-top text-sm font-medium text-white">Assurance Register</td>
+            <td class="py-3 align-top text-sm text-slate-400">Every agent and every incident is inventoried in one live register you can show a funder, client or auditor.</td>
+          </tr>
+
+          <tr class="border-t border-slate-800">
+            <td class="py-3 pr-6 align-top text-sm font-medium text-white">POPIA posture</td>
+            <td class="py-3 align-top text-sm text-slate-400">Personal information captured minimally, retained under a written rule, honoured on request.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="mt-8 text-sm text-slate-400">The engine is real and it is public &mdash; inspect the code, the schemas and the test suite: <a class="text-amber-400 underline-offset-4 hover:underline" href="https://github.com/rtmorobe08-lab/Aurion-Governed-Agent-Suite">github.com/rtmorobe08-lab/Aurion-Governed-Agent-Suite</a></p>
+    </section>
+
+    <section class="border-t border-slate-800 py-14">
+      <h2 class="font-serif text-2xl text-white sm:text-3xl">Hear the front desk</h2>
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-slate-400">This is a real script from the Front of House agent. Read it and hear exactly how your phone would be answered when nobody is free.</p>
+      <button id="playBtn" class="mt-6 rounded-lg border border-amber-500/40 bg-amber-500/10 px-5 py-2.5 text-sm font-medium text-amber-300 transition hover:bg-amber-500/20">&#9654; Play a sample call (Lane B &mdash; person not available)</button>
+      <div id="callBox" class="mt-6 hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+          <p class="mt-3 text-[11px] tracking-[0.18em] text-slate-500">[CALL ANSWERED &mdash; 2nd ring]</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">&ldquo;Thank you for calling [Your Company], you&rsquo;re speaking with the office assistant. How can I help you today?&rdquo;</p>
+
+          <p class="mt-3 text-[11px] tracking-[0.18em] text-slate-500">Caller</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">&ldquo;Hi, can I speak to the owner about a quote?&rdquo;</p>
+
+          <p class="mt-3 text-[11px] tracking-[0.18em] text-slate-500">Agent</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">&ldquo;I&rsquo;m afraid the owner is not available right now &mdash; but I can help you straight away. Could I take your name and the best number to reach you?&rdquo;</p>
+
+          <p class="mt-3 text-[11px] tracking-[0.18em] text-slate-500">Caller</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">&ldquo;Sure, it&rsquo;s Thabo, 082 123 4567.&rdquo;</p>
+
+          <p class="mt-3 text-[11px] tracking-[0.18em] text-slate-500">Agent</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">&ldquo;Thank you, Thabo. And briefly, what is it regarding?&rdquo;</p>
+
+          <p class="mt-3 text-[11px] tracking-[0.18em] text-slate-500">Caller</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">&ldquo;I need a quote for the generator installation.&rdquo;</p>
+
+          <p class="mt-3 text-[11px] tracking-[0.18em] text-slate-500">Agent</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">&ldquo;Noted. Here&rsquo;s what happens next: the owner will call you back before 4pm today. You have my word on it &mdash; and it is written down.&rdquo;</p>
+
+          <p class="mt-3 text-[11px] tracking-[0.18em] text-slate-500">[CALL ENDS &mdash; RECORD WRITTEN TO THE CALLS LOG]</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">Name: Thabo &middot; Number: captured &middot; Reason: generator quote &middot; Promise: callback by 16:00 &middot; Status: ASSIGNED</p>
+      </div>
+    </section>
+
+    <section class="border-t border-slate-800 py-16">
+      <h2 class="font-serif text-2xl text-white sm:text-3xl">Want to hear it live, on your own number, with your own company brief?</h2>
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-slate-400">Book a live demo &mdash; we&rsquo;ll call you as your own front desk.</p>
+      <a href="index.html#assessment" class="mt-6 inline-block rounded-lg bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-amber-400">Request my live demo call</a>
+    </section>
+
+    <section class="border-t border-slate-800 py-14">
+      <h2 class="font-serif text-2xl text-white sm:text-3xl">Who it serves</h2>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-slate-400">SMEs and institutions of every size that use AI but refuse to be AI-blind: construction firms, suppliers, practices, schools, colleges and municipalities. If your team already uses ChatGPT, a WhatsApp bot or an automated quoting tool, you have agents working for you today &mdash; this is how you put papers on them.</p>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-slate-800 bg-slate-950">
+    <div class="mx-auto max-w-6xl px-5 py-10">
+      <p class="text-sm text-slate-400">AURION ENTERPRISES &middot; Smart systems. Strategic execution. &middot; rtmorobe08@gmail.com &middot; +27 82 880 0195</p>
+      <p class="mt-3 text-xs text-slate-600">Reg. 2026/466313/07 &middot; Registered office: 1489 Molefe Street, Sharpeville, Gauteng, 1928</p>
+      <a href="index.html" class="mt-4 inline-block text-xs text-amber-400 hover:underline">&larr; Back to the AI Assurance Platform</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('playBtn').addEventListener('click', function () {
+      var box = document.getElementById('callBox');
+      box.classList.toggle('hidden');
+      this.innerHTML = box.classList.contains('hidden')
+        ? '&#9654; Play a sample call (Lane B &mdash; person not available)'
+        : '&#10005; Hide the sample call';
+    });
+  </script>
 </body>
 </html>

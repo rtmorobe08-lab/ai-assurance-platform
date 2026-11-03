@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Governance Tools | Aurion Enterprises</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        slate: {
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Instrument Serif & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-slate-200 antialiased">
+<header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo / Title -->
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-serif font-bold text-xl">A</div>
+                <div>
+                    <span class="text-white font-serif text-xl tracking-wide block leading-tight">Aurion</span>
+                    <span class="text-xs text-amber-400 font-medium uppercase tracking-widest block">AI Assurance & Defense</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav Tabs & Links -->
+            <nav class="hidden lg:flex items-center space-x-1">
+                <button onclick="switchTab('home')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-white bg-slate-800/80 transition-colors" data-target="home">Home</button>
+                <button onclick="switchTab('what-we-offer')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" data-target="what-we-offer">What We Offer</button>
+                <button onclick="switchTab('how-we-work')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" data-target="how-we-work">How We Work</button>
+                <button onclick="switchTab('expert-hub')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" data-target="expert-hub">Expert Hub & Docs</button>
+                <button onclick="switchTab('assessment')" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition-colors" data-target="assessment">60-Sec Assessment</button>
+            </nav>
+
+            <!-- External Page Links -->
+            <div class="hidden md:flex items-center space-x-2">
+                <a href="index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-800 transition-colors">All Instruments</a>
+                <a href="../suite.html" class="px-4 py-2 rounded-lg text-sm font-medium text-amber-400 hover:bg-amber-500/10 border border-amber-500/30 transition-colors">Governed Agents</a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <div class="flex items-center lg:hidden">
+                <button id="mobile-menu-button" onclick="toggleMobileMenu()" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 bg-slate-900 px-4 pt-3 pb-4 space-y-2">
+            <button onclick="switchTab('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white bg-slate-800">Home</button>
+            <button onclick="switchTab('what-we-offer'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">What We Offer</button>
+            <button onclick="switchTab('how-we-work'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">How We Work</button>
+            <button onclick="switchTab('expert-hub'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">Expert Hub & Docs</button>
+            <button onclick="switchTab('assessment'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800">60-Sec Assessment</button>
+            <div class="pt-2 border-t border-slate-800 flex flex-col space-y-2">
+                <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-800">All Instruments</a>
+                <a href="../suite.html" class="px-3 py-2 rounded-md text-sm font-medium text-amber-400 hover:bg-slate-800">Governed Agents</a>
+            </div>
+        </div>
+    </header>
+<main class="mx-auto max-w-6xl px-5">
+  <section class="border-b border-slate-800 py-16 sm:py-20">
+    <p class="text-[11px] tracking-[0.3em] text-amber-400">FREE TOOLS</p>
+    <h1 class="mt-4 max-w-3xl font-serif text-4xl leading-tight text-white sm:text-5xl">Ten working tools.<br><span class="text-slate-400">No login. Nothing leaves your device.</span></h1>
+    <p class="mt-6 max-w-2xl text-slate-400">These are the instruments we open in live engagements, given to you as they are. Each one runs entirely in your browser, saves on your device, and transmits nothing to us.</p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="../index.html" class="rounded-lg bg-amber-400 px-5 py-3 text-sm font-semibold text-slate-950">Take the free 60-second check</a>
+      <a href="index.html" class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-medium text-slate-200">All instruments</a>
+    </div>
+  </section>
+  <section class="py-14">
+    <h2 class="font-serif text-2xl text-white">Know where you stand</h2>
+    <p class="mt-2 text-sm text-slate-400">Start here if you have not looked at your AI exposure yet.</p>
+    <div class="mt-8 grid gap-4 md:grid-cols-2">
+      <a href="popia-exposure-worksheet.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">01 · WORKSHEET</span>
+        <h3 class="mt-3 font-serif text-xl text-white">POPIA Exposure Worksheet</h3>
+        <p class="mt-2 text-sm text-slate-400">The questions that show what your current AI use actually exposes you to. Score, gaps and priorities in one pass.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open tool →</span>
+      </a>
+      <a href="../index.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">FREE · 60 SECONDS</span>
+        <h3 class="mt-3 font-serif text-xl text-white">AI Health Check</h3>
+        <p class="mt-2 text-sm text-slate-400">A ten-question diagnostic that returns a score and band. No email, no signup, results stay on your screen.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Start check →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-slate-800 py-14">
+    <h2 class="font-serif text-2xl text-white">Plan it, then report it</h2>
+    <p class="mt-2 text-sm text-slate-400">For turning findings into something a board or auditor will accept.</p>
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <a href="remediation-roadmap.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">02 · ROADMAP</span>
+        <h3 class="mt-3 font-serif text-lg text-white">Remediation Roadmap</h3>
+        <p class="mt-2 text-sm text-slate-400">Sequenced actions, owners and dates your team can execute.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open →</span>
+      </a>
+      <a href="executive-report.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">04 · REPORT</span>
+        <h3 class="mt-3 font-serif text-lg text-white">Executive Report</h3>
+        <p class="mt-2 text-sm text-slate-400">One page your board will actually read.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open →</span>
+      </a>
+      <a href="quarterly-report.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">09 · REPORT</span>
+        <h3 class="mt-3 font-serif text-lg text-white">Quarterly Compliance Report</h3>
+        <p class="mt-2 text-sm text-slate-400">Evidence for the quarter, in the shape an auditor expects.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open →</span>
+      </a>
+    </div>
+  </section>
+  <section class="border-t border-slate-800 py-14">
+    <h2 class="font-serif text-2xl text-white">Generate the paperwork</h2>
+    <p class="mt-2 text-sm text-slate-400">Drafted from your own inputs, not from a template library.</p>
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <a href="policy-pack.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">05 · POLICIES</span>
+        <h3 class="mt-3 font-serif text-lg text-white">AI Policy Pack</h3>
+        <p class="mt-2 text-sm text-slate-400">Acceptable use, data handling, vendor onboarding, incident reporting, agent offboarding.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open →</span>
+      </a>
+      <a href="agent-passport.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">06 · PASSPORT</span>
+        <h3 class="mt-3 font-serif text-lg text-white">Agent Passport</h3>
+        <p class="mt-2 text-sm text-slate-400">The signed identity every agent carries: scope, caps, human gates, kill switch.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open →</span>
+      </a>
+      <a href="engagement-charter.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">03 · CHARTER</span>
+        <h3 class="mt-3 font-serif text-lg text-white">Engagement Charter</h3>
+        <p class="mt-2 text-sm text-slate-400">What we do, what we don't, and who signs for what.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open →</span>
+      </a>
+    </div>
+  </section>
+  <section class="border-t border-slate-800 py-14">
+    <h2 class="font-serif text-2xl text-white">Get ready, and respond when it breaks</h2>
+    <p class="mt-2 text-sm text-slate-400">Training, the incident clock, and the register that holds the evidence.</p>
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <a href="training-deck.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">07 · TRAINING</span>
+        <h3 class="mt-3 font-serif text-lg text-white">Staff Training Deck</h3>
+        <p class="mt-2 text-sm text-slate-400">Teach the team what counts as shadow AI, in one sitting.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open →</span>
+      </a>
+      <a href="incident-intake.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">08 · SOP</span>
+        <h3 class="mt-3 font-serif text-lg text-white">Incident Intake &amp; Response SOP</h3>
+        <p class="mt-2 text-sm text-slate-400">The 24 and 72-hour clocks, with the notification brief ready to send.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open →</span>
+      </a>
+      <a href="ai-register.html" class="group rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:border-amber-500/40">
+        <span class="text-[11px] tracking-widest text-amber-400">10 · REGISTER</span>
+        <h3 class="mt-3 font-serif text-lg text-white">Live Assurance Register</h3>
+        <p class="mt-2 text-sm text-slate-400">Incidents, agents and evidence in one place. CSV export, JSON backup.</p>
+        <span class="mt-4 inline-block text-sm text-amber-300">Open →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="border-t border-slate-800 py-14">
+    <div class="rounded-xl border border-amber-500/20 bg-amber-500/5 p-8">
+      <h2 class="font-serif text-2xl text-white">If the score keeps you up at night</h2>
+      <p class="mt-3 max-w-2xl text-slate-300">The free check tells you where you stand. The AI Health Check turns it into a costed roadmap within a week, and every rand of it is credited against Foundation if you continue.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="../index.html" class="rounded-lg bg-amber-400 px-5 py-3 text-sm font-semibold text-slate-950">Take the free check</a>
+        <a href="../suite.html" class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-medium text-slate-200">See the eight agents</a>
+      </div>
+    </div>
+    <p class="mt-6 text-xs text-slate-500">In development: Vendor Diligence Scorecard, Tender AI Readiness Check. These are not yet available and are not offered for sale.</p>
+  </section>
+</main>
+
+<footer class="mt-20 border-t border-slate-900 bg-slate-950 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
+            <div>
+                <div class="text-white font-serif text-base mb-1">Aurion Enterprises (Pty) Ltd</div>
+                <p>Reg. 2026/466313/07 · B-BBEE Level 1 (EME) · CSD MAAA1730875</p>
+                <p class="mt-1 text-slate-400">Smart systems. Strategic execution.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="instruments/index.html" class="hover:text-slate-300">Client Instruments</a>
+                <a href="suite.html" class="hover:text-slate-300">Agent Suite</a>
+                <a href="https://github.com/rtmorobe08-lab/ai-assurance-platform" target="_blank" class="hover:text-slate-300">GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

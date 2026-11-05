@@ -913,11 +913,13 @@ function calculateAssessmentScore(){
 function sendScoreToForm(){
   const s=window.__aurionScore;
   if(!s) return;
+  if(typeof switchTab==='function') switchTab('home');
   const hint=document.getElementById('lead-score-hint');
   hint.textContent=`Your score ${s.score} (${s.tier}) will be attached to this request.`;
   hint.classList.remove('hidden');
+  document.getElementById('assurance-lead-form').classList.remove('hidden');
   document.getElementById('assurance-lead-form').scrollIntoView({behavior:'smooth',block:'center'});
-  setTimeout(()=>document.getElementById('lf-name').focus(),600);
+  setTimeout(()=>{const n=document.getElementById('lf-name'); if(n) n.focus();},700);
 }
 const LEAD_ENDPOINT='https://base44.app/api/apps/69d6b5a30c4a841061af97b3/functions/submitAssuranceLead';
 async function submitAssuranceLead(event){

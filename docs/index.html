@@ -219,33 +219,46 @@
                 <div class="p-8 rounded-2xl bg-slate-900/80 border border-slate-800">
                     <h4 class="font-serif text-xl text-white mb-2">Request an Assurance Briefing</h4>
                     <p class="text-xs text-slate-400 mb-6">Submit your details for a structured institutional review.</p>
-                    <form id="assurance-lead-form" onsubmit="submitAssuranceLead(event)" class="space-y-4">
-                        <!-- Honeypot -->
-                        <input type="text" name="website_hp" style="display:none" tabindex="-1" autocomplete="off">
-                        <div>
-                            <label class="block text-xs font-medium text-slate-300 mb-1">Full Name / Organization</label>
-                            <input type="text" required class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
-                            <input type="email" required class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-slate-300 mb-1">Primary Focus Area</label>
-                            <select class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
-                                <option>POPIA & Compliance Assessment</option>
-                                <option>Governed Agent Suite Deployment</option>
-                                <option>ISO/IEC 42001 Certification</option>
-                                <option>Institutional All-in Program</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="w-full py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors">
-                            Submit Request
-                        </button>
-                    </form>
-                    <div id="form-success-msg" class="hidden mt-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs text-center">
-                        Request received. Our advisory team will contact you within 4 business hours.
-                    </div>
+                    <form id="assurance-lead-form" onsubmit="submitAssuranceLead(event)" class="space-y-4" novalidate>
+  <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;height:0;width:0;opacity:0" aria-hidden="true">
+  <div>
+    <label for="lf-name" class="block text-xs font-medium text-slate-300 mb-1">Full name</label>
+    <input id="lf-name" name="full_name" type="text" required autocomplete="name" class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
+  </div>
+  <div>
+    <label for="lf-company" class="block text-xs font-medium text-slate-300 mb-1">Organisation</label>
+    <input id="lf-company" name="company" type="text" autocomplete="organization" class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
+  </div>
+  <div class="grid gap-4 sm:grid-cols-2">
+    <div>
+      <label for="lf-email" class="block text-xs font-medium text-slate-300 mb-1">Email</label>
+      <input id="lf-email" name="email" type="email" required autocomplete="email" class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
+    </div>
+    <div>
+      <label for="lf-phone" class="block text-xs font-medium text-slate-300 mb-1">Phone <span class="text-slate-600">(optional)</span></label>
+      <input id="lf-phone" name="phone" type="tel" autocomplete="tel" class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
+    </div>
+  </div>
+  <div>
+    <label for="lf-focus" class="block text-xs font-medium text-slate-300 mb-1">What would you like reviewed?</label>
+    <select id="lf-focus" name="focus" class="w-full px-4 py-2.5 rounded-lg bg-slate-950 border border-slate-800 text-white text-sm focus:outline-none focus:border-amber-500">
+      <option>My AI risk score and what to fix first</option>
+      <option>POPIA compliance and a written record</option>
+      <option>Governed agents for my business</option>
+      <option>ISO/IEC 42001 certification</option>
+      <option>Something else</option>
+    </select>
+  </div>
+  <label class="flex items-start gap-3 text-xs text-slate-400">
+    <input id="lf-consent" name="consent" type="checkbox" required class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-700 bg-slate-950">
+    <span>I agree that Aurion Enterprises may use these details to reply to me and to keep a record of my request. We never sell or share them. You may ask us to delete them at any time by emailing <span class="text-slate-300">rtmorobe08@gmail.com</span>. Information officer: R.T. Morobe. Requests are kept for 24 months unless you become a client.</span>
+  </label>
+  <button type="submit" class="w-full py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors">Request the written review</button>
+  <p id="lead-score-hint" class="hidden text-xs text-amber-300"></p>
+</form>
+<div id="form-success-msg" class="hidden mt-4 p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs"></div>
+<div id="form-error-msg" class="hidden mt-4 p-4 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs"></div>
+
                 </div>
             </section>
         </div>
@@ -757,46 +770,27 @@ function filterEnforcementTable() {
         <div id="tab-assessment" class="tab-content hidden space-y-8 max-w-3xl mx-auto">
             <section class="pt-8 text-center">
                 <h1 class="font-serif text-5xl text-white mb-4">60-Second AI Health Check</h1>
-                <p class="text-slate-300 text-sm">Evaluate your organizational risk profile instantly. Results remain entirely on your device.</p>
+                <p class="text-slate-300 text-sm">Seven questions. A real score, calculated in your browser. Send it to us only if you want it reviewed in writing.</p>
             </section>
 
             <div class="p-8 rounded-2xl bg-slate-900 border border-slate-800 space-y-6" id="assessment-widget">
-                <div class="space-y-4">
-                    <label class="block text-sm font-medium text-white">1. Does your organization have a formal inventory of active AI systems and models?</label>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button onclick="setAssessmentAnswer(1, 'yes')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">Yes, fully tracked</button>
-                        <button onclick="setAssessmentAnswer(1, 'no')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">No / Shadow AI present</button>
-                    </div>
-                </div>
+  <div id="q-container" class="space-y-6"></div>
+  <div class="flex items-center justify-between gap-4 pt-2">
+    <p id="q-progress" class="text-xs text-slate-500">0 of 7 answered</p>
+    <button id="calc-btn" onclick="calculateAssessmentScore()" class="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-slate-950 opacity-40 cursor-not-allowed" disabled>See my score</button>
+  </div>
+  <div id="assessment-result" class="hidden rounded-xl border border-amber-500/30 bg-slate-950 p-6 space-y-3">
+    <div class="text-[11px] tracking-[0.25em] text-amber-400" id="tier-label">SCORE</div>
+    <div class="font-serif text-4xl text-white" id="score-display">0 / 21</div>
+    <p class="text-sm text-slate-300" id="tier-meaning"></p>
+    <p class="text-sm text-slate-400" id="recommended-band"></p>
+    <p class="border-t border-slate-800 pt-3 text-xs text-slate-500">This score was calculated in your browser. Nothing was sent to us. If you would like it reviewed in writing, send it across below.</p>
+    <button onclick="sendScoreToForm()" class="rounded-lg bg-amber-400 px-5 py-2.5 text-sm font-semibold text-slate-950">Have this reviewed in writing</button>
+  </div>
+</div>
 
-                <div class="space-y-4">
-                    <label class="block text-sm font-medium text-white">2. Are autonomous agents equipped with hard ZAR spend caps and emergency kill switches?</label>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button onclick="setAssessmentAnswer(2, 'yes')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">Enforced (&lt;3s switch)</button>
-                        <button onclick="setAssessmentAnswer(2, 'no')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">Unverified / None</button>
-                    </div>
-                </div>
-
-                <div class="space-y-4">
-                    <label class="block text-sm font-medium text-white">3. Do you maintain a POPIA Section 109 compliance audit trail for automated decisions?</label>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button onclick="setAssessmentAnswer(3, 'yes')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">Maintained & Audited</button>
-                        <button onclick="setAssessmentAnswer(3, 'no')" class="p-3 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-300 hover:border-amber-500 transition-colors">No formal record</button>
-                    </div>
-                </div>
-
-                <button onclick="calculateAssessmentScore()" class="w-full py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors">
-                    Calculate Risk Score
-                </button>
-
-                <div id="assessment-result" class="hidden p-4 rounded-xl bg-slate-950 border border-amber-500/30 text-center space-y-2">
-                    <div class="text-amber-400 font-serif text-3xl" id="score-display">Risk Level: Moderate</div>
-                    <p class="text-xs text-slate-300">Your organization qualifies for <strong class="text-white" id="recommended-band">Band B Professional</strong> foundation audit.</p>
-                </div>
-            </div>
-        </div>
-
-    </main>
+  </div>
+</main>
 
     <!-- Footer -->
     <footer class="mt-20 border-t border-slate-900 bg-slate-950 py-12">
@@ -857,17 +851,117 @@ function filterEnforcementTable() {
             });
         }
 
-        let assessmentAnswers = {};
-        function setAssessmentAnswer(qNum, val) {
-            assessmentAnswers[qNum] = val;
-        }
+        const QUESTIONS = [
+ {q:"Does your organisation keep a written inventory of the AI tools and agents in use?",
+  a:[["There is nothing written down",3],["We could name a few from memory",2],["Some of it is written down",1],["Yes, and it is reviewed",0]]},
+ {q:"Do your AI agents have hard spend caps and a working kill switch?",
+  a:[["Neither exists",3],["Some tools have limits, nothing formal",2],["Money is capped, no kill switch",1],["Both, and they are tested",0]]},
+ {q:"Is client or patient information ever pasted into public AI tools?",
+  a:[["Regularly, with no rules",3],["Sometimes",2],["There is a policy, but it is not enforced",1],["Blocked by policy and by technology",0]]},
+ {q:"Could you produce an audit trail of decisions AI made or supported?",
+  a:[["There is no record",3],["Email and memory",2],["Partial logs",1],["A tamper-evident register",0]]},
+ {q:"If a client asked for their data today, could you find every copy of it?",
+  a:[["No",3],["Probably, with a few days' work",2],["Most of it",1],["Yes, documented and tested",0]]},
+ {q:"Do consequential AI actions require human approval?",
+  a:[["No human gate at all",3],["Sometimes",2],["Gates are defined but not enforced",1],["Enforced and logged",0]]},
+ {q:"Have you checked the data terms of the AI vendors you use?",
+  a:[["Never",3],["Read them once",2],["Reviewed some of them",1],["All covered by written terms",0]]}
+];
+const TIERS=[
+ {min:18,label:"CRITICAL EXPOSURE", meaning:"One incident could cost more than years of governance.", rec:"Start with the AI Health Check (from R2,500, credited toward any engagement). Then close the money and data gaps first."},
+ {min:13,label:"HIGH EXPOSURE", meaning:"You are exposed now, and it is fixable this quarter.", rec:"An AI Health Check gives you the written position in a week, credited toward the Control Framework."},
+ {min:7, label:"MODERATE EXPOSURE", meaning:"Gaps exist but they are still cheap to close.", rec:"Take the AI Health Check, then decide on Continuous Assurance to keep the evidence current."},
+ {min:0, label:"LOW EXPOSURE", meaning:"You are ahead of most. Your task is proving it, not fixing it.", rec:"Continuous Assurance keeps the evidence current for clients, funders and auditors."}
+];
+let answers={};
+function renderQuestions(){
+  const c=document.getElementById('q-container');
+  if(!c) return;
+  c.innerHTML=QUESTIONS.map((item,i)=>`
+    <div class="space-y-3">
+      <p class="text-sm font-medium text-white">${i+1}. ${item.q}</p>
+      <div class="grid gap-2 sm:grid-cols-2">
+        ${item.a.map((opt,j)=>`<button type="button" data-q="${i}" data-s="${opt[1]}" onclick="pick(${i},${j})" class="qopt rounded-lg border border-slate-800 bg-slate-950 px-3 py-2.5 text-left text-xs text-slate-300 transition hover:border-amber-500/60">${opt[0]}</button>`).join("")}
+      </div>
+    </div>`).join("");
+}
+function pick(qi,oi){
+  answers[qi]=QUESTIONS[qi].a[oi][1];
+  document.querySelectorAll(`[data-q="${qi}"]`).forEach(b=>{
+    const chosen = Number(b.dataset.s)===Number(answers[qi]);
+    b.classList.toggle('border-amber-400',chosen);
+    b.classList.toggle('bg-amber-400/10',chosen);
+    b.classList.toggle('text-white',chosen);
+  });
+  const n=Object.keys(answers).length;
+  document.getElementById('q-progress').textContent=`${n} of ${QUESTIONS.length} answered`;
+  const btn=document.getElementById('calc-btn');
+  if(n===QUESTIONS.length){btn.disabled=false;btn.classList.remove('opacity-40','cursor-not-allowed');}
+}
+function calculateAssessmentScore(){
+  if(Object.keys(answers).length!==QUESTIONS.length) return;
+  const total=Object.values(answers).reduce((a,b)=>a+b,0);
+  const tier=TIERS.find(t=>total>=t.min);
+  document.getElementById('score-display').textContent=`${total} / 21`;
+  document.getElementById('tier-label').textContent=tier.label;
+  document.getElementById('tier-meaning').textContent=tier.meaning;
+  document.getElementById('recommended-band').textContent=tier.rec;
+  document.getElementById('assessment-result').classList.remove('hidden');
+  window.__aurionScore={score:`${total}/21`, tier:tier.label};
+  document.getElementById('assessment-result').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function sendScoreToForm(){
+  const s=window.__aurionScore;
+  if(!s) return;
+  const hint=document.getElementById('lead-score-hint');
+  hint.textContent=`Your score ${s.score} (${s.tier}) will be attached to this request.`;
+  hint.classList.remove('hidden');
+  document.getElementById('assurance-lead-form').scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=>document.getElementById('lf-name').focus(),600);
+}
+const LEAD_ENDPOINT='https://base44.app/api/apps/69d6b5a30c4a841061af97b3/functions/submitAssuranceLead';
+async function submitAssuranceLead(event){
+  event.preventDefault();
+  const form=event.target;
+  const okBox=document.getElementById('form-success-msg');
+  const errBox=document.getElementById('form-error-msg');
+  okBox.classList.add('hidden'); errBox.classList.add('hidden');
+  const data=Object.fromEntries(new FormData(form).entries());
+  if(!data.full_name || !data.email){
+    errBox.textContent='Please add your name and an email address so we can reply.';
+    errBox.classList.remove('hidden'); return;
+  }
+  if(!document.getElementById('lf-consent').checked){
+    errBox.textContent='Please tick the consent box so we may reply and keep a record of your request.';
+    errBox.classList.remove('hidden'); return;
+  }
+  const btn=form.querySelector('button[type="submit"]');
+  const label=btn.textContent;
+  btn.disabled=true; btn.textContent='Sending…';
+  const s=window.__aurionScore||{};
+  const payload={
+    full_name:data.full_name, company:data.company||'', email:data.email,
+    phone:data.phone||'', message:data.focus||'',
+    risk_score:s.score||'', risk_tier:s.tier||'',
+    website:data.website||''
+  };
+  try{
+    const res=await fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const out=await res.json().catch(()=>({}));
+    if(!res.ok || out.error) throw new Error(out.error||`Request failed (${res.status})`);
+    form.classList.add('hidden');
+    okBox.innerHTML='<strong>Received.</strong> Your request is with us and you will hear back within two business days. If it is urgent, call 082 880 0195.';
+    okBox.classList.remove('hidden');
+    okBox.scrollIntoView({behavior:'smooth',block:'center'});
+  }catch(e){
+    errBox.innerHTML=`<strong>That did not go through.</strong> Please try again, or email rtmorobe08@gmail.com or call 082 880 0195 and we will take it down by hand.`;
+    errBox.classList.remove('hidden');
+  }finally{
+    btn.disabled=false; btn.textContent=label;
+  }
+}
+renderQuestions();
 
-        function calculateAssessmentScore() {
-            const resultDiv = document.getElementById('assessment-result');
-            resultDiv.classList.remove('hidden');
-            document.getElementById('score-display').innerText = "Risk Exposure: High Priority";
-            document.getElementById('recommended-band').innerText = "Band B Professional Foundation & Active Defense";
-        }
-    </script>
+</script>
 </body>
 </html>

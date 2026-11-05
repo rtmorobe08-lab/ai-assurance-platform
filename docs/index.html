@@ -965,5 +965,14 @@ async function submitAssuranceLead(event){
 renderQuestions();
 
 </script>
+<script>
+(function(){
+  var h = (location.hash || '').toLowerCase();
+  var q = (location.search || '').toLowerCase();
+  if (h === '#check' || h === '#assessment' || q.indexOf('tab=assessment') > -1) {
+    setTimeout(function(){ try { switchTab('assessment'); } catch (e) {} }, 60);
+  }
+})();
+</script>
 </body>
 </html>
